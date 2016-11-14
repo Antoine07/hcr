@@ -1,0 +1,14 @@
+{
+	"autoload": {
+		"files": [
+			"src/utils.php", "src/controllers/login_action.php"
+		],
+		"psr-4": {
+            "": "src/"
+        }
+	},
+	"require": {
+		"vlucas/phpdotenv": "^2.4",
+		"swiftmailer/swiftmailer": "^5.4"
+	}
+}
