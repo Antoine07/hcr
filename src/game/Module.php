@@ -33,7 +33,7 @@ class Module {
     $name = '';
     switch ($this->type) {
       case 'shipping':
-        $name .= 'shipping';
+        $name .= 'Navigation';
         break;
       case 'speed':
         $name .= 'Reacteur';
