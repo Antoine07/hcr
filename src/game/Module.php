@@ -1,4 +1,4 @@
-<?php 
+<?php namespace game;
 
 class Module {
   private $name;
@@ -7,11 +7,11 @@ class Module {
   private $type;
   private $timestamp;
   private $stats = [
-    'aerodynamisme' => 0,
-    'solidite' => 0,
-    'confort' => 0,
-    'puissance' => 0,
-    'navigation' => 0
+    'aerodynamics' => 0,
+    'solidarity' => 0,
+    'cosiness' => 0,
+    'speed' => 0,
+    'shipping' => 0
   ];
 
   function __construct() {
@@ -24,7 +24,7 @@ class Module {
 
     $this -> getRandBrand();
 
-    $this -> timestamp = time();
+    $this ->timestamp = time();
 
 
   }
@@ -32,44 +32,44 @@ class Module {
   private function getRandName(){
     $name = '';
     switch ($this->type) {
-      case 'navigation':
-        $name .= 'Navigation';
+      case 'shipping':
+        $name .= 'shipping';
         break;
-      case 'puissance':
+      case 'speed':
         $name .= 'Reacteur';
         break;
       case 'complementaire':
         $statMax = array_search(max($this->stats),$this->stats);
         switch ($statMax) {
-          case 'aerodynamisme' :
+          case 'aerodynamics' :
             $tName=['Aileron','Tete','Aile'];
             $name .= $tName[array_rand($tName)];
             $tName=[' qui glisse',' léger', ' lisse',' aérodinamique'];
             $name .= $tName[array_rand($tName)];
 
             break;
-          case 'solidite' :
+          case 'solidarity' :
             $tName=['Coque','Bouclier','Champ de protection'];
             $name .= $tName[array_rand($tName)];
             $tName=[' solide',' bien dur',' impénétrable', ' exosolaire',' ONIX',' TITANIUM',' COLOSSUS',' TITAN'];
             $name .= $tName[array_rand($tName)];
 
             break;
-          case 'confort' :
+          case 'cosiness' :
             $tName=['Cockpit','Siège en cuir','Oreiller','Climatisation','Lampe à lave'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' confortable',' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible'];
+            $tName=[' cosinessable',' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible'];
             $name .= $tName[array_rand($tName)];
 
             break;
-          case 'puissance' :
+          case 'speed' :
             $tName=['Propulseur','Booster','Nitro','Turbo'];
             $name .= $tName[array_rand($tName)];
             $tName=[' puissant',' DRAKO',' Vulkan',' Ragnarok',' à matière noire',' thermique',' qui pète'];
             $name .= $tName[array_rand($tName)];
 
             break;
-          case 'navigation' :
+          case 'shipping' :
             $tName=['Radar','Détecteur','Boussole','GPS','Rétroviseur'];
             $name .= $tName[array_rand($tName)];
             $tName=[' précis',' à micro-ondes',' substellaire',' intergalactique',' du turfu'];
@@ -100,11 +100,11 @@ class Module {
 
   function getRandStat(){
     switch ($this->type) {
-      case 'puissance':
-        $this->stats['puissance']=mt_rand(50,150);
+      case 'speed':
+        $this->stats['speed']=mt_rand(50,150);
         break;
-      case 'navigation':
-        $this->stats['navigation']=mt_rand(50,150);
+      case 'shipping':
+        $this->stats['shipping']=mt_rand(50,150);
         break;
       case 'complementaire':
         $val=0;
@@ -113,7 +113,6 @@ class Module {
           $val+=mt_rand(15,30);
           $i = mt_rand(0,100);
         }while($i<=80);
-        echo $val.'<br/>';
         $price = round($val*f_rand(0.7,1.5))*10;
         $this->price=$price;
 
@@ -150,7 +149,7 @@ class Module {
   }
 
   private function getRandType(){
-    $possible_type = ['puissance','navigation','complementaire'];
+    $possible_type = ['speed','shipping','complementaire'];
 
     $index = array_rand($possible_type);
 
@@ -158,16 +157,25 @@ class Module {
 
   }
 
-}
+  public function get_stats(){
+    return $this->stats;
+  }
+  
+  public function get_name(){
+    return $this->name;
+  }
+  public function get_brand(){
+    return $this->brand;
+  }
+  public function get_price(){
+    return $this->price;
+  }
+  public function get_type(){
+    return $this->type;
+  }
+  public function get_timestamp(){
+    return $this->timestamp;
+  }
 
-$moduleTest = new Module();
 
-echo '<pre>';
-  print_r($moduleTest);
-echo '</pre>';
-
-
-function f_rand($min=0,$max=1,$mul=10000){
-    if ($min>$max) return false;
-    return mt_rand($min*$mul,$max*$mul)/$mul;
 }
