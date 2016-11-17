@@ -6,15 +6,15 @@ class Equipment
 {
 	private $name;
 	private $price;
-	private $marque;
+	private $brand;
 	private $list_stats = ['strength', 'dexterity', 'stamina', 'speed', 'intelligence'];
     private $stats;
     private $activity=[];
 
     function __construct(){
-        $this ->name  = $this ->generateName();
-        $this ->marque  = $this ->generateMarque();
-        $this ->activity = $this ->generateActivity();
+        $this ->name  = $this ->get_name();
+        $this ->brand  = $this ->get_brand();
+        $this ->activity = $this ->get_activity();
     }
 	public function generateStats($list_stats){
 		$stats = $list_stats[array_rand($list_stats)];
@@ -42,12 +42,12 @@ class Equipment
         return $gename;
     }
     
-    public function generateMarque()
+    public function generateBrand()
     {
-    	$marque    = ['Kelborn','Kaomax','Lanzor','Quantics','Semoon','Arendil'];
-    	$genmarque = $marque[array_rand($marque)];
+    	$brand    = ['Kelborn','Kaomax','Lanzor','Quantics','Semoon','Arendil', 'Valhallax'];
+    	$genbrand = $brand[array_rand($brand)];
 
-        return $genmarque;
+        return $genbrand;
     }
     public function generateActivity()
     {
@@ -57,8 +57,57 @@ class Equipment
         $activity = new Activity($name, $stat);
         $this->activity[] = $activity;
         return $activity;
+    }
+
+    //GETTER
+    public function get_stats()
+    {
+        return $this->stats;
+    }
+    public function get_list_stats()
+    {
+        return $this->list_stats;
+    }
+    public function get_name()
+    {
+        return $this->name;
+    }
+    public function get_brand()
+    {
+        return $this->brand;
+    }
+    public function get_activity()
+    {
+        return $this->activity;
     } 
-    public function generatePrice($price)
+
+    //SETTER
+    public function set_stats($stats)
+    {
+        $this ->stats = $stats;
+    }
+    public function set_name($name)
+    {
+        if (is_string($name)) {
+            $this ->name = $name;
+        }else{
+            throw new Exception("Erreur un str est demandé");
+        }
+    }
+    public function set_brand($brand)
+    {
+        if (is_string($brand)) {
+            $this ->brand = $brand;
+        }else{
+            throw new Exception("Erreur un str est demandé");
+        }
+    }
+    public function set_activity(Activity $activity)
+    {
+        $this ->activity = $activity;
+    }
+    
+    /*public function generatePrice($price)
     {
     	$val=0;
         $price=0;
@@ -71,10 +120,15 @@ class Equipment
         $this->price=$price;
 
 
-    }
+    }*/
     
 }
-    echo '<pre>' ;
-    print_r(new Equipment());
+$equipement=new Equipment();
 
+$equipement->set_brand($equipement->generateBrand());
+$equipement->set_name($equipement->generateName());
+$equipement->set_activity($equipement->generateActivity());
+
+    echo '<pre>' ;
+    print_r($equipement);
     echo '</pre>';
