@@ -19,7 +19,7 @@ CREATE TABLE `modules` (
   `name` varchar(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
   `aerodynamics` SMALLINT UNSIGNED NOT NULL,
-  `solidarity` SMALLINT UNSIGNED NOT NULL,
+  `solidity` SMALLINT UNSIGNED NOT NULL,
   `cosiness` SMALLINT UNSIGNED NOT NULL,
   `shipping` SMALLINT UNSIGNED NOT NULL,
   `speed` SMALLINT UNSIGNED NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `spaceships` (
   `team_id` int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `aerodynamics` SMALLINT UNSIGNED NOT NULL,
-  `solidarity` SMALLINT UNSIGNED NOT NULL,
+  `solidity` SMALLINT UNSIGNED NOT NULL,
   `cosiness` SMALLINT UNSIGNED NOT NULL,
   `shipping` SMALLINT UNSIGNED NOT NULL,
   `speed` SMALLINT UNSIGNED NOT NULL
