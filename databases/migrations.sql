@@ -1,20 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Mar 15 Novembre 2016 à 15:13
--- Version du serveur :  10.1.16-MariaDB
--- Version de PHP :  7.0.9
+
 DROP DATABASE IF EXISTS db_hcr;
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `db_hcr`
@@ -29,16 +14,69 @@ use `db_hcr`;
 --
 
 CREATE TABLE `modules` (
-  `id` int(10) NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `team_id` int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
-  `team_id` int(11) DEFAULT NULL,
-  `aerodynamics` int(10) NOT NULL,
-  `solidarity` int(10) NOT NULL,
-  `cosiness` int(10) NOT NULL,
-  `shipping` int(10) NOT NULL,
-  `speed` int(10) NOT NULL,
-  `timestamp` varchar(255) NOT NULL
+  `aerodynamics` SMALLINT UNSIGNED NOT NULL,
+  `solidarity` SMALLINT UNSIGNED NOT NULL,
+  `cosiness` SMALLINT UNSIGNED NOT NULL,
+  `shipping` SMALLINT UNSIGNED NOT NULL,
+  `speed` SMALLINT UNSIGNED NOT NULL,
+  `price` INT(10) UNSIGNED NOT NULL,
+  `type` VARCHAR(255) NOT NULL,
+  `timestamp` DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `spaceships`
+--
+
+CREATE TABLE `spaceships` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `team_id` int(10) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `aerodynamics` SMALLINT UNSIGNED NOT NULL,
+  `solidarity` SMALLINT UNSIGNED NOT NULL,
+  `cosiness` SMALLINT UNSIGNED NOT NULL,
+  `shipping` SMALLINT UNSIGNED NOT NULL,
+  `speed` SMALLINT UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+
+--
+-- Structure de la table `equipments`
+--
+
+CREATE TABLE `equipments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `team_id` int(10) UNSIGNED DEFAULT NULL,
+  `activity_id` int(10) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `brand` varchar(255) NOT NULL,
+  `price` SMALLINT UNSIGNED NOT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `activities`
+--
+
+CREATE TABLE `activities` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `strength` SMALLINT UNSIGNED NOT NULL,
+  `dexterity` SMALLINT UNSIGNED NOT NULL,
+  `stamina` SMALLINT UNSIGNED NOT NULL,
+  `speed` SMALLINT UNSIGNED NOT NULL,
+  `intelligence` SMALLINT UNSIGNED NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -48,30 +86,30 @@ CREATE TABLE `modules` (
 --
 
 CREATE TABLE `npcs` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `strength` int(4) NOT NULL,
-  `dexterity` int(4) NOT NULL,
-  `stamina` int(4) NOT NULL,
-  `speed` int(4) NOT NULL,
-  `brains` int(4) NOT NULL,
-  `team_id` int(11) DEFAULT NULL,
-  `price` int(10) NOT NULL,
-  `job` varchar(30) DEFAULT NULL,
-  `race` varchar(30) NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `team_id` int(10) UNSIGNED DEFAULT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `strength` SMALLINT UNSIGNED NOT NULL,
+  `dexterity` SMALLINT UNSIGNED NOT NULL,
+  `stamina` SMALLINT UNSIGNED NOT NULL,
+  `speed` SMALLINT UNSIGNED NOT NULL,
+  `intelligence` SMALLINT UNSIGNED NOT NULL,
+  `price` SMALLINT UNSIGNED NOT NULL,
+  `job` VARCHAR(30) NOT NULL,
+  `race` VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `team`
+-- Structure de la table `teams`
 --
 
-CREATE TABLE `team` (
-  `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `score` int(30) NOT NULL,
-  `credit` int(30) NOT NULL
+CREATE TABLE `teams` (
+  `id` INT(10) UNSIGNED NOT NULL,
+  `name` VARCHAR(30) NOT NULL,
+  `score` INT(10) UNSIGNED NOT NULL,
+  `credit` INT(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,23 +119,30 @@ CREATE TABLE `team` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `team_id` int(11) NOT NULL,
-  `user_picture` varchar(255) NOT NULL,
-  `creation_date` varchar(255) NOT NULL
+  `id` INT(10) UNSIGNED NOT NULL,
+  `team_id` INT(10) UNSIGNED DEFAULT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `creation_date` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables exportées
+-- Index pour la table `users`
 --
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `modules`
 --
 ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `spaceships`
+--
+ALTER TABLE `spaceships`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -107,42 +152,103 @@ ALTER TABLE `npcs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `equipments`
+--
+ALTER TABLE `equipments`
+  ADD PRIMARY KEY (`id`);  
+
+--
 -- Index pour la table `team`
 --
-ALTER TABLE `team`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `teams`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour les tables exportées
---
-
---
--- AUTO_INCREMENT pour la table `modules`
+-- Index pour la table `modules`
 --
 ALTER TABLE `modules`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT pour la table `NPCs`
+-- Index pour la table `spaceships`
+--
+ALTER TABLE `spaceships`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Index pour la table `NPCs`
 --
 ALTER TABLE `npcs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `team`
+-- Index pour la table `teams`
 --
-ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `teams`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Index pour la table `teams`
 --
--- AUTO_INCREMENT pour la table `users`
+ALTER TABLE `activities`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+-- Index pour la table `teams`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `equipments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--FOREIGN KEY
+
+ALTER TABLE `modules` 
+ADD CONSTRAINT `modules_team_id_teams_id`
+FOREIGN KEY(`team_id`) 
+REFERENCES `teams`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_team_id_teams_id`
+FOREIGN KEY(`team_id`) 
+REFERENCES `teams`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE npcs 
+ADD CONSTRAINT npcs_team_id_teams_id 
+FOREIGN KEY(team_id) 
+REFERENCES teams(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE users 
+ADD CONSTRAINT users_team_id_teams_id 
+FOREIGN KEY(team_id) 
+REFERENCES teams(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE equipments 
+ADD CONSTRAINT equipments_team_id_teams_id 
+FOREIGN KEY(team_id) 
+REFERENCES teams(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE equipments 
+ADD CONSTRAINT equipments_activity_id_activities_id 
+FOREIGN KEY(activity_id) 
+REFERENCES activities(id) 
+ON DELETE SET NULL;
 
