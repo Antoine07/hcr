@@ -214,12 +214,11 @@ ALTER TABLE `activities`
 ALTER TABLE `equipments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
---FOREIGN KEY
 
-ALTER TABLE `modules` 
-ADD CONSTRAINT `modules_team_id_teams_id`
-FOREIGN KEY(`team_id`) 
-REFERENCES `teams`(`id`) 
+ALTER TABLE modules 
+ADD CONSTRAINT modules_team_id_teams_id
+FOREIGN KEY(team_id) 
+REFERENCES teams(id) 
 ON DELETE SET NULL;
 
 ALTER TABLE `spaceships` 
