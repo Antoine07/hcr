@@ -31,6 +31,24 @@ CREATE TABLE `modules` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `spaceships`
+--
+
+CREATE TABLE `spaceships` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `team_id` int(10) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `aerodynamics` SMALLINT UNSIGNED NOT NULL,
+  `solidarity` SMALLINT UNSIGNED NOT NULL,
+  `cosiness` SMALLINT UNSIGNED NOT NULL,
+  `shipping` SMALLINT UNSIGNED NOT NULL,
+  `speed` SMALLINT UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+
+--
 -- Structure de la table `equipments`
 --
 
@@ -115,7 +133,16 @@ CREATE TABLE `users` (
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Index pour la table `modules`
+--
 ALTER TABLE `modules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `spaceships`
+--
+ALTER TABLE `spaceships`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -153,10 +180,17 @@ ALTER TABLE `teams`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 --
 -- Index pour la table `modules`
 --
 ALTER TABLE `modules`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Index pour la table `spaceships`
+--
+ALTER TABLE `spaceships`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
@@ -184,6 +218,12 @@ ALTER TABLE `equipments`
 
 ALTER TABLE `modules` 
 ADD CONSTRAINT `modules_team_id_teams_id`
+FOREIGN KEY(`team_id`) 
+REFERENCES `teams`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_team_id_teams_id`
 FOREIGN KEY(`team_id`) 
 REFERENCES `teams`(`id`) 
 ON DELETE SET NULL;
