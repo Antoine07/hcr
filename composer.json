@@ -14,7 +14,9 @@
 			"src/controllers/login_controller.php", 
 			"src/models/users_model.php", 
 			"src/controllers/generate_controller.php",
-			"src/models/generate_model.php"
+			"src/models/generate_model.php",
+			"src/controllers/team_controller.php",
+			"src/models/team_model.php"
 		],
 		"psr-4": {
             		"": "src/"
