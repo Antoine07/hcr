@@ -75,24 +75,11 @@ class Equipment_manager {
 
 	}
 
-// MET A JOUR L'INSTANCE EQUIPMENT DANS LA DB
-	public function update(Equipment $equipment)
+// SUPPRIME L'INSTANCE DE EQUIPMENT DANS LA DB
+	public function delete(Equipment $equipment)
 	{
-		$pdo = $this->pdo;
-
-		$requete_insert_equipment = 'INSERT INTO equipments( activity_id, name, brand, price) VALUES (?, ?, ?);';
-		$prepare_insert_equipment = $pdo->prepare($requete_insert_equipment);
-    	$prepare_insert_equipment->bindValue(1 $equipment->get_name(), PDO::PARAM_STR);
-    	$prepare_insert_equipment->bindValue(2, $equipment->get_brand(), PDO::PARAM_STR);
-    	$prepare_insert_equipment->bindValue(3, 0, PDO::PARAM_INT);
-
-    	$prepare_insert_equipment->execute();
-	}
-
-// SUPPRIME L'INSTANCE DE XXX DANS LA DB
-	public function delete(XXX $instance)
-	{
-
+		$this->pdo->exec('DELETE FROM equipments WHERE id = '.$equipment->get_id());
+		$this->pdo->exec('DELETE FROM activities WHERE id = '.$equipment->get_activity_id());
 	}
 
 // RECUPERE LES DONNEES D'UN XXX EN FONCTION DE SON ID DANS LA DB ET RENVOIE UN INSTANCE DE XXX

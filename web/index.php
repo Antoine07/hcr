@@ -12,11 +12,11 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if ( '/' === $uri) {
 	$equipment_manager = new game\Equipment_manager(get_pdo());
-	$modul_list = $equipment_manager->generate(4); 
-	echo '<pre>';
-	print_r($modul_list);
-	echo '</pre>';
-	$equipment_manager->store($modul_list);
+ 
+	$equip = new game\Equipment();
+	$equip->set_id(13);
+	$equip->set_activity_id(13);
+	$equipment_manager->delete($equip);
 
 }
 else{

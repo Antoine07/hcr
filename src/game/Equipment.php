@@ -10,6 +10,8 @@ class Equipment
 	private $list_stats = ['strength', 'dexterity', 'stamina', 'speed', 'intelligence'];
     private $stats;
     private $activity=[];
+    private $id;
+    private $activity_id;
 
     function __construct()
     {
@@ -83,6 +85,14 @@ class Equipment
     public function get_activity()
     {
         return $this->activity;
+    }
+    public function get_id()
+    {
+        return $this->id;
+    }
+    public function get_activity_id()
+    {
+        return $this->activity_id;
     } 
 
     //SETTER
@@ -113,6 +123,24 @@ class Equipment
     public function set_activity(Activity $activity)
     {
         $this ->activity = $activity;
+    }
+    public function set_id($id)
+    {
+        
+        if (!is_numeric($id)) {
+            throw new Exception("Erreur la valeur :".$id." n'a pas un nombre comme value");                   
+        }else{
+            $this ->id = $id;
+        }
+    }
+    public function set_activity_id($activity_id)
+    {
+        
+        if (!is_numeric($activity_id)) {
+            throw new Exception("Erreur la valeur :".$activity_id." n'a pas un nombre comme value");                   
+        }else{
+            $this ->activity_id = $activity_id;
+        }
     }
     
     /*public function generatePrice($price)
