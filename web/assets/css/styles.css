@@ -387,21 +387,39 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	overflow:scroll!important;
 	height:20em;
 }
+
+.bar_less {
+	display: flex;
+}
+
+.bar_portrait{
+	width: 96px;
+	height: 96px;
+	image-rendering: pixelated;
+}
 .bar_card h6{
 	cursor: pointer;
 	color: #FFF;
-	font-weight: 400;
-	font-size: 1.2em;
-	margin: 1em; 
+	font-weight: bold;
+	font-size: 1.3em;
+	flex:1;
+	padding: 0.8em 1.3em;
+	line-height:1.30em;
+	overflow: scroll;
 }
+
+.bar_card h6 span {
+	font-weight:200;
+	font-size: 0.8em;
+}
+
 .bar_card .bar_element{
-	padding: 5px;
+	padding: 0;
     	background: rgba(46, 46, 46, 0.27);
     	margin-bottom: 2%;
 }
 .buy{
-    	margin:-3.05em 0.4em 0 0;
-    	float: right;
+	margin: 0.9em;
 }
 .buy:focus,.buy:hover{
 	background: #0079ff;	
@@ -409,12 +427,17 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 }
 .drop {
     	float: left;
-    	margin: -0.2em 1em 0 -0.5em;
+	padding: 0.8em 0.5em;
+	color: white;
 }
 .more .bar_stats{
 	color:#FFF;
 	padding-left: 20px;
+	margin: 0;
+	padding: 1em;
+	background: rgba(46, 46, 46, 0.4);
 }
+
 .bar_stats li{
 	display: inline-block!important;
 }
@@ -765,7 +788,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	background-color: #0079ff;
 	display: block;
 	margin: -1em auto 1em auto;
-    	float: none;
+    	 float: none;
 }
 
 
