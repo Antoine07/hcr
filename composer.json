@@ -1,7 +1,7 @@
 {
 	"autoload": {
 		"files": [
-			"src/utils.php", "src/controllers/register_controller.php", "src/models/users_model.php"
+			"src/utils.php", "src/controllers/register_controller.php", "src/models/users_model.php", "src/controllers/team_controller.php", "src/models/team_model.php"
 		],
 		"psr-4": {
             "": "src/"
