@@ -28,34 +28,34 @@ class Module_manager {
     	if (!is_array($list_module)) throw new Exception("Merci de renseigner un tableau", 1);
 
 	    $pdo = $this->pdo;
-
+	
 	    $nb_mod = count($list_module);
-
+	
 	    $requete=("INSERT INTO `modules` (`name`,`price`,`brand`,`type`,`timestamp`,`aerodynamics`,`solidity`,`cosiness`,`speed`,`shipping`) VALUES ");
 	    
 	    for ($i=0; $i < $nb_mod; $i++) {
 	      $requete.="(?,?,?,?,?,?,?,?,?,?),";
 	    }
-
+	
 	    $requete[strlen($requete)-1]=";";
-
+	
 	    $prepare=$pdo->prepare($requete);
-
+	
 	    $i = 0;
-
+	
 	    foreach ($list_module as $mod) {
 	      $name = $mod->get_name();
 	      $i++;
 	      $prepare->bindValue($i,$name,PDO::PARAM_STR);
-
+	
 	      $price = $mod->get_price();
 	      $i++;
 	      $prepare->bindValue($i,$price,PDO::PARAM_INT);
-
+	
 	      $brand = $mod->get_brand();
 	      $i++;
 	      $prepare->bindValue($i,$brand,PDO::PARAM_STR);
-
+	
 	      $type = $mod->get_type();
 	      $i++;
 	      $prepare->bindValue($i,$type,PDO::PARAM_STR);
@@ -63,16 +63,15 @@ class Module_manager {
 	      $timestamp = $mod->get_timestamp();
 	      $i++;
 	      $prepare->bindValue($i,$timestamp,PDO::PARAM_STR);
-
+	
 	      $stats = $mod->get_stats();
-
+	
 	      foreach ($stats as $stat) {
 	        $i++;
 	        $prepare->bindValue($i,$stat,PDO::PARAM_INT);
 	      }
 	    }
-
-		$prepare->execute();
+	    $prepare->execute();
 	    // Assignation des valeurs pour le nom, la force, les dégâts, l'expérience et le niveau du  personnage.
 	    // Exécution de la requête.
     }
@@ -87,9 +86,9 @@ class Module_manager {
 	    $prepare->bindValue(1,$id,PDO::PARAM_INT);
 	    $prepare->execute();
 
-		$module = $prepare->fetch(PDO::FETCH_ASSOC);
+	    $module = $prepare->fetch(PDO::FETCH_ASSOC);
 
-		return $module;
+	    return $module;
     }
     public function get_all()
     {
@@ -100,7 +99,7 @@ class Module_manager {
 	    $prepare->execute();
 
 	    $modules = $prepare->fetchAll(PDO::FETCH_ASSOC);
-
+	    
 	    return $modules;
     }
     public function get_all_buyable()
@@ -116,7 +115,7 @@ class Module_manager {
 	    return $buyable_modules;
     }
     // //FIN GET
-
+    
 
     // Update
     public function delete(Module $module)
@@ -129,10 +128,10 @@ class Module_manager {
 	    $prepare->execute();
     }
 
-	// todo : tester l'update de la FK
+    // todo : tester l'update de la FK
     public function update_team_id(Module $module, Team $team)
     {
-        $pdo = $this->pdo;
+        	$pdo = $this->pdo;
 
 	    $mod_id=$module->get_id();
 	    $tea_id=$team->get_id();
@@ -142,7 +141,7 @@ class Module_manager {
 			SET team_id=?
 			WHERE id=?
 			");
-
+	    
 	    $prepare->bindValue(1,$tea_id,PDO::PARAM_INT);
 	    $prepare->bindValue(2,$mod_id,PDO::PARAM_INT);
 	    $prepare->execute();

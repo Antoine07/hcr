@@ -18,10 +18,10 @@
     		<div class="nav-wrapper navbar">
       			<a href="#"><img class="imgnav" src="/images/rocket.png"></a>
       			<ul id="nav-mobile" class="right hide-on-med-and-down">
-        				<li><a href="/qg" class="element underline-opening" id="qg">QG</a></li>
-        				<li><a href="/bar" class="element underline-opening" id="bar">Bar</a></li>
-        				<li><a href="/shop" class="element underline-opening" id="shop">Magasin</a></li>
-        				<li><a href="/race" class="element underline-opening" id="race">Courses</a></li>
+        				<li><a href="<?php echo url('qg') ?>" class="element underline-opening" id="qg">QG</a></li>
+        				<li><a href="<?php echo url('bar') ?>" class="element underline-opening" id="bar">Bar</a></li>
+        				<li><a href="<?php echo url('shop') ?>" class="element underline-opening" id="shop">Magasin</a></li>
+        				<li><a href="<?php echo url('race') ?>" class="element underline-opening" id="race">Courses</a></li>
       			</ul>
     		</div>
   	</nav>
