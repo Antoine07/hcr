@@ -16,7 +16,15 @@ if ( '/' === $uri) {
 	print_r($modul);
 	echo '</pre>';
 }
-else{
+elseif('/NPC' === $uri) {
+
+	if(isset($_GET["pilotes"]) && isset($_GET["mecaniciens"])) {
+		generate_NPCs_action($_GET["pilotes"], $_GET["mecaniciens"]);
+	}
+
+	show_NPCs_action();
+
+} else{
 	header('HTTP/1.1 404 Not Found');
 	echo '<html><body><h1>Page Not Found</h1></body></html>';
 }
