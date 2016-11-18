@@ -1,0 +1,771 @@
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* Feuille de style de l'index.html *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*
+
+		        Couleurs du site:
+
+		        Noir:	#000000;	;
+		        Blanc: 	#FFFFFF;	;
+		        Gris: 	#dadada;	;
+		        Bleu: 	#0079ff;	;
+		        Hover:	#125091;	;
+
+/* *********** Importations de Police *********** */
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900');
+/*********** font-family: 'Raleway', sans-serif; ***********\
+
+/* *********** Création de la classe display:none; *********** */
+.dispnone{
+	display:none;
+}
+
+/* *********** Stylisation du Body *********** */
+body{
+	background-image: url('../../images/background.jpg');
+	background-size: cover;
+	background-position:fixed;
+	background-repeat: no-repeat;
+	font-family: 'Raleway', sans-serif; 
+	overflow:hidden;
+}
+.row{
+	margin-bottom: 0;
+}
+
+
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE MASTER.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+
+
+	/* *********** Stylisation de la Nav *********** */
+nav{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+}
+.navicon{
+	margin-left: 1em;
+}
+.navbar li a {
+	font-weight: 100;
+}
+nav ul{
+	margin-right: 1em;
+}
+nav ul a:hover {
+	background-color: transparent;
+}
+.imgnav{
+	width: 3.4em;
+    	margin: 0.3em 1.3em;
+}
+.imgnav:hover{
+	transition:all ease 0.3s;
+	-ms-transform: rotate(15deg) scale(1.12); /* IE 9 */
+    	-webkit-transform: rotate(15deg) scale(1.12); /* Chrome, Safari, Opera */
+    	transform: rotate(15deg) scale(1.12);
+
+}
+/* #*#*#*# Effet de la nav lors d'un hover #*#*#*# */
+.element {
+	display: inline;
+	position: relative;
+	z-index: 2;
+	text-decoration: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-webkit-user-select: none; 
+	-moz-user-select: none; 
+	-ms-user-select: none; 
+	user-select: none; 
+	-webkit-touch-callout: none; 
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+	padding: 8px 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	-webkit-transition: color 0.5s ease;
+	-moz-transition: color 0.5s ease;
+	-ms-transition: color 0.5s ease;
+	-o-transition: color 0.5s ease;
+	transition: color 0.5s ease;
+}
+
+.element:hover,.element:focus {
+	outline: 0;
+	color: #fff;
+	-webkit-transition: color 0.5s ease;
+	-moz-transition: color 0.5s ease;
+	-ms-transition: color 0.5s ease;
+	-o-transition: color 0.5s ease;
+	transition: color 0.5s ease;
+	cursor: pointer;
+}
+
+.element:before {
+	-webkit-transition: all 0.5s ease; /* add delay if wanted */
+	-moz-transition: all 0.5s ease; /* add delay if wanted */
+	-ms-transition: all 0.5s ease; /* add delay if wanted */
+	-o-transition: all 0.5s ease; /* add delay if wanted */
+	transition: all 0.5s ease; /* add delay if wanted */
+}
+
+.element:after {
+	-webkit-transition: all 0.5s ease; /* add delay if wanted */
+	-moz-transition: all 0.5s ease; /* add delay if wanted */
+	-ms-transition: all 0.5s ease; /* add delay if wanted */
+	-o-transition: all 0.5s ease; /* add delay if wanted */
+	transition: all 0.5s ease; /* add delay if wanted */	
+}
+
+.element:hover:after,.element:focus:after {
+	outline: 0;
+	background-color:#fff;
+	-webkit-transition:  all 0.5s ease; /* add delay if wanted */
+	   -moz-transition:  all 0.5s ease; /* add delay if wanted */
+	    -ms-transition:  all 0.5s ease; /* add delay if wanted */
+	     -o-transition:  all 0.5s ease; /* add delay if wanted */
+	        transition:  all 0.5s ease; /* add delay if wanted */
+}
+
+.element:hover:before,.element:focus:before{
+	outline: 0;
+	background-color: #fff;
+	-webkit-transition:  all 0.5s ease; /* add delay if wanted */
+	   -moz-transition:  all 0.5s ease; /* add delay if wanted */
+	    -ms-transition:  all 0.5s ease; /* add delay if wanted */
+	     -o-transition:  all 0.5s ease; /* add delay if wanted */
+	        transition:  all 0.5s ease; /* add delay if wanted */
+}
+.underline-opening:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	width: 1px;
+	height: 1px; 
+}
+.underline-opening:hover:after, .underline-opening:focus:after{
+	width: 100%;
+	height: 1px; 
+}
+.underline-opening:before{
+	content: "";
+	position: absolute;
+	z-index: -1;
+	width: 1px;
+	height: 1px; 
+}
+.underline-opening:hover:before, .underline-opening:focus:before {
+	width: 100%; 
+	height: 1px; 
+}
+.underline-opening:after {
+	bottom: 0%;
+	left: 0%;
+	right: 0;
+	margin: 0 auto; 
+}
+.underline-opening:before {
+	bottom: 0%;
+	right: 0%;
+	left: 0;
+	margin: 0 auto; 
+}
+
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE MASTER_LOGIN.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+
+.content{
+    	background-color: rgba(0, 0, 0, 0.5);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display: block;
+    	width: 50%;
+    	padding: 2em 4em 3em 3em;
+    	margin: 6.5em auto;
+}
+.content h4{
+	color:#efefef;
+	text-align: center;
+	font-weight: 200;
+	margin-bottom:1.5em;
+}
+
+	/* *********** Stylisation de .connect ************/
+.connect{
+	color:#FFF;
+	font-weight: 200;
+}
+.connect p{
+	text-align: center;
+}
+.connect button{
+	background-color: #0079ff;
+	margin: 2em auto 0em auto;
+	display: block;
+}
+.connect button:hover{
+	transition: all ease 0.6s;
+	transform: scale(1.05);
+	background-color: #125091;
+ 	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+ 	 	        0 1px 7px 0 rgba(0, 0, 0, 0.12), 
+ 	 	        0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+.connect button:focus{
+	background-color: #125091;
+}
+.connect .btn:focus{
+	background-color: #125091;
+}
+.connect .input-field{
+	margin-left: 9em;
+}
+.input-field .prefix {
+	color: #FFF;
+	bottom: 0.8em;
+}
+.input-field .prefix ~ input{
+	width:calc(60% - 3rem);
+}
+.input-field .prefix.active {
+	color:#0079ff!important;
+}
+input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]){
+	border-bottom: 1px solid #0079ff;
+    	box-shadow: 0 1px 0 0 #0079ff;
+}
+input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label{
+	color:#0079ff!important;
+}
+.subbtn{
+	margin: 0em auto!important;
+    	padding: 0 36px 0 36px;
+}
+
+	/* *********** Stylisation de .register ************/
+.register{
+	color:#FFF;
+	font-weight: 200;
+}
+.registerp{
+	text-align: center;
+}
+.register button{
+	background-color: #0079ff
+;
+	margin: 2em auto 0em auto;
+	display: block;
+}
+.register button:hover{
+	transition: all ease 0.6s;
+	transform: scale(1.05);
+	background-color: #125091
+;
+ 	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+ 	 	        0 1px 7px 0 rgba(0, 0, 0, 0.12), 
+ 	 	        0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+.register button:focus{
+	background-color: #125091
+;
+}
+.register .btn:focus{
+	background-color: #125091
+;
+}
+.register .input-field{
+	margin-left: 9em;
+}
+.input-field .prefix {
+	color: #FFF;
+	bottom: 0.8em;
+}
+.input-field .prefix ~ input{
+	width:calc(60% - 3rem);
+}
+.input-field .prefix.active {
+	color:#0079ff
+!important;
+}
+input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]),input[type=email]:focus:not([readonly]){
+	border-bottom: 1px solid #0079ff
+;
+    	box-shadow: 0 1px 0 0 #0079ff
+;
+}
+input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label,input[type=email]:focus:not([readonly]) + label{
+	color:#0079ff
+!important;
+}
+.regbtn{
+	margin: 0em auto!important;
+    	padding: 0 36px 0 36px;
+}
+
+
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE BAR.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+
+
+.content_bar{
+	margin: 1em auto;
+    	padding: 2em 3em;
+}
+
+.bar_top{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:5em;
+    	padding:0.1em 1.4em!important;
+    	margin:-1em auto 1.5em auto;
+}
+.bar_top h4{
+	color: #efefef;
+    	float:left;
+    	font-weight: 200;
+    	margin-right: 2em;
+    	text-transform: uppercase;
+}
+.bar_top ul li{
+	display: inline-block;
+	color:#0079ff;
+	font-size:1.2em;
+}
+.bar_list{
+	margin: 1.5em auto;
+    	float: right;
+}
+.bar_list span{
+	color:#FFF;
+	margin: 0 0.5em;
+}
+.bar_team{
+	text-transform: uppercase;
+}
+.content_bar_item h5{
+	color:#efefef;
+	font-weight: 200;
+	text-transform:uppercase;
+	text-align: center;
+	border-bottom: 1px solid #EFEFEF;
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+.bar_left{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:auto;
+   	width:48.7%!important;
+    	margin-right: 2em;
+}
+.bar_right{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	width:48.7%!important;
+
+}
+.content_card{
+	overflow:scroll!important;
+	height:20em;
+}
+.bar_card h6{
+	cursor: pointer;
+	color: #FFF;
+	font-weight: 400;
+	font-size: 1.2em;
+	margin: 1em; 
+}
+.bar_card .bar_element{
+	padding: 5px;
+    	background: rgba(46, 46, 46, 0.27);
+    	margin-bottom: 2%;
+}
+.buy{
+    	margin:-3.05em 0.4em 0 0;
+    	float: right;
+}
+.buy:focus,.buy:hover{
+	background: #0079ff;	
+	opacity: 0.7;
+}
+.drop {
+    	float: left;
+    	margin: -0.2em 1em 0 -0.5em;
+}
+.more .bar_stats{
+	color:#FFF;
+	padding-left: 20px;
+}
+.bar_stats li{
+	display: inline-block!important;
+}
+.bar_stats span{
+	color:#0079ff;
+}
+.bar_card button{
+	background-color: #0079ff;
+	display: block;
+}
+
+
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE QG.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+
+
+.content_qg{
+	margin: 1em auto;
+    	padding: 2em 3em;
+}
+.qg_top{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:5em;
+    	padding:0.1em 1.4em!important;
+    	margin:-1em auto 1.5em auto;
+}
+.qg_top h4{
+	color: #efefef;
+    	float:left;
+    	font-weight: 200;
+    	margin-right: 2em;
+    	text-transform: uppercase;
+}
+.qg_top ul li{
+	display: inline-block;
+	color:#0079ff;
+	font-size:1.2em;
+}
+.qg_list{
+	margin: 1.5em auto;
+    	float: right;
+}
+.qg_list span{
+	color:#FFF;
+	margin: 0 0.5em;
+}
+.qg_team{
+	text-transform: uppercase;
+}
+.row .col {
+	padding:0;
+}
+.qg_card{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:auto;
+
+}
+.qg_card h6{
+	color: #FFF;
+	font-weight: 400;
+	font-size: 1.2em;
+	margin: 1em; 
+}
+.qg_card ul li{
+	display: inline-block;
+}
+.qg_card .input-field{
+	text-align: -webkit-right;
+	margin-right: 1em;
+}
+.qg_card .select-wrapper{
+	width: 10em;
+    	color: #FFF;
+}
+.qg_card .select-wrapper .caret{
+    	color: #FFF!important;;
+}
+.qg_card .dropdown-content {
+	background-color:#282828;
+}
+.qg_card .dropdown-content li > span {
+	color:#0079ff;
+}
+.qg_stats{
+	color:#FFF;
+	text-align: center;
+	font-size: 1.1em;
+}
+.qg_stats span{
+	color:#0079ff;
+}
+.qg_img{
+	max-width: 17em;
+    	margin: -1em auto 1em auto;
+    	display: block;
+}
+.qg_infos_spaceship{
+	margin-left: 7em;
+	height: auto
+}
+.qg_infos_spaceship h6{
+	text-align:center;
+	margin: 2em;
+}
+.qg_infos_spaceship ul li{
+	text-align:center;
+	margin-bottom: 1.7em;
+}
+.qg_module{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	text-align: center;
+    	margin-top: 1.5em;
+}
+.qg_module .input-field{
+	margin-right: 4em;
+	display: inline-block;
+}
+.qg_module .select-wrapper{
+	width: 10em;
+    	color: #FFF;
+}
+.qg_module .select-wrapper .caret{
+    	color: #FFF!important;;
+}
+.qg_module .dropdown-content {
+	background-color:#282828;
+}
+.qg_module .dropdown-content li > span {
+	color:#0079ff;
+}
+
+
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE SHOP.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+
+
+.content_shop{
+	margin: 1em auto;
+    	padding: 2em 3em;
+}
+.shop_top{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:5em;
+    	padding:0.1em 1.4em!important;
+    	margin:-1em auto 1.5em auto;
+}
+.shop_top h4{
+	color: #efefef;
+    	float:left;
+    	font-weight: 200;
+    	margin-right: 2em;
+    	text-transform: uppercase;
+}
+.shop_top ul li{
+	display: inline-block;
+	color:#0079ff;
+	font-size:1.2em;
+}
+.shop_list{
+	margin: 1.5em auto;
+    	float: right;
+}
+.shop_list span{
+	color:#FFF;
+	margin: 0 0.5em;
+}
+.shop_team{
+	text-transform: uppercase;
+}
+.shop_sell{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height: auto;
+    	padding: 0.5em 4em!important;
+    	margin-bottom: 1.5em;
+}
+.shop_sell .select-wrapper{
+    	color: #FFF;
+}
+.shop_sell .select-wrapper .caret{
+    	color: #FFF!important;;
+}
+.shop_sell .dropdown-content {
+	background-color:#282828;
+}
+.shop_sell .dropdown-content li > span {
+	color:#0079ff;
+}
+.shop_buy{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height: auto;
+    	padding: 0.5em 4em!important;
+    	text-align: center;
+    	margin-bottom: 2em;
+}
+.shop_buy p{
+	font-size: 1.2em;
+	color:#FFF
+}
+.shop_buy button{
+	background-color: #0079ff;
+	margin: 2em auto 0em auto;
+	display: block;
+}
+.shop_buy button:hover{
+	transition: all ease 0.6s;
+	transform: scale(1.05);
+	background-color: #125091;
+ 	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+ 	 	        0 1px 7px 0 rgba(0, 0, 0, 0.12), 
+ 	 	        0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+.shop_buy button:focus{
+	background-color: #125091;
+}
+.shop_buy .btn:focus{
+	background-color: #125091;
+}
+.shop_buy .input-field{
+	margin-left: 9em;
+}
+
+
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE COURSES.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+/* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
+
+.content_race{
+	margin: 1em auto;
+    	padding: 2em 3em;
+}
+
+.race_top{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:5em;
+    	padding:0.1em 1.4em!important;
+    	margin:-1em auto 1.5em auto;
+}
+.race_top h4{
+	color: #efefef;
+    	float:left;
+    	font-weight: 200;
+    	margin-right: 2em;
+    	text-transform: uppercase;
+}
+.race_top ul li{
+	display: inline-block;
+	color:#0079ff;
+	font-size:1.2em;
+}
+.race_list{
+	margin: 1.5em auto;
+    	float: right;
+}
+.race_list span{
+	color:#FFF;
+	margin: 0 0.5em;
+}
+.race_team{
+	text-transform: uppercase;
+}
+.content_race_item h5{
+	color:#efefef;
+	font-weight: 200;
+	text-transform:uppercase;
+	text-align: center;
+	border-bottom: 1px solid #EFEFEF;
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+
+.race_left{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:auto;
+   	width:48.7%!important;
+    	margin-right: 2em;
+}
+.race_right{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	width:48.7%!important;
+
+}
+.content_card{
+	overflow:scroll!important;
+	height:20em;
+}
+.race_card h6{
+	cursor: pointer;
+	color: #FFF;
+	font-weight: 400;
+	font-size: 1.2em;
+	margin: 1em; 
+	text-align: center
+}
+.race_card .race_element{
+	padding: 5px;
+    	background: rgba(46, 46, 46, 0.27);
+    	margin-bottom: 2%;
+}	
+.buy:focus,.buy:hover{
+	background: #0079ff;	
+	opacity: 0.7;
+}
+.race_card button{
+	background-color: #0079ff;
+	display: block;
+	margin: -1em auto 1em auto;
+    	float: none;
+}
+
+
