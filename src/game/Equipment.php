@@ -11,10 +11,9 @@ class Equipment
     private $stats;
     private $activity=[];
 
-    function __construct(){
-        $this ->name  = $this ->get_name();
-        $this ->brand  = $this ->get_brand();
-        $this ->activity = $this ->get_activity();
+    function __construct()
+    {
+
     }
 	public function generateStats($list_stats){
 		$stats = $list_stats[array_rand($list_stats)];
@@ -52,9 +51,14 @@ class Equipment
     public function generateActivity()
     {
         $name = 'Utilise : '.$this->name;
-        $stat = [$this->stats => rand(6,25)];
+        $list_stats=$this->get_list_stats();
+        $activity_stats=[];
+        foreach ($list_stats as $stat) {
+            $activity_stats[$stat]=0;
+        }
+        $activity_stats[$this->stats] = rand(6,25);
 
-        $activity = new Activity($name, $stat);
+        $activity = new Activity($name, $activity_stats);
         $this->activity[] = $activity;
         return $activity;
     }
@@ -84,7 +88,11 @@ class Equipment
     //SETTER
     public function set_stats($stats)
     {
-        $this ->stats = $stats;
+        if (is_string($stats)) {
+            $this ->stats = $stats;
+        }else{
+            throw new Exception("Erreur un str est demandé");
+        }
     }
     public function set_name($name)
     {
@@ -121,14 +129,13 @@ class Equipment
 
 
     }*/
-    
+    public function from_random()
+    {
+        $this->set_brand($this->generateBrand());
+        $this->set_name($this->generateName());
+        $this->set_activity($this->generateActivity()); 
+    }  
 }
 $equipement=new Equipment();
+$equipement->from_random();
 
-$equipement->set_brand($equipement->generateBrand());
-$equipement->set_name($equipement->generateName());
-$equipement->set_activity($equipement->generateActivity());
-
-    echo '<pre>' ;
-    print_r($equipement);
-    echo '</pre>';
