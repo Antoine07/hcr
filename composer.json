@@ -1,7 +1,20 @@
 {
 	"autoload": {
 		"files": [
-			"src/utils.php", "src/controllers/home_action.php", "src/controllers/login_action.php", "src/controllers/bar_action.php", "src/controllers/qg_action.php", "src/controllers/shop_action.php", "src/controllers/race_action.php", "src/controllers/register_controller.php", "src/models/users_model.php", "src/controllers/NPC_controller.php", "src/controllers/login_controller.php", "src/models/users_model.php","src/controllers/generate_controller.php","src/models/generate_model.php"
+			"src/utils.php", 
+			"src/controllers/home_controller.php", 
+			"src/controllers/login_controller.php", 
+			"src/controllers/bar_controller.php", 
+			"src/controllers/qg_controller.php", 
+			"src/controllers/shop_controller.php", 
+			"src/controllers/race_controller.php", 
+			"src/controllers/register_controller.php", 
+			"src/models/users_model.php", 
+			"src/controllers/NPC_controller.php", 
+			"src/controllers/login_controller.php", 
+			"src/models/users_model.php", 
+			"src/controllers/generate_controller.php",
+			"src/models/generate_model.php"
 		],
 		"psr-4": {
             		"": "src/"
