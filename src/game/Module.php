@@ -1,6 +1,7 @@
 <?php namespace game;
 
 class Module {
+  private $id=NULL;
   private $name;
   private $price;
   private $brand;
@@ -8,28 +9,52 @@ class Module {
   private $timestamp;
   private $stats = [
     'aerodynamics' => 0,
-    'solidarity' => 0,
+    'solidity' => 0,
     'cosiness' => 0,
     'speed' => 0,
     'shipping' => 0
   ];
+  
+  // getter
+  public function get_id()        {return $this->id;}
+  public function get_name()      {return $this->name;}
+  public function get_price()     {return $this->price;}
+  public function get_brand()     {return $this->brand;}
+  public function get_type()      {return $this->type;}
+  public function get_timestamp() {return $this->timestamp;}
+  public function get_stats()     {return $this->stats;}
 
-  function __construct() {
+  // setter
+  public function set_id(int $value)          {$this->id    = $value;}
+  public function set_name(string $value)     {$this->name  = $value;}
+  public function set_price(int $value)       {$this->price = $value;}
+  public function set_brand(string $value)    {$this->brand = $value;}
+  public function set_type(string $value)     {$this->type  = $value;}
+  public function set_aerodynamics(int $value){$this->stats['aerodynamics']  = $value;}
+  public function set_solidity(int $value)    {$this->stats['solidity']      = $value;}
+  public function set_cosiness(int $value)    {$this->stats['cosiness']      = $value;}
+  public function set_speed(int $value)       {$this->stats['speed']         = $value;}
+  public function set_shipping(int $value)    {$this->stats['shipping']      = $value;}
 
-    $this -> getRandType();
-
-    $this -> getRandStat();
-
-    $this -> getRandName();
-
-    $this -> getRandBrand();
-
-    $this ->timestamp = time();
-
-
+  public function from_random() {
+    $this->set_rand_type();
+    $this->set_rand_stats();
+    $this->set_rand_name();
+    $this->set_rand_brand();
+    $this->timestamp = time();
   }
 
-  private function getRandName(){
+  public function hydrate(array $data) {
+    foreach ($data as $key => $value) {
+      $method = 'set_'.ucfirst($key);
+
+      if (method_exists($this, $method)) {
+        $this->$method($value);
+      }
+    }
+  }
+
+  private function set_rand_name(){
     $name = '';
     switch ($this->type) {
       case 'shipping':
@@ -48,7 +73,7 @@ class Module {
             $name .= $tName[array_rand($tName)];
 
             break;
-          case 'solidarity' :
+          case 'solidity' :
             $tName=['Coque','Bouclier','Champ de protection'];
             $name .= $tName[array_rand($tName)];
             $tName=[' solide',' bien dur',' impénétrable', ' exosolaire',' ONIX',' TITANIUM',' COLOSSUS',' TITAN'];
@@ -58,7 +83,7 @@ class Module {
           case 'cosiness' :
             $tName=['Cockpit','Siège en cuir','Oreiller','Climatisation','Lampe à lave'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' cosinessable',' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible'];
+            $tName=[' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible'];
             $name .= $tName[array_rand($tName)];
 
             break;
@@ -98,13 +123,19 @@ class Module {
     $this->name =$name;
   }
 
-  function getRandStat(){
+  function set_rand_stats(){
     switch ($this->type) {
       case 'speed':
-        $this->stats['speed']=mt_rand(50,150);
+        $val=mt_rand(50,150);
+        $this->stats['speed']=$val;
+        $price = round($val*f_rand(0.7,1.5))*10;
+        $this->price=$price;
         break;
       case 'shipping':
-        $this->stats['shipping']=mt_rand(50,150);
+        $val=mt_rand(50,150);
+        $this->stats['shipping']=$val;
+        $price = round($val*f_rand(0.7,1.5))*10;
+        $this->price=$price;
         break;
       case 'complementaire':
         $val=0;
@@ -140,7 +171,7 @@ class Module {
     }
   }
 
-  private function getRandBrand(){
+  private function set_rand_brand(){
     $possible_brand = ['Mokotoz','SpaceShip Maker','Travespace','SheepWar'];
 
     $index = array_rand($possible_brand);
@@ -148,7 +179,7 @@ class Module {
     $this->brand = $possible_brand[$index];
   }
 
-  private function getRandType(){
+  private function set_rand_type(){
     $possible_type = ['speed','shipping','complementaire'];
 
     $index = array_rand($possible_type);
@@ -156,26 +187,5 @@ class Module {
     $this->type = $possible_type[$index];
 
   }
-
-  public function get_stats(){
-    return $this->stats;
-  }
-  
-  public function get_name(){
-    return $this->name;
-  }
-  public function get_brand(){
-    return $this->brand;
-  }
-  public function get_price(){
-    return $this->price;
-  }
-  public function get_type(){
-    return $this->type;
-  }
-  public function get_timestamp(){
-    return $this->timestamp;
-  }
-
 
 }
