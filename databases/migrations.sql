@@ -18,11 +18,11 @@ CREATE TABLE `modules` (
   `team_id` int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `brand` varchar(255) NOT NULL,
-  `aerodynamics` SMALLINT UNSIGNED NOT NULL,
-  `solidity` SMALLINT UNSIGNED NOT NULL,
-  `cosiness` SMALLINT UNSIGNED NOT NULL,
-  `shipping` SMALLINT UNSIGNED NOT NULL,
-  `speed` SMALLINT UNSIGNED NOT NULL,
+  `aerodynamics` SMALLINT NOT NULL,
+  `solidity` SMALLINT NOT NULL,
+  `cosiness` SMALLINT NOT NULL,
+  `shipping` SMALLINT NOT NULL,
+  `speed` SMALLINT NOT NULL,
   `price` INT(10) UNSIGNED NOT NULL,
   `type` VARCHAR(255) NOT NULL,
   `timestamp` DATETIME NOT NULL
@@ -37,6 +37,8 @@ CREATE TABLE `modules` (
 CREATE TABLE `spaceships` (
   `id` int(10) UNSIGNED NOT NULL,
   `team_id` int(10) UNSIGNED DEFAULT NULL,
+  `pilot_id` int(10) UNSIGNED DEFAULT NULL,
+  `mechanic_id` int(10) UNSIGNED DEFAULT NULL,  
   `name` varchar(255) NOT NULL,
   `aerodynamics` SMALLINT UNSIGNED NOT NULL,
   `solidity` SMALLINT UNSIGNED NOT NULL,
@@ -225,6 +227,18 @@ ALTER TABLE `spaceships`
 ADD CONSTRAINT `spaceships_team_id_teams_id`
 FOREIGN KEY(`team_id`) 
 REFERENCES `teams`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_pilot_id_npcs_id`
+FOREIGN KEY(`pilot_id`) 
+REFERENCES `npcs`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_mechanic_id_npcs_id`
+FOREIGN KEY(`mechanic_id`) 
+REFERENCES `npcs`(`id`) 
 ON DELETE SET NULL;
 
 ALTER TABLE npcs 
