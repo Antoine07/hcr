@@ -1,8 +1,6 @@
 <?php
 
-function store_action(){
-	session_start();
-	
+function store_action(){	
 	
 	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
 	$_SESSION['old']['email'] = $_POST['email'];
@@ -46,8 +44,6 @@ function store_action(){
 		$creation_date = date('Y-m-d H:i:s');
 
 		add_user($username, $password, $email, $creation_date);
-
-		$_SESSION = [];
 
 		header('Location: /');
 		exit;

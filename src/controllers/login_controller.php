@@ -1,7 +1,6 @@
 <?php
 
 function login_action(){
-	session_start();
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
@@ -16,9 +15,7 @@ function login_action(){
 	$_SESSION = [];
 }
 
-function login_post_action(){
-	session_start();
-	
+function login_post_action(){	
 	
 	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
 
@@ -50,7 +47,6 @@ function login_post_action(){
 		$password		= sha1(getenv('CRYPT'). $_POST['password']);
 
 		get_user($username, $password);
-		$_SESSION = [];
 		exit;
 		
 	}else{
@@ -60,6 +56,7 @@ function login_post_action(){
 }
 
 function deco_action(){
+	$prefix 		= getenv('URL_PREFIX');
 	session_destroy();
 	header('Location: /'.$prefix.'/login');
 	exit;
