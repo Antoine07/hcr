@@ -41,7 +41,7 @@ if ( '/' === $uri) {
 	 }
 }elseif($prefix.'/generatenpc') {
 	generate_NPCs_action(10, 10);
-} 
+ 
 }elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){
 		qg_action();
