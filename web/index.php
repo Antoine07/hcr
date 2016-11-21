@@ -10,11 +10,8 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if ( '/' === $uri) {
 
-	$modul = new game\Module;
-	echo '<pre>';
-	print_r($modul);
-	echo '</pre>';
-
+	
+	
 	home_action();
 }elseif ( '/login' === $uri) {
 	login_action();

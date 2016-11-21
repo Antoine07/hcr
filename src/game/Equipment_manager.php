@@ -78,7 +78,7 @@ class Equipment_manager {
     		$prepare_insert_equipment->bindValue($i, $activities_id[$c],PDO::PARAM_INT);
     		$prepare_insert_equipment->bindValue($i+1, $equipment->get_name(), PDO::PARAM_STR);
     		$prepare_insert_equipment->bindValue($i+2, $equipment->get_brand(), PDO::PARAM_STR);
-    		$prepare_insert_equipment->bindValue($i+3, 0, PDO::PARAM_INT);
+    		$prepare_insert_equipment->bindValue($i+3, $equipment->get_price(), PDO::PARAM_INT);
     		$i+=4;
     		$c++;
     	}
