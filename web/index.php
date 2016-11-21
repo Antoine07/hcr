@@ -42,6 +42,13 @@ if ( '/' === $uri) {
 }elseif($prefix.'/generatenpc' === $uri) {
 	generate_NPCs_action(10, 10);
  
+}elseif($prefix.'/generatemodule' === $uri) {
+	$module_manager = new game\Module_manager(get_pdo());
+
+	$list_module = $module_manager->generate(10);
+	
+	$module_manager->store($list_module);
+ 
 }elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){
 		qg_action();
