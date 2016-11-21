@@ -4,18 +4,24 @@ include 'Activity.php';
 
 class Equipment
 {
+    use Trait_hydrate;
 	private $name;
 	private $price;
 	private $brand;
 	private $list_stats = ['strength', 'dexterity', 'stamina', 'speed', 'intelligence'];
     private $stats;
     private $activity=[];
-    private $id;
+    private $id = NULL;
     private $activity_id;
 
     function __construct()
     {
 
+    }
+    // HYDRATATION
+    public function from_db($data){
+
+        $this->hydrate($data);  
     }
 	public function generateStats($list_stats){
 		$stats = $list_stats[array_rand($list_stats)];
@@ -94,6 +100,10 @@ class Equipment
     {
         return $this->activity_id;
     } 
+    public function get_team_id()
+    {
+        return $this->team_id;
+    }
 
     //SETTER
     public function set_stats($stats)
@@ -126,7 +136,6 @@ class Equipment
     }
     public function set_id($id)
     {
-        
         if (!is_numeric($id)) {
             throw new Exception("Erreur la valeur :".$id." n'a pas un nombre comme value");                   
         }else{
@@ -135,11 +144,18 @@ class Equipment
     }
     public function set_activity_id($activity_id)
     {
-        
         if (!is_numeric($activity_id)) {
             throw new Exception("Erreur la valeur :".$activity_id." n'a pas un nombre comme value");                   
         }else{
             $this ->activity_id = $activity_id;
+        }
+    }
+    public function set_team_id($team_id)
+    {
+        if (!is_numeric($team_id)) {
+            throw new Exception("Erreur la valeur :".$team_id." n'a pas un nombre comme value");                   
+        }else{
+            $this ->team_id = $team_id;
         }
     }
     
