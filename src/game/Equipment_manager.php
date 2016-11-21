@@ -71,19 +71,23 @@ class Equipment_manager {
 
             $first_id = $this->pdo->lastInsertId();
             $activities_id[] = $first_id + $i;
+            $list_equipment[$i]->set_activity_id($first_id + $i);
         }
         $i = 1;
     	foreach ($list_equipment as $equipment) {
-    		
     		$prepare_insert_equipment->bindValue($i, $activities_id[$c],PDO::PARAM_INT);
     		$prepare_insert_equipment->bindValue($i+1, $equipment->get_name(), PDO::PARAM_STR);
     		$prepare_insert_equipment->bindValue($i+2, $equipment->get_brand(), PDO::PARAM_STR);
-    		$prepare_insert_equipment->bindValue($i+3, 0, PDO::PARAM_INT);
+    		$prepare_insert_equipment->bindValue($i+3, $equipment->get_price(), PDO::PARAM_INT);
     		$i+=4;
     		$c++;
     	}
     	$prepare_insert_equipment->execute();
+    	for ($i=0; $i < count($list_equipment); $i++) {
 
+            $first_id = $this->pdo->lastInsertId();
+            $list_equipment[$i]->set_id($first_id + $i);
+        }
 	}
 	public function update_team_id(Equipment $equipment, Team $team)
     {

@@ -7,7 +7,6 @@
 require_once __DIR__.'/../app.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
 $prefix = '/' . getEnv('URL_PREFIX');
 $user_id = null;
 
