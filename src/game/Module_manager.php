@@ -204,7 +204,7 @@ class Module_manager {
       SET team_id=?
       WHERE id=?
       ");
-      
+
       $prepare->bindValue(1,$tea_id,PDO::PARAM_INT);
       $prepare->bindValue(2,$mod_id,PDO::PARAM_INT);
       $prepare->execute();
@@ -224,7 +224,6 @@ class Module_manager {
       }
 
       return $list_modules;
->>>>>>> feature_aff_module
     }
     // SETTER POUR PDO
     public function set_pdo($pdo)
