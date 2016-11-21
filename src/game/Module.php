@@ -125,7 +125,7 @@ class Module {
 
   // GENERE UN PRIX ALEATOIRE EN FONCTION DE VAL
   function set_rand_price($val){
-        $price = round($val*f_rand(0.7,1.5))*10;
+        $price = round($val*f_rand(0.7,1.3))*10;
 
         return $price;
   }
