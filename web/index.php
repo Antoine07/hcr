@@ -18,8 +18,8 @@ if(isset($_SESSION['user'])) {
 
 if ( '/' === $uri) {
 	 if($user_id != null){
-	 	home_action();
 	 	header('Location: '.$prefix.'/qg');
+	 	home_action();
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	  }
@@ -38,7 +38,17 @@ if ( '/' === $uri) {
 		bar_action();
 	 }else{
 	  	header('Location: '.$prefix.'/login');
-	  }
+	 }
+}elseif($prefix.'/generatenpc' === $uri) {
+	generate_NPCs_action(10, 10);
+ 
+}elseif($prefix.'/generatemodule' === $uri) {
+	$module_manager = new game\Module_manager(get_pdo());
+
+	$list_module = $module_manager->generate(10);
+	
+	$module_manager->store($list_module);
+ 
 }elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){
 		qg_action();
