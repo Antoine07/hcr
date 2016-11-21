@@ -18,8 +18,8 @@ if(isset($_SESSION['user'])) {
 
 if ( '/' === $uri) {
 	 if($user_id != null){
-	 	home_action();
 	 	header('Location: '.$prefix.'/qg');
+	 	home_action();
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	  }
