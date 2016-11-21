@@ -132,4 +132,19 @@ class NPC_manager {
 
 	    return $NPCs;
 	}
+
+	public function get_where($where){
+
+		$query  = $this->pdo->query('SELECT * FROM npcs WHERE '.$where);
+		$result = $query->fetchAll(PDO::FETCH_ASSOC);
+	   	$NPCs = [];
+
+	  	 foreach ($result as $data) {
+	    		$NPC = new NPC;
+	    		$NPC->from_db($data);
+	    		$NPCs[] = $NPC;
+	    	}
+
+	    	return $NPCs;
+	}
 }

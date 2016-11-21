@@ -23,6 +23,7 @@ class Module {
   public function get_type()      {return $this->type;}
   public function get_timestamp() {return $this->timestamp;}
   public function get_stats()     {return $this->stats;}
+  public function get_stat(string $name){return $this->stats[$name];}
 
   // setter
   public function set_id(int $value)          {$this->id    = $value;}
@@ -36,24 +37,23 @@ class Module {
   public function set_speed(int $value)       {$this->stats['speed']         = $value;}
   public function set_shipping(int $value)    {$this->stats['shipping']      = $value;}
 
+  use Trait_hydrate;
+
+  // GENERE DES VALEURS ALEATOIRE DE L'INSTANCE
   public function from_random() {
     $this->set_rand_type();
     $this->set_rand_stats();
     $this->set_rand_name();
     $this->set_rand_brand();
-    $this->timestamp = time();
+    $this->timestamp = date('Y-m-d H:i:s');
   }
 
-  public function hydrate(array $data) {
-    foreach ($data as $key => $value) {
-      $method = 'set_'.ucfirst($key);
-
-      if (method_exists($this, $method)) {
-        $this->$method($value);
-      }
-    }
+  // HYDRATATION DE L'INSTANCE
+  public function from_db(array $data) {
+    $this->hydrate($data);
   }
 
+  // GENERE UN NOM DE MODULE ALEATOIRE
   private function set_rand_name(){
     $name = '';
     switch ($this->type) {
@@ -123,54 +123,55 @@ class Module {
     $this->name =$name;
   }
 
+  // GENERE UN PRIX ALEATOIRE EN FONCTION DE VAL
+  function set_rand_price($val){
+        $price = round($val*f_rand(0.7,1.5))*10;
+
+        return $price;
+  }
+
+  // GENERE DES BONUS/MALUS ALEATOIRE DANS LES STATS
   function set_rand_stats(){
+    $val=0;
     switch ($this->type) {
       case 'speed':
-        $val=mt_rand(50,150);
-        $this->stats['speed']=$val;
-        $price = round($val*f_rand(0.7,1.5))*10;
-        $this->price=$price;
-        break;
       case 'shipping':
         $val=mt_rand(50,150);
-        $this->stats['shipping']=$val;
-        $price = round($val*f_rand(0.7,1.5))*10;
-        $this->price=$price;
+        $this->stats[$this->type]=$val;
         break;
+
       case 'complementaire':
-        $val=0;
-        $price=0;
         do{
           $val+=mt_rand(15,30);
           $i = mt_rand(0,100);
         }while($i<=80);
-        $price = round($val*f_rand(0.7,1.5))*10;
-        $this->price=$price;
 
         $indices = [];
         for ($i=0; $i < 3; $i++) { 
           $indices[] = array_rand($this->stats);
         }
-
-        while($val>0)
+        $i=$val;
+        while($i>0)
         {
-          $nbRand = mt_rand(0,$val);
+          $nbRand = mt_rand(0,$i);
           $nbRand *= (mt_rand(0,10)%10)? 1:-1; // Une chance sur 10 que l'on obtiène un malus
           $statRand = $indices[mt_rand(0,count($indices)-1)];
 
           $this->stats[$statRand]+=$nbRand;
 
-          $val-=$nbRand;
+          $i-=$nbRand;
         }
-
         break;
       
       default:
-        # code...
+
         break;
     }
+    $price = $this->set_rand_price($val);
+    $this->set_price($price);
   }
 
+  // GENERE UNE MARQUE ALEATOIRE
   private function set_rand_brand(){
     $possible_brand = ['Mokotoz','SpaceShip Maker','Travespace','SheepWar'];
 
@@ -179,13 +180,12 @@ class Module {
     $this->brand = $possible_brand[$index];
   }
 
+  // GENERE UN TYPE DE MODULE ALEATOIRE
   private function set_rand_type(){
     $possible_type = ['speed','shipping','complementaire'];
 
     $index = array_rand($possible_type);
 
     $this->type = $possible_type[$index];
-
   }
-
 }
