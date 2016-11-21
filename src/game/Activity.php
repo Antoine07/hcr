@@ -2,6 +2,7 @@
 $list_activity = [];
 
 class Activity{
+	use Trait_hydrate;
 	private $name;
 	private $stats;
 
@@ -9,6 +10,10 @@ class Activity{
 		$this ->set_name($name);
 		$this ->set_stats($stats);      
 	}
+	public function from_db($data){
+
+        $this->hydrate($data);  
+    }
 
 	public function get_name()
 	{
