@@ -1,22 +1,5 @@
 <?php
 
-function create_action(){
-	session_start();
-
-	if($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
-		$_SESSION['flash_message'] = '';
-	
-		$_SESSION['old']['pseudo'] = $_POST['pseudo'];
-		$_SESSION['old']['email'] = $_POST['email'];
-		
-		$_SESSION['errors'] = '';
-	}
-
-	include '../views/register.php';
-	$_SESSION = [];
-}
-
 function store_action(){
 	session_start();
 	

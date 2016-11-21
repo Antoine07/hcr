@@ -13,7 +13,12 @@ if ( '/' === $uri) {
 		home_action();
 }elseif ( $prefix.'/login' === $uri) {
 	login_action();
-}elseif ( $prefix.'/bar' === $uri) {
+}elseif ( $prefix.'/login_post' === $uri) {
+	login_post_action();
+}elseif ( $prefix.'/inscription_post' === $uri) {
+	store_action();
+}
+elseif ( $prefix.'/bar' === $uri) {
 	bar_action();
 }elseif ( $prefix.'/qg' === $uri) {
 	qg_action();
