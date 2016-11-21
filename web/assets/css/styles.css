@@ -5,7 +5,7 @@
 		        Noir:	#000000;	;
 		        Blanc: 	#FFFFFF;	;
 		        Gris: 	#dadada;	;
-		        Bleu: 	#0079ff;	;
+		        Bleu: 	#00a9ff;	;
 		        Hover:	#125091;	;
 
 /* *********** Importations de Police *********** */
@@ -14,7 +14,7 @@
 
 /* *********** Création de la classe display:none; *********** */
 .dispnone{
-	display:none;
+	display:none!important;
 }
 
 /* *********** Stylisation du Body *********** */
@@ -24,13 +24,22 @@ body{
 	background-position:fixed;
 	background-repeat: no-repeat;
 	font-family: 'Raleway', sans-serif; 
-	overflow:hidden;
+	overflow:hidden
+	
 }
 .row{
 	margin-bottom: 0;
 }
+::-webkit-scrollbar{
+  width:2px;
+} 
 
-
+::-webkit-scrollbar-thumb{
+	background-color: rgba(0,169,255,1);
+}
+::-webkit-scrollbar-corner {							/* Coin de la fenêtre */
+	overflow: hidden;
+}  
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE MASTER.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
@@ -66,7 +75,17 @@ nav ul a:hover {
 	-ms-transform: rotate(15deg) scale(1.12); /* IE 9 */
     	-webkit-transform: rotate(15deg) scale(1.12); /* Chrome, Safari, Opera */
     	transform: rotate(15deg) scale(1.12);
+}
+.nav_deco{
+	top: 100%!important;
+	background-color: #494949;
+	color: #00a9ff;
+	width: 124.8438px!important;
+	left: 1154.16px!important	;
+}
 
+.nav_deco li > a, .nav_deco li > span{
+	color: #00a9ff;
 }
 /* #*#*#*# Effet de la nav lors d'un hover #*#*#*# */
 .element {
@@ -206,7 +225,7 @@ nav ul a:hover {
 	text-align: center;
 }
 .connect button{
-	background-color: #0079ff;
+	background-color: #00a9ff;
 	margin: 2em auto 0em auto;
 	display: block;
 }
@@ -235,14 +254,14 @@ nav ul a:hover {
 	width:calc(60% - 3rem);
 }
 .input-field .prefix.active {
-	color:#0079ff!important;
+	color:#00a9ff!important;
 }
 input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]){
-	border-bottom: 1px solid #0079ff;
-    	box-shadow: 0 1px 0 0 #0079ff;
+	border-bottom: 1px solid #00a9ff;
+    	box-shadow: 0 1px 0 0 #00a9ff;
 }
 input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label{
-	color:#0079ff!important;
+	color:#00a9ff!important;
 }
 .subbtn{
 	margin: 0em auto!important;
@@ -258,16 +277,14 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	text-align: center;
 }
 .regbtn{
-	background-color: #0079ff
-;
+	background-color: #00a9ff;
 	margin: 2em auto 0em auto;
 	display: block;
 }
 .regbtn:hover{
 	transition: all ease 0.6s;
 	transform: scale(1.05);
-	background-color: #125091
-;
+	background-color: #125091;
  	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
  	 	        0 1px 7px 0 rgba(0, 0, 0, 0.12), 
  	 	        0 3px 1px -1px rgba(0, 0, 0, 0.2);
@@ -276,12 +293,10 @@ a#reg_link {
     width: 27%;
 }
 .regbtn:focus{
-	background-color: #125091
-;
+	background-color: #125091;
 }
 .register .btn:focus{
-	background-color: #125091
-;
+	background-color: #125091;
 }
 .register .input-field{
 	margin-left: 9em;
@@ -294,25 +309,31 @@ a#reg_link {
 	width:calc(60% - 3rem);
 }
 .input-field .prefix.active {
-	color:#0079ff
-!important;
+	color:#00a9ff!important;
 }
 input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]),input[type=email]:focus:not([readonly]){
-	border-bottom: 1px solid #0079ff
-;
-    	box-shadow: 0 1px 0 0 #0079ff
-;
+	border-bottom: 1px solid #00a9ff;
+    	box-shadow: 0 1px 0 0 #00a9ff;
 }
 input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label,input[type=email]:focus:not([readonly]) + label{
-	color:#0079ff
-!important;
+	color:#00a9ff!important;
 }
 .regbtn{
-	margin: 0em auto!important;
+	margin: 1em auto 0em auto!important;
     	padding: 0 36px 0 36px;
+    	font-weight: 200;
 }
 
-
+@-webkit-keyframes autofill {
+    to {
+        color: #fff;
+        background: transparent;
+    }
+}
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE BAR.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
@@ -344,7 +365,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 }
 .bar_top ul li{
 	display: inline-block;
-	color:#0079ff;
+	color:#00a9ff;
 	font-size:1.2em;
 }
 .bar_list{
@@ -425,7 +446,8 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	margin: 0.9em;
 }
 .buy:focus,.buy:hover{
-	background: #0079ff;	
+	background: #00a9ff
+;	
 	opacity: 0.7;
 }
 .drop {
@@ -445,10 +467,10 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	display: inline-block!important;
 }
 .bar_stats span{
-	color:#0079ff;
+	color:#00a9ff;
 }
 .bar_card button{
-	background-color: #0079ff;
+	background-color: #00a9ff;
 	display: block;
 }
 
@@ -483,7 +505,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 }
 .qg_top ul li{
 	display: inline-block;
-	color:#0079ff;
+	color:#00a9ff;
 	font-size:1.2em;
 }
 .qg_list{
@@ -533,7 +555,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	background-color:#282828;
 }
 .qg_card .dropdown-content li > span {
-	color:#0079ff;
+	color:#00a9ff;
 }
 .qg_stats{
 	color:#FFF;
@@ -541,7 +563,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	font-size: 1.1em;
 }
 .qg_stats span{
-	color:#0079ff;
+	color:#00a9ff;
 }
 .qg_img{
 	max-width: 17em;
@@ -584,7 +606,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	background-color:#282828;
 }
 .qg_module .dropdown-content li > span {
-	color:#0079ff;
+	color:#00a9ff;
 }
 
 
@@ -618,7 +640,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 }
 .shop_top ul li{
 	display: inline-block;
-	color:#0079ff;
+	color:#00a9ff;
 	font-size:1.2em;
 }
 .shop_list{
@@ -652,7 +674,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	background-color:#282828;
 }
 .shop_sell .dropdown-content li > span {
-	color:#0079ff;
+	color:#00a9ff;
 }
 .shop_buy{
 	background-color: rgba(0, 0, 0, 0.7);
@@ -670,7 +692,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 	color:#FFF
 }
 .shop_buy button{
-	background-color: #0079ff;
+	background-color: #00a9ff;
 	margin: 2em auto 0em auto;
 	display: block;
 }
@@ -723,7 +745,7 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 }
 .race_top ul li{
 	display: inline-block;
-	color:#0079ff;
+	color:#00a9ff;
 	font-size:1.2em;
 }
 .race_list{
@@ -784,11 +806,11 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
     	margin-bottom: 2%;
 }	
 .buy:focus,.buy:hover{
-	background: #0079ff;	
+	background: #00a9ff;	
 	opacity: 0.7;
 }
 .race_card button{
-	background-color: #0079ff;
+	background-color: #00a9ff;
 	display: block;
 	margin: -1em auto 1em auto;
     	 float: none;
