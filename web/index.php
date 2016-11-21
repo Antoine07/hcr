@@ -39,7 +39,7 @@ if ( '/' === $uri) {
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	 }
-}elseif($prefix.'/generatenpc') {
+}elseif($prefix.'/generatenpc' === $uri) {
 	generate_NPCs_action(10, 10);
  
 }elseif ( $prefix.'/qg' === $uri) {
