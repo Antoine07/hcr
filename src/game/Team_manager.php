@@ -33,9 +33,44 @@ class Team_manager {
 		$prepare->execute();
 	}
 
-// MET A JOUR L'INSTANCE PILOTE DANS LA DB
-	public function update_add_pilote(NPC $instance){
+// MET A JOUR L'INSTANCE NPC DANS LA DB
+	public function update_add_npc(NPC $instance, Team $team){
+ 		$job = $instance->get_job();
+ 		$id = $team->get_id();
 
+ 		if ($job == "Pilote") { $team->set_pilote($instance); }
+ 		else if ($job == "Mecanicien") { $team->set_mecanicien($instance); }
+
+ 		$npc = new NPC_manager();
+
+ 		$npc->update($instance, "team_id", $id);
+	}
+
+// MET A JOUR L'INSTANCE Vaisseau DANS LA DB
+	public function update_add_vaisseau(Vaisseau $instance, Team $team){
+ 		$id = $team->get_id();
+
+ 		$spaceship = new Spaceship_manager();
+
+ 		$spaceship->update($instance, "team_id", $id);
+ 		
+	}
+
+// MET A JOUR L'INSTANCE Module DANS LA DB
+	public function update_add_module(Module $instance, Team $team){
+ 		$id = $team->get_id();
+
+ 		$team->set_module($instance);
+
+ 		$module = new Module_manager();
+
+ 		$module->update_team_id($instance, $team);
+ 		
+	}
+
+// MET A JOUR L'INSTANCE Equipement DANS LA DB
+	public function update_add_equipement(Equipement $instance, Team $team){
+ 		
 	}
 
 // SUPPRIME L'INSTANCE DE TEAM DANS LA DB
