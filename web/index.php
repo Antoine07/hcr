@@ -1,5 +1,4 @@
 <?php
-
 /* ********************************************* *\
 	     	        FrontController
 \* ********************************************* */
@@ -26,7 +25,7 @@ if ( '/' === $uri) {
 $prefix = '/' . getEnv('URL_PREFIX');
 
 if ( '/' === $uri) {
-	home_action();
+		home_action();
 }elseif ( $prefix.'/login' === $uri) {
 	login_action();
 }elseif ( $prefix.'/bar' === $uri) {
