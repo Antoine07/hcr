@@ -49,6 +49,13 @@ if ( '/' === $uri) {
 	
 	$module_manager->store($list_module);
  
+}elseif($prefix.'/generateequipment' === $uri) {
+	$equipment_manager = new game\Equipment_manager(get_pdo());
+
+	$list_equipment = $equipment_manager->generate(10);
+	
+	$equipment_manager->store($list_equipment);
+ 
 }elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){
 		qg_action();
