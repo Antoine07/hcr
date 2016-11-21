@@ -70,7 +70,20 @@ class Equipment
         $this->activity[] = $activity;
         return $activity;
     }
-
+    public function generatePrice()
+    {
+        $price=0;
+        $ratio =mt_rand(30,60);
+        $score_stats = 0;
+        $activity = $this->get_activity();
+        $activity_stats = $activity->get_stats();
+        foreach ($activity_stats as $stat) {
+            $score_stats+= $stat;
+        }
+        $price = $ratio*$score_stats*10;
+        $this->price=$price;
+        return $price;
+    }
     //GETTER
     public function get_stats(){return $this->stats;}
     public function get_list_stats(){return $this->list_stats;}
@@ -142,19 +155,6 @@ class Equipment
         }else{
             $this ->price = $price;
         }
-    }
-    
-    public function generatePrice()
-    {
-        $val=0;
-        $price=0;
-        do{
-          $val+=mt_rand(15,30);
-          $i = mt_rand(0,100);
-        }while($i<=82);
-        $price = $val*mt_rand(7,15)*10;
-        $this->price=$price;
-        return $price;
     }
     public function from_random()
     {
