@@ -33,6 +33,7 @@ function get_user($username, $password){
 		$_SESSION['user']['team_id'] = $donnees['team_id'];
 	endwhile;
 
+
 	header('Location: /');
 	
 }
