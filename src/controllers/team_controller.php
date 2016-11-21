@@ -1,28 +1,10 @@
 <?php
 
-function create_team_action(){
-	session_start();
-
-	if($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
-		$_SESSION['flash_message'] = '';
-	
-		$_SESSION['old']['team_name'] = $_POST['team_name'];
-		
-		$_SESSION['errors'] = '';
-	}
-
-	include '../views/define_team.php';
-	$_SESSION = [];
-}
-
 function store_team_action(){
-	session_start();
 	
 	$_SESSION['old']['team_name'] = $_POST['team_name'];
 
 	$name = $_POST['team_name'];
-	$_SESSION['user']['id'] = 1;
 
 	$pdo = get_pdo();
 

@@ -18,3 +18,23 @@ function add_user($username, $password, $email, $creation_date){
 	$prepare->execute();
 }
 
+function get_user($username, $password){
+	$_SESSION['user'] = '';
+
+	$pdo = get_pdo();
+	
+	$prepare = $pdo->prepare('SELECT * FROM users WHERE username = "'.$username.'"');
+	$prepare->execute();
+
+	while ($donnees = $prepare->fetch()):
+		$_SESSION['user']['id'] = $donnees['id'];
+		$_SESSION['user']['username'] = $donnees['username'];
+		$_SESSION['user']['email'] = $donnees['email'];
+		$_SESSION['user']['team_id'] = $donnees['team_id'];
+	endwhile;
+
+
+	header('Location: /');
+	
+}
+

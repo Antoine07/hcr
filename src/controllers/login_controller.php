@@ -1,7 +1,6 @@
 <?php
 
 function login_action(){
-	session_start();
 
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
@@ -16,14 +15,14 @@ function login_action(){
 	$_SESSION = [];
 }
 
-function login_post_action(){
-	session_start();
-	
+function login_post_action(){	
 	
 	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
 
 	$pseudo 		= $_POST['pseudo'];
 	$password		= sha1(getenv('CRYPT'). $_POST['password']);
+
+	$prefix 		= getenv('URL_PREFIX');
 
 
 	$pdo = get_pdo();
@@ -34,31 +33,31 @@ function login_post_action(){
 
 	if(empty($_POST['pseudo'])){
 		$_SESSION['errors']['pseudo'] = 'Veuillez renseigner un pseudo';
-		header('Location: /login');
+		header('Location: /'.$prefix.'/login');
 	}
 
 	if(empty($_POST['password'])){
 		$_SESSION['errors']['password'] = 'Veuillez renseigner un mot de passe';
-		header('Location: /login');
+		header('Location: /'.$prefix.'/login');
 	}
      
 	if ($donnees = $verif_p->fetch() && empty($_SESSION['errors'])){ 
 
-		$pseudo			= $_POST['pseudo'];
+		$username			= $_POST['pseudo'];
 		$password		= sha1(getenv('CRYPT'). $_POST['password']);
 
-		get_user($pseudo, $password);
-		$_SESSION = [];
+		get_user($username, $password);
 		exit;
 		
 	}else{
 		$_SESSION['errors']['pseudo'] = 'Pseudo ou mot de passe incorrect';
-		header('Location: /login');
+		header('Location: /'.$prefix.'/login');
 	}
 }
 
 function deco_action(){
+	$prefix 		= getenv('URL_PREFIX');
 	session_destroy();
-	header('Location: /login');
+	header('Location: /'.$prefix.'/login');
 	exit;
 }
