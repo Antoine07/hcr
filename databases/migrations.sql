@@ -1,12 +1,12 @@
 
-DROP DATABASE IF EXISTS db_hcr;
+DROP DATABASE IF EXISTS hcr_db;
 
 --
--- Base de données :  `db_hcr`
+-- Base de données :  `hcr_db`
 --
-CREATE DATABASE `db_hcr`;
+CREATE DATABASE `hcr_db`;
 
-use `db_hcr`;
+use `hcr_db`;
 -- --------------------------------------------------------
 
 --
