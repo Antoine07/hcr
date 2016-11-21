@@ -154,8 +154,7 @@ class Equipment
         }while($i<=82);
         $price = $val*mt_rand(7,15)*10;
         $this->price=$price;
-
-
+        return $price;
     }
     public function from_random()
     {

@@ -10,7 +10,9 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 if ( '/' === $uri) {
 
-	
+	$equipement_manager = new game\Equipment_manager(get_pdo());
+	$equip = $equipement_manager->generate(1);
+	print_r($equip);
 	
 	home_action();
 }elseif ( '/login' === $uri) {
