@@ -86,11 +86,14 @@ class Spaceship_manager
 		return $this->pdo; 
 	}
 
+
+
 // SETTER 
     public function set_pdo($pdo)
     {
     	$this->pdo = $pdo; 
     }
+
 
 
 }
