@@ -13,17 +13,35 @@
 <!-- Fin du HEAD -->
 <!-- Début du BODY -->
 <body>
+      <!-- Dropdown deconnexion -->
+      <ul id="dropdown1" class="dropdown-content nav_deco">
+            <li><a href="#!">Déconnexion</a></li>
+      </ul>
 	<!-- Début de la NAV -->
 	<nav>
-    		<div class="nav-wrapper navbar">
-      			<a href="#"><img class="imgnav" src="/images/rocket.png"></a>
-      			<ul id="nav-mobile" class="right hide-on-med-and-down">
-        				<li><a href="<?php echo url('qg'); ?>" class="element underline-opening" id="qg">QG</a></li>
-        				<li><a href="<?php echo url('bar'); ?>" class="element underline-opening" id="bar">Bar</a></li>
-        				<li><a href="<?php echo url('shop'); ?>" class="element underline-opening" id="shop">Magasin</a></li>
-        				<li><a href="<?php echo url('race'); ?>" class="element underline-opening" id="race">Courses</a></li>
-      			</ul>
-    		</div>
+	         <div class="nav-wrapper navbar">
+               	<a href="#"><img class="imgnav" src="/images/rocket.png"></a>
+               	<ul id="nav-mobile" class="right hide-on-med-and-down">
+          		<li>
+                                   <a href="<?php echo url('qg'); ?>" class="element underline-opening" id="qg">QG</a>
+                            </li>
+          		<li>
+                                   <a href="<?php echo url('bar'); ?>" class="element underline-opening" id="bar">Bar</a>
+                            </li>
+          		<li>
+                                   <a href="<?php echo url('shop'); ?>" class="element underline-opening" id="shop">Magasin</a>
+                            </li>
+          		<li>
+                                   <a href="<?php echo url('race'); ?>" class="element underline-opening" id="race">Courses</a>
+                            </li>
+                            <li>
+                                   <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                                        <?php echo $_SESSION['user']['username'] ; ?>
+                                        <i class="material-icons right">arrow_drop_down</i>
+                                   </a>
+                            </li>
+                            </ul>
+    	     </div>
   	</nav>
 	<!-- Fin de la NAV -->
 	  	<?php echo $content?? '' ; ?>
