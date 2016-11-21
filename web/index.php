@@ -1,5 +1,4 @@
 <?php
-
 /* ********************************************* *\
 	     	        FrontController
 \* ********************************************* */
@@ -11,7 +10,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $prefix = '/' . getEnv('URL_PREFIX');
 
 if ( '/' === $uri) {
-	home_action();
+		home_action();
 }elseif ( $prefix.'/login' === $uri) {
 	login_action();
 }elseif ( $prefix.'/bar' === $uri) {
