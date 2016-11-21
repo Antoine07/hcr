@@ -16,6 +16,8 @@ function add_user($username, $password, $email, $creation_date){
 	$prepare->bindValue(4, $creation_date, PDO::PARAM_STR);
 
 	$prepare->execute();
+	// Connexion après inscription
+	get_user($username, $pass);
 }
 
 function get_user($username, $password){
