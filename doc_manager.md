@@ -68,7 +68,7 @@ Ce sont les différentes methodes `update_quelquechose()` qui s'en chargent.
 **update:** Modifie une ligne dans la base de donnée. elle prend en parametre, une instance à modifier, la propriété à modifier (string), et la nouvelle valeur de cette propriété
 
 ```bash
-# Modifie la propriété $moninstance par $value elle même et met à jour la base de donnée
+# Modifie la propriété de $moninstance par $value et met à jour la base de donnée
 $maclasse_manager->update($moninstance, 'propriété', $value);
 ```
 
