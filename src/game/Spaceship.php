@@ -6,6 +6,7 @@ class Spaceship
         use Trait_hydrate;
 
 		private $id = null ;
+        private $team_id = null;
         private $name = '';
         private $pilot_id = null; 
         private $mechanic_id = null; 
@@ -132,22 +133,24 @@ class Spaceship
         }
 
 
+    public function get_team_id()
+    {
+        return $this->team_id; 
+    }
 
+    public function set_team_id( Team $id)
+    {
+        $this->$team_id = get_id(); 
+    }
 
     public function from_db($data)
     {
-
         $this->hydrate($data);  
     }
 
-    public function from_random($name,$npc ,$mech,$stat)
+    public function from_random(get)
     {
-        $this->set_name($name);
-        $this->set_id_pilot($npc); 
-        $this->set_id_mechanic($mech); 
-        $this->set_stats($stat);
-        $this->get_rand_name(); 
-
+        $this->name = get_rand_name(); 
     }
 
 }
