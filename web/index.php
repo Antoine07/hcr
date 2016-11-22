@@ -37,6 +37,12 @@ if ( '/' === $uri) {
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	 }
+}elseif($prefix.'/generatespaceships' === $uri) {
+	$spaceship = new game\Spaceship();
+	
+	echo '<pre>';
+	print_r($spaceship->from_random());
+	echo '</pre>';
 }elseif($prefix.'/generatenpc' === $uri) {
 	generate_NPCs_action(10, 10);
  

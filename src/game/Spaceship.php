@@ -3,159 +3,108 @@
 class Spaceship
 {
 
-        use Trait_hydrate;
+    use Trait_hydrate;
 
-		private $id = null ;
-        private $team_id = null;
-        private $name = '';
-        private $pilot_id = null; 
-        private $mechanic_id = null; 
-        private $stats = [
-        'aerodynamics' => 100,
-        'solidity' => 100,
+	private $id = null ;
+    private $team_id = null;
+    private $name = '';
+    private $pilot_id = null; 
+    private $mechanic_id = null;
+    private $stats = [
         'cosiness' => 100,
-        'speed' => 100,
-        'shipping' => 100
-        ];
+        'shipping' => 100,
+        'solidity' => 100,
+        'aerodynamics' => 100,
+        'speed' => 100
+    ];
 
+    private $modules_id = [
 
-        private $modules = [];
+        "pow" => NULL,
+        "nav" => NULL,
+        "comp_1" => NULL,
+        "comp_2" => NULL
+    ];
 
-        public function __construct()
-        {
-            $this->set_rand_name();
-         
-        }
-
-        public function set_name($name)
-        {
-        	$this->name = $name; 
-        }
-
-        public function get_name(){
-        	return $this->name;
-        }
-
-        public function set_aerodynamics($aerodynamic)
-        {
-        	$this->stats['aerodynamics'] = $aerodynamic; 
-        }
-
-        public function set_solidity($solidity)
-        {
-        	$this->stats['solidity'] = $solidity; 
-        }
-
-        public function set_cosiness($cosiness)
-        {
-        	$this->stats['cosiness'] = $cosiness; 
-        }
-
-        public function set_speed($speed)
-        {
-        	$this->stats['speed'] = $speed; 
-        }
-
-        public function set_shipping($shipping)
-        {
-        	$this->stats['shipping'] = $shipping; 
-        }
-
-        public function set_id($id)
-        {
-        	$this->id = $id; 
-        }
-
-        public function set_module($type, $module)
-        {
-            $this->modules[$type] = $module;
-        }
-
-        public function get_modules()
-        {
-            return $this->modules;
-        }
-
-        public function set_stats($stats)
-        {
-            foreach ($stats as $stat) 
-            {
-                if (!is_numeric($stat)) {
-                    throw new Exception('Cette stat: '.$stat.' n\'est pas un chaine de caractères');
-                }
-            }
-            $this->stats=$stats;
-        }
-
-
-        public function set_id_pilot(NPC $npc )
-        {
-            $this-> $pilot_id = $npc->get_id(); 
-
-        }
-
-        public function set_id_mechanic(NPC $npc)
-        {
-            $this-> $mechanic_id = $npc->get_id(); 
-
-        }
-
-        public function get_pilot_id()
-        {
-            return $this->pilot_id;
-        }
-
-        public function get_mechanic_id()
-        {
-            return $this->mechanic_id;
-        }
-
-        public function get_stats()
-        {
-            return $this->stats;
-        }
-
-        public function get_id()
-        {
-        	return $this->id;
-        }
-
-        public function get_stats_modules()
-        {
-            $stats_spaceship=$this->get_stats();
-            foreach ($this->modules as $module) {
-                foreach ($stats_spaceship as $stat=>$value) {
-                    $stats_module = $module->get_stats();
-                    $stats_spaceship[$stat]+=$stats_module[$stat];
-                }
-            }
-            return $stats_spaceship;
-        }
-
-
-    public function get_team_id()
+    public function __construct()
     {
-        return $this->team_id; 
+        $this->set_rand_name();
+     
     }
 
-    public function set_team_id( Team $id)
-    {
-        $this->$team_id = get_id(); 
+    public function get_name(){return $this->name;}
+    public function get_id(){return $this->id;}  
+    public function get_team_id(){return $this->team_id;}
+
+    public function get_modules($type=NULL){
+        $module_manager = new game\Module_manager(get_pdo());
+        if($type){
+            $module = $module_manager->get_single($this->modules_id[$type]);
+        } else {
+            $module = [];
+            foreach ($this->modules_id as $key => $value) {
+                $module[]=$module_manager->get_single($value);
+            }
+        }
+        return $module;
     }
+
+    public function get_team(){
+        $team_manager = new game\Team_manager(get_pdo());
+        $team = $team_manager->get_single($this->team_id);
+        return $team;
+    }
+    public function get_pilot(){
+        $npc_manager = new game\NPC_manager(get_pdo());
+        $npc = $npc_manager->get_single($this->pilot_id);
+        return $npc;
+    }
+    public function get_mechanics(){
+        $npc_manager = new game\NPC_manager(get_pdo());
+        $npc = $npc_manager->get_single($this->mechanics);
+        return $npc;
+    }
+
+    public function get_stats($stat=NULL){
+
+        $modules = $this->get_modules();
+        $stats = [];
+        foreach ($modules as $module) {
+            foreach ($this->stats as $stat_name => $value) {
+                $stats[$stat_name] = $value + $module->get_stat($stat_name);
+            }
+        }
+        if ($stat) {
+            return $stats[$stat];
+        } else {
+            return $stats;
+        }
+    }
+
+    public function set_shipping($value){$this->stats['shipping'] = $value;}
+    public function set_id($id){$this->id = $id;}
+    public function set_team_id(Team $team){$this->$team_id = $team->get_id();}
+    public function set_pilot_id(NPC $npc){$this->pilot_id=$npc->get_id();}
+    public function set_mechanics_id(NPC $npc){$this->mechanics_id=$npc->get_id();}
+
+    public function set_nav_module_id(Module $module){$this->modules_id['nav'] = $module->get_id();}
+    public function set_pow_module_id(Module $module){$this->modules_id['pow'] = $module->get_id();}
+    public function set_comp_module_id_1(Module $module){$this->modules_id['comp_1'] = $module->get_id();}
+    public function set_comp_module_id_2(Module $module){$this->modules_id['comp_2'] = $module->get_id();}
 
     public function from_db($data)
     {
-        $this->hydrate($data);  
+        $this->hydrate($data);
     }
 
-    public function from_random(get)
+    public function from_random($team_id);
     {
-        $this->name = get_rand_name(); 
+        $this->set_name(get_rand_name());
     }
 
 }
 
-  function get_rand_name()
+function get_rand_name()
 {
  
     $tab_model_name = ['Buster ', 'Speeder ', 'Viper ','Corvet ','Interceptor ','Cruser ','Titan ','Escher ','gorz ','utopie ','bruine ','puralis ','gaïa ','armado ','nothung ','karma ','dragocytos ','polymeriza ','daigusto ','emeral ','kozmoll ','shekhinaga ','traptrix ','rafflesia ','quantum ','lavalval '];  

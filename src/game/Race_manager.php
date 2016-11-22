@@ -105,4 +105,14 @@ class Race_manager {
 
 	    return $races;
 	}
+
+    public function delete(Race $race)
+    {
+    	$pdo = $this->pdo;
+    	$id=$race->get_id();
+
+    	$prepare = $pdo->prepare("DELETE FROM races WHERE id=?");
+    	$prepare->bindValue(1,$id,PDO::PARAM_INT);
+    	$prepare->execute();
+    }	
 }
