@@ -16,7 +16,7 @@
 		    if(element1 == element2){
 		    	$('#register').submit();
 		    }else{
-		    	 Materialize.toast('Les mots de passe de corresponde pas !', 4000);
+		    	 Materialize.toast('Les mots de passe de correspondent pas !', 4000);
 		    }
 
 	});

@@ -35,7 +35,7 @@
                                    <a href="<?php echo url('race'); ?>" class="element underline-opening" id="race">Courses</a>
                             </li>
                             <li>
-                                   <a class="dropdown-button" href="#!" data-activates="dropdown1">
+                                   <a class="dropdown-button" href="<?php echo url('deconnexion'); ?>" data-activates="dropdown1">
                                         <?php echo $_SESSION['user']['username'] ; ?>
                                         <i class="material-icons right">arrow_drop_down</i>
                                    </a>
