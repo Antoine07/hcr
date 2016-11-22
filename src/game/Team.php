@@ -1,6 +1,9 @@
 <?php namespace game;
 
 class Team {
+
+	use Trait_hydrate;
+
 	private $id = NULL;
 	private $name;
 	private $pilote = [];
@@ -38,13 +41,9 @@ class Team {
 		$this->set_credits(1000);
 	}
 
-	public function hydrate(array $data) {
-		foreach ($data as $key => $value) {
-			$method = 'set_'.ucfirst($key);
+	// HYDRATATION
+	public function from_db($data){
 
-			if (method_exists($this, $method)) {
-			 $this->$method($value);
-			}
-		}
+		$this->hydrate($data);
 	}
 }

@@ -31,6 +31,10 @@ class Team_manager {
 		$prepare->bindValue(2, $credits, PDO::PARAM_INT);
 
 		$prepare->execute();
+
+		$first_id = $this->pdo->lastInsertId();
+
+		$team->set_id($first_id);
 	}
 
 // MET A JOUR L'INSTANCE NPC DANS LA DB
@@ -70,6 +74,13 @@ class Team_manager {
 
 // MET A JOUR L'INSTANCE Equipement DANS LA DB
 	public function update_add_equipement(Equipement $instance, Team $team){
+		$id = $team->get_id();
+
+		$team->set_equipement($instance);
+
+		$equipement = new Equipement_manager();
+
+		$equipement->update_team_id($instance, $team);
  		
 	}
 
@@ -94,7 +105,13 @@ class Team_manager {
 		$prepare->bindValue('1', $id, PDO::PARAM_INT);
 		$prepare->execute();
 
-		$team = $prepare->fetch(PDO::FETCH_ASSOC);
+		$result = $prepare->fetch(PDO::FETCH_ASSOC);
+
+		if ($result['id']){
+			$team = new Team();
+			$team->from_db($result);
+			return $team;			    	
+	    }
 
 		return $team;
 	}
@@ -106,7 +123,15 @@ class Team_manager {
 		$prepare = $pdo->prepare('SELECT * FROM teams ORDER BY score DESC');
 		$prepare->execute();
 
-		$teams = $prepare->fetchAll(PDO::FETCH_ASSOC);
+		$result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+
+		$teams = [];
+
+		foreach ($result as $data) {
+			$team = new Team;
+			$team->from_db($data);
+			$teams[] = $team;
+		}
 
 		return $teams;
 	}
