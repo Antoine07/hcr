@@ -226,6 +226,17 @@ class Module_manager {
       $prepare->execute();
     }
 
+    public function update(Module $module, $property, $value){
+      
+        $setter = 'set_'.$property;
+        if(method_exists($module, $setter)){
+            $module->$setter($value);
+        }
+        $request=("UPDATE modules SET ".$property."=".$value." WHERE id=".$module->get_id());
+        $prepare=$this->pdo->prepare($request);
+        $prepare->execute();
+    }
+
     /**
      * @param  [array] : Tableau de tableau associatif contenant les propriétés d'un objet
      * @return [array] : Tableau contenant instance(s) hydratée(s) de Module

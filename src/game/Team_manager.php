@@ -23,7 +23,7 @@ class Team_manager {
 		$pdo = get_pdo();
 
 		$name = $team->get_name();
-		$credits = $team->get_credits();
+		$credits = $team->get_credit();
 
 		$prepare = $pdo->prepare('INSERT INTO teams (name, credit) VALUES (?, ?)') ;
 
@@ -36,6 +36,17 @@ class Team_manager {
 
 		$team->set_id($first_id);
 	}
+
+    public function update(Team $team, $property, $value){
+      
+        $setter = 'set_'.$property;
+        if(method_exists($team, $setter)){
+            $team->$setter($value);
+        }
+        $request=("UPDATE teams SET ".$property."=".$value." WHERE id=".$team->get_id());
+        $prepare=$this->pdo->prepare($request);
+        $prepare->execute();
+    }
 
 // MET A JOUR L'INSTANCE NPC DANS LA DB
 	public function update_add_npc(NPC $instance, Team $team){
