@@ -1,6 +1,9 @@
 <?php namespace game;
 
 class Team {
+
+	use Trait_hydrate;
+
 	private $id = NULL;
 	private $name;
 	private $pilote = [];
@@ -9,7 +12,7 @@ class Team {
 	private $module = [];
 	private $equipement = [];
 	private $score;
-	private $credits;
+	private $credit;
 
 	// GETTER
 	public function get_id()			{return $this->id;}
@@ -20,7 +23,7 @@ class Team {
 	public function get_module()		{return $this->module;}
 	public function get_equipement()	{return $this->equipement;}
 	public function get_score()			{return $this->score;}
-	public function get_credits()		{return $this->credits;}
+	public function get_credit()		{return $this->credit;}
 
 	// SETTER
 	public function set_id(int $value)				{return $this->id 			= $value;}
@@ -31,20 +34,16 @@ class Team {
 	public function set_module(array $value)		{return $this->module 		= $value;}
 	public function set_equipement(array $value)	{return $this->equipement 	= $value;}
 	public function set_score(int $value)			{return $this->score 		= $value;}
-	public function set_credits(int $value)			{return $this->credits 		= $value;}
+	public function set_credit(int $value)			{return $this->credit 		= $value;}
 
 	public function from_name($name){
 		$this->set_name($name);
-		$this->set_credits(1000);
+		$this->set_credit(1000);
 	}
 
-	public function hydrate(array $data) {
-		foreach ($data as $key => $value) {
-			$method = 'set_'.ucfirst($key);
+	// HYDRATATION
+	public function from_db($data){
 
-			if (method_exists($this, $method)) {
-			 $this->$method($value);
-			}
-		}
+		$this->hydrate($data);
 	}
 }
