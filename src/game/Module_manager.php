@@ -92,6 +92,11 @@ class Module_manager {
 
     }
 
+    public function populate($nb){
+      $list_module = $this->generate($nb);
+      $this->store($list_module);
+    }
+
     // RECUPERE UN Module DANS LA DB ET RENVOIE UN TABLEAU CONTENANT L'INSTANCE HYDRATEE DE Module
     /**
      * @param  [number] : PK du module souhaité
