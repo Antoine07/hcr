@@ -112,8 +112,6 @@ class Team_manager {
 			$team->from_db($result);
 			return $team;			    	
 	    }
-
-		return $team;
 	}
 
 // RECUPERE TOUS LES TEAM DANS LA DB ET RENVOIE UN TABLEAU CONTENANT LES INSTANCES HYDRATEES DE TEAM
@@ -128,7 +126,7 @@ class Team_manager {
 		$teams = [];
 
 		foreach ($result as $data) {
-			$team = new Team;
+			$team = new Team();
 			$team->from_db($data);
 			$teams[] = $team;
 		}
