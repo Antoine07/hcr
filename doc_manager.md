@@ -12,11 +12,12 @@ Ci-dessous, comment utiliser nos classes et classes manager:
 
 ## La base
 
-Avant toute chose il faut, evidemment, créer une instance de notre manager. Elle se nommera `nom_de_votre_classe_manager`.
+Avant toute chose il faut, evidemment, créer une instance de notre manager. Elle se nommera `nom_de_votre_classe_manager`. Et elle prend en argument le PDO !
 Par exemple, si ma classe est `Module`, alors ma classe manager s'appellera `Module_manager` et mon instance `$module_manager`, ainsi, à sa création, j'aurais
 
 ```bash
-$module_manager = new Module_manager();
+$pdo = get_pdo();
+$module_manager = new Module_manager($pdo);
 ```
 
 Jamais, une instance ne sera créée "à la main". C'est le manager qui s'en charge !
