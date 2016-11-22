@@ -1,9 +1,12 @@
 <?php 
 	function qg_action(){
 
+		$team_id = $_SESSION['user']['team_id'];
+
+		if (!empty($team_id)) {
+
 		$pdo = get_pdo();
 
-		$team_id = $_SESSION['user']['team_id'];
 
 		$team_manager = new game\Team_manager($pdo);
 
@@ -22,5 +25,7 @@
 		$spaceship_manager = new game\Spaceship_manager($pdo);
 
 		$spaceship = $spaceship_manager->get_by_team($team);
+		}
+
 		include '../views/qg.php' ;
 	}
