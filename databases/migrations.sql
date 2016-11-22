@@ -43,8 +43,7 @@ CREATE TABLE `spaceships` (
   `pow_module_id` int(10) UNSIGNED DEFAULT NULL,
   `comp_module_id_1`int(10) UNSIGNED DEFAULT NULL,
   `comp_module_id_2`int(10) UNSIGNED DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
