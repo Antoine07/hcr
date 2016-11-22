@@ -118,7 +118,7 @@ class Equipment_manager {
 	public function get_single($id)
 	{
 		$query  = $this->pdo->query('SELECT * FROM equipments WHERE id = '.$id);
-	    $result = $query->fetch(PDO::FETCH_ASSOC);
+	    $result[] = $query->fetch(PDO::FETCH_ASSOC);
 
 	    // hydratation
 	    $equipments = [];
