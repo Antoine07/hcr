@@ -69,7 +69,7 @@ class Module {
           case 'aerodynamics' :
             $tName=['Aileron','Tete','Aile','Aéroloupe','Moteur'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' qui glisse',' léger(e)', ' lisse',' aérodynamique',' interstellaire','fin(e)','GEMINI'];
+            $tName=[' qui glisse',' léger(e)', ' lisse',' aérodynamique',' interstellaire',' fin(e)',' GEMINI'];
             $name .= $tName[array_rand($tName)];
 
             break;
@@ -83,14 +83,14 @@ class Module {
           case 'cosiness' :
             $tName=['Cockpit','Siège en cuir','Oreiller','Climatisation','Lampe à lave'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible','GALILEO'];
+            $tName=[' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible',' GALILEO'];
             $name .= $tName[array_rand($tName)];
 
             break;
           case 'speed' :
             $tName=['Propulseur','Booster','Nitro','Turbo','Technograde'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' puissant',' DRAKO',' Vulkan',' Ragnarok',' à matière noire',' thermique',' qui pète', 'ISS'];
+            $tName=[' puissant',' DRAKO',' Vulkan',' Ragnarok',' à matière noire',' thermique',' qui pète', ' ISS'];
             $name .= $tName[array_rand($tName)];
 
             break;
