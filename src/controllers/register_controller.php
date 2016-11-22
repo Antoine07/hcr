@@ -5,8 +5,8 @@ function store_action(){
 	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
 	$_SESSION['old']['email'] = $_POST['email'];
 
-	$username = $_POST['pseudo'];
-	$email = $_POST['email'];
+	$username = h($_POST['pseudo']);
+	$email = h($_POST['email']);
 
 	$pdo = get_pdo();
 
@@ -37,9 +37,9 @@ function store_action(){
 
 	if(empty($_SESSION['errors'])){
 
-		$username			= $_POST['pseudo'];
-		$password		= $_POST['password'];
-		$email			= $_POST['email'];
+		$username		= Security::bdd($_POST['pseudo']);
+		$password		= Security::bdd($_POST['password']);
+		$email			= Security::bdd($_POST['email']);
 
 		$creation_date = date('Y-m-d H:i:s');
 
