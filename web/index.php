@@ -38,11 +38,18 @@ if ( '/' === $uri) {
 	  	header('Location: '.$prefix.'/login');
 	 }
 }elseif($prefix.'/generatespaceships' === $uri) {
+
 	$spaceship = new game\Spaceship();
-	
+	$spaceship->from_random();
+	$manager = new game\Spaceship_manager(get_pdo());
+	$manager->store($spaceship);
+	$manager->update($spaceship, 'team_id', 1);
+
 	echo '<pre>';
-	print_r($spaceship->from_random());
+	print_r($spaceship->get_team());
 	echo '</pre>';
+	$manager->delete($spaceship);
+
 }elseif($prefix.'/generatenpc' === $uri) {
 	generate_NPCs_action(10, 10);
  

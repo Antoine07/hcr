@@ -22,8 +22,6 @@
 
 		$spaceship_manager = new game\Spaceship_manager($pdo);
 
-		$spaceship_manager = new game\Spaceship_manager($pdo);
-
 		$spaceship = $spaceship_manager->get_by_team($team);
 		}
 

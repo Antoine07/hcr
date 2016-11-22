@@ -8,8 +8,8 @@ class Spaceship
 	private $id = null ;
     private $team_id = null;
     private $name = '';
-    private $pilot_id = null; 
-    private $mechanic_id = null;
+    public $pilot_id = null; 
+    public $mechanic_id = null;
     private $stats = [
         'cosiness' => 100,
         'shipping' => 100,
@@ -18,7 +18,7 @@ class Spaceship
         'speed' => 100
     ];
 
-    private $modules_id = [
+    public $modules_id = [
 
         "pow" => NULL,
         "nav" => NULL,
@@ -27,9 +27,7 @@ class Spaceship
     ];
 
     public function __construct()
-    {
-        $this->set_rand_name();
-     
+    {     
     }
 
     public function get_name(){return $this->name;}
@@ -37,7 +35,7 @@ class Spaceship
     public function get_team_id(){return $this->team_id;}
 
     public function get_modules($type=NULL){
-        $module_manager = new game\Module_manager(get_pdo());
+        $module_manager = new Module_manager(get_pdo());
         if($type){
             $module = $module_manager->get_single($this->modules_id[$type]);
         } else {
@@ -50,54 +48,54 @@ class Spaceship
     }
 
     public function get_team(){
-        $team_manager = new game\Team_manager(get_pdo());
+        $team_manager = new Team_manager(get_pdo());
         $team = $team_manager->get_single($this->team_id);
         return $team;
     }
     public function get_pilot(){
-        $npc_manager = new game\NPC_manager(get_pdo());
+        $npc_manager = new NPC_manager(get_pdo());
         $npc = $npc_manager->get_single($this->pilot_id);
         return $npc;
     }
-    public function get_mechanics(){
-        $npc_manager = new game\NPC_manager(get_pdo());
-        $npc = $npc_manager->get_single($this->mechanics);
+    public function get_mechanic(){
+        $npc_manager = new NPC_manager(get_pdo());
+        $npc = $npc_manager->get_single($this->mechanic_id);
         return $npc;
     }
 
     public function get_stats($stat=NULL){
 
         $modules = $this->get_modules();
-        $stats = [];
-        foreach ($modules as $module) {
-            foreach ($this->stats as $stat_name => $value) {
-                $stats[$stat_name] = $value + $module->get_stat($stat_name);
+        $stats = $this->stats;
+        foreach ($this->stats as $stat_name => $value) {
+            foreach ($modules as $module) {
+                $stats[$stat_name] += $module->get_stat($stat_name);
             }
         }
         if ($stat) {
             return $stats[$stat];
-        } else {
-            return $stats;
-        }
+        } 
+        return $stats;
     }
 
     public function set_shipping($value){$this->stats['shipping'] = $value;}
     public function set_id($id){$this->id = $id;}
-    public function set_team_id(Team $team){$this->$team_id = $team->get_id();}
-    public function set_pilot_id(NPC $npc){$this->pilot_id=$npc->get_id();}
-    public function set_mechanics_id(NPC $npc){$this->mechanics_id=$npc->get_id();}
+    public function set_team_id($id){$this->team_id=$id;}
+    public function set_pilot_id($id){$this->pilot_id=$id;}
+    public function set_mechanic_id($id){$this->mechanic_id=$id;}
+    public function set_name($name){$this->name = $name;}
 
-    public function set_nav_module_id(Module $module){$this->modules_id['nav'] = $module->get_id();}
-    public function set_pow_module_id(Module $module){$this->modules_id['pow'] = $module->get_id();}
-    public function set_comp_module_id_1(Module $module){$this->modules_id['comp_1'] = $module->get_id();}
-    public function set_comp_module_id_2(Module $module){$this->modules_id['comp_2'] = $module->get_id();}
+    public function set_nav_module_id($id){$this->modules_id['nav'] = $id;}
+    public function set_pow_module_id($id){$this->modules_id['pow'] = $id;}
+    public function set_comp_module_id_1($id){$this->modules_id['comp_1'] = $id;}
+    public function set_comp_module_id_2($id){$this->modules_id['comp_2'] = $id;}
 
     public function from_db($data)
     {
         $this->hydrate($data);
     }
 
-    public function from_random($team_id);
+    public function from_random()
     {
         $this->set_name(get_rand_name());
     }
