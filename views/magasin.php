@@ -75,8 +75,9 @@
 											<?php echo $module->get_type(); ?>
 										</span>
 									</h6>
-									<form action="/index.php/buy" methode="POST">
-										<button type="submit" class="btn buy waves-effect waves-light"> <?php echo $module->get_price(); ?> crédits</button>
+									<form action="/index.php/buy_module" method="POST">
+										<input name="module_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $module->get_price(); ?> c">
 									</form>
 								</div>
 								<div class="more" style="display: none;">
