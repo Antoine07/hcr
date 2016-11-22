@@ -16,17 +16,14 @@ class Module_manager {
      */
     public function generate($nb)
     {
-      $list_module = [];
+        $list_module = [];
 
-      for($i=0;$i<$nb;$i++){
-        $modul = new Module();
-        $modul->from_random();
-        $list_module[] = $modul;
-      }
-        /*echo '<pre>';
-          print_r($list_module);
-        echo '</pre>';*/
-      return $list_module;
+        for($i=0;$i<$nb;$i++){
+            $modul = new Module();
+            $modul->from_random();
+            $list_module[] = $modul;
+        }
+        return $list_module;
     }
 
     // STOCK LES INSTANCES de Module SITUES DANS $list_module DANS LA DB
@@ -36,65 +33,70 @@ class Module_manager {
      */
     public function store(array $list_module)
     {
-      if (!is_array($list_module)) throw new Exception("Merci de renseigner un tableau", 1);
+        if (!is_array($list_module)) throw new Exception("Merci de renseigner un tableau", 1);
 
-      $pdo = $this->pdo;
+        $pdo = $this->pdo;
 
-      $nb_mod = count($list_module);
+        $nb_mod = count($list_module);
 
-      $requete=("INSERT INTO `modules` (`name`,`price`,`brand`,`type`,`timestamp`,`aerodynamics`,`solidity`,`cosiness`,`speed`,`shipping`) VALUES ");
-      
-      for ($i=0; $i < $nb_mod; $i++) {
-        $requete.="(?,?,?,?,?,?,?,?,?,?),";
-      }
-
-      $requete[strlen($requete)-1]=";";
-
-      $prepare=$pdo->prepare($requete);
-
-      $i = 0;
-
-      foreach ($list_module as $mod) {
-        $name = $mod->get_name();
-        $i++;
-        $prepare->bindValue($i,$name,PDO::PARAM_STR);
-
-        $price = $mod->get_price();
-        $i++;
-        $prepare->bindValue($i,$price,PDO::PARAM_INT);
-
-        $brand = $mod->get_brand();
-        $i++;
-        $prepare->bindValue($i,$brand,PDO::PARAM_STR);
-
-        $type = $mod->get_type();
-        $i++;
-        $prepare->bindValue($i,$type,PDO::PARAM_STR);
+        $requete=("INSERT INTO `modules` (`name`,`price`,`brand`,`type`,`timestamp`,`aerodynamics`,`solidity`,`cosiness`,`speed`,`shipping`) VALUES ");
         
-        $timestamp = $mod->get_timestamp();
-        $i++;
-        $prepare->bindValue($i,$timestamp,PDO::PARAM_STR);
-
-        $stats = $mod->get_stats();
-
-        foreach ($stats as $stat) {
-          $i++;
-          $prepare->bindValue($i,$stat,PDO::PARAM_INT);
+        for ($i=0; $i < $nb_mod; $i++) {
+          $requete.="(?,?,?,?,?,?,?,?,?,?),";
         }
-      }
-      $prepare->execute();
 
-      // récupération des id sur les instances de Module
-      $first_id = $this->pdo->lastInsertId();
-      for ($i=0; $i < count($list_module); $i++) {
-           $list_module[$i]->set_id($first_id + $i);
-      }
+        $requete[strlen($requete)-1]=";";
 
+        $prepare=$pdo->prepare($requete);
+
+        $i = 0;
+
+        foreach ($list_module as $mod) {
+            $name = $mod->get_name();
+            $i++;
+            $prepare->bindValue($i,$name,PDO::PARAM_STR);
+
+            $price = $mod->get_price();
+            $i++;
+            $prepare->bindValue($i,$price,PDO::PARAM_INT);
+
+            $brand = $mod->get_brand();
+            $i++;
+            $prepare->bindValue($i,$brand,PDO::PARAM_STR);
+
+            $type = $mod->get_type();
+            $i++;
+            $prepare->bindValue($i,$type,PDO::PARAM_STR);
+            
+            $timestamp = $mod->get_timestamp();
+            $i++;
+            $prepare->bindValue($i,$timestamp,PDO::PARAM_STR);
+
+            $stats = $mod->get_stats();
+
+            foreach ($stats as $stat) {
+              $i++;
+              $prepare->bindValue($i,$stat,PDO::PARAM_INT);
+            }
+        }
+        $prepare->execute();
+
+        // récupération des id sur les instances de Module
+        $first_id = $this->pdo->lastInsertId();
+        for ($i=0; $i < count($list_module); $i++) {
+            $list_module[$i]->set_id($first_id + $i);
+        }
     }
 
+    // GENERE ET STOCK UNE INSTANCE DE Module
+    /**
+     * [populate description]
+     * @param  [number] : Nombre de module(s) souhaité(s)
+     * @return [nothing]!
+     */
     public function populate($nb){
-      $list_module = $this->generate($nb);
-      $this->store($list_module);
+        $list_module = $this->generate($nb);
+        $this->store($list_module);
     }
 
     // RECUPERE UN Module DANS LA DB ET RENVOIE UN TABLEAU CONTENANT L'INSTANCE HYDRATEE DE Module

@@ -89,6 +89,18 @@ class Equipment_manager {
             $list_equipment[$i]->set_id($first_id + $i);
         }
 	}
+
+    // GENERE ET STOCK UNE INSTANCE DE Equipment
+    /**
+     * [populate description]
+     * @param  [number] : Nombre d'Equipment(s) souhaité(s)
+     * @return [nothing]!
+     */
+    public function populate($nb){
+        $list_equipment = $this->generate($nb);
+        $this->store($list_equipment);
+    }
+
 	public function update_team_id(Equipment $equipment, Team $team)
     {
         $pdo = $this->pdo;
