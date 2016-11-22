@@ -1,7 +1,7 @@
 # Les Classes MANAGER
 
 Toutes classes créées dans **Super Cosmic Racer** ont une classe associée qui est nommée manager. Cette classe manager sert à:
-- enregistrer une ou plusieurs nouvelle(s) entité(s)
+- créer/enregistrer une ou plusieurs nouvelle(s) entité(s)
 - supprier une entité
 - modifier une entité
 - selectionner une ou plusieurs entité(s)
@@ -21,13 +21,15 @@ $module_manager = new Module_manager();
 
 Jamais, une instance ne sera créée "à la main". C'est le manager qui s'en charge !
 
-## Enregistrer une ou plusieurs nouvelle(s) entité(s)
+## Créer/enregistrer une ou plusieurs nouvelle(s) entité(s)
 
-C'est à dire, créer une instance, et la stocker dans notre base de donné db_hcr. Ce sont les methodes `generate()` et `store()` du manager qui s'en chargent.
+C'est à dire, créer une instance, et la stocker dans notre base de donné db_hcr. Ce sont les methodes `generate()` et `store()` du manager qui s'en chargent. Cependant, on utilisera les méthodes `populate()` (créé le mercredi 22) de nos manager pour enregistrer une nouvelle entité.
 
 **Generate:** Créé une ou plusieurs instance(s) d'une classe, remplis ses parametres, et retourne un tableau contenant les instances ainsi créées.
 
 **Store:** Stocke les instances dans la base de donnée. Elle prend en parametre le tableau d'instances que retourne `generate()`.
+
+**Populate:** lance un `generate()` puis un `store()` comme si-dessous. Atention! En fonction des manager, populate peut prendre un ou plusieurs arguments.
 
 ```bash
 # déclaration du tableau qui contiendra les instances
@@ -38,6 +40,13 @@ $list_maclasse = $maclasse_manager->generate();
 
 # stockage dans la base de donnée
 $maclasse_manager->store($list_maclasse);
+```
+
+Pour créer et enregistrer une nouvelle entité on ne lancera que un `populate()`
+
+```bash
+# magic
+$maclasse_manager->populate();
 ```
 
 ## Supprimer une entité
