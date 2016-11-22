@@ -47,6 +47,14 @@ class Module {
     $this->set_rand_brand();
     $this->timestamp = date('Y-m-d H:i:s');
   }
+  // GENERE DES VALEURS ALEATOIRE D'un module de type choisi
+  public function from_type($type) {
+    $this->set_type($type);
+    $this->set_rand_stats();
+    $this->set_rand_name();
+    $this->set_rand_brand();
+    $this->timestamp = date('Y-m-d H:i:s');
+  }
 
   // HYDRATATION DE L'INSTANCE
   public function from_db(array $data) {
