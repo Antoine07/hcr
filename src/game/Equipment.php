@@ -29,20 +29,20 @@ class Equipment
     }
     public function generateName()
     {
-        $name = ['strength'=>['Altère', 'Table de musculation'],
-                'dexterity'=>['console de jeu', 'bilboquet'],
-                'stamina'=>['corde à sauter', 'cabine de froid'],
-                'speed' =>['tapis de course','roller'],
-                'intelligence'=> ['livre','échéquier']];
+        $name = ['strength'=>['Altère', 'Table de musculation', 'Medecine ball', 'Sac de frappe'],
+                'dexterity'=>['Console de jeu', 'Bilboquet', 'Simulateur de pilotage', 'Table de ping-pong', 'Coffret de magicien'],
+                'stamina'=>['Corde à sauter', 'Cabine de froid', 'Poupée gonflable', 'Boost de combinaison'],
+                'speed' =>['Tapis de course','Roller', "exercice d'assemblage de pièces de vaisseaux", 'optimisateur de mouvements'],
+                'intelligence'=> ['Livre','Échéquier', 'Sudoku', 'Jeux de Go', 'Artefact culturel']];
         $this->generateStats($this->list_stats);
         $stat = $this->stats;
 
         $gename = $name[$stat][array_rand($name[$stat])];
-        $name   = ['strength'=>[' kryptonique',  ' adamantique', ' en titanium'],
-                'dexterity'=>[' protonique', " atomique", " plutonique"],
-                'stamina'=>[' plasmique', ' cosmique', ' subatomique'],
-                'speed' =>[' à particules', ' moléculaire', ' dimensionnel'],
-                'intelligence'=> [' de savant humain', ' de savant extraterrestre', ' de savant synthétique']];
+        $name   = ['strength'=>[' en kryptonite',  ' en adamantine', ' en titane', ' en zinc'],
+                'dexterity'=>[' interstellaire', ' cosmique', ' planétaire', 'galactique'],
+                'stamina'=>[' humain(e)', ' alien', ' synthétique'],
+                'speed' =>[' à particules', ' moléculaire', ' dimensionnel', 'universel'],
+                'intelligence'=> [' de savant humain', ' de savant extraterrestre', ' de savant robotique']];
 
         $gename .= $name[$stat][array_rand($name[$stat])];
 
