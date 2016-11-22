@@ -10,7 +10,7 @@ class Spaceship_manager
         $this->set_pdo($pdo); 
     }
 
-    public function generate(Team $team )
+    public function generate(Team $team)
     {
        $spaceship =  new Spaceship();
        $spaceship->from_random(); 
