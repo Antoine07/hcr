@@ -119,27 +119,12 @@ class Equipment_manager {
 	{
 		$query  = $this->pdo->query('SELECT * FROM equipments WHERE id = '.$id);
 	    $result = $query->fetch(PDO::FETCH_ASSOC);
-	    if ($result['id']){
-			$equipment = new Equipment();
-			$equipment->from_db($result);    	
-	    }
 
-	    $query  = $this->pdo->query('SELECT * FROM activities WHERE id = '.$equipment->get_activity_id());
-	    $result = $query->fetch(PDO::FETCH_ASSOC);
-	    if ($result['id']){
-	    	$name = $result["name"];
-	    	$stats=["strength"=>$result["strength"],
-	    	"dexterity"=>$result["dexterity"],
-	    	"stamina"=>$result["stamina"],
-	    	"speed"=>$result["speed"],
-	    	"intelligence"=>$result["intelligence"]];
+	    // hydratation
+	    $equipments = [];
+	    $equipments = $this->hydrate($result);
 
-	    	$activity = new Activity($name, $stats);
-	    	$activity->from_db($result); 
-		}
-	    $equipment->set_activity($activity);
-
-	    return $equipment;
+	    return $equipments[0];
 	}
 
 // RECUPERE TOUS LES EQUIPEMENTS et LES ACTIVITES ASSOCIES DANS LA DB ET RENVOIE UN TABLEAU CONTENANT LES INSTANCES HYDRATEES DE EQUIPEMENT
@@ -149,55 +134,21 @@ class Equipment_manager {
 	    $result = $query->fetchAll(PDO::FETCH_ASSOC);
 	    $equipments = [];
 
-	    foreach ($result as $data) {
-	    	$equipment = new Equipment;
-	    	$equipment->from_db($data);
-	    	$equipments[] = $equipment;
-        
-	    	$query_activity  = $this->pdo->query('SELECT * FROM activities WHERE id = '.$equipment->get_activity_id());
-	    	$result_activity = $query_activity->fetch(PDO::FETCH_ASSOC);
-	    		if ($result_activity['id']){
-	    			   $name = $result_activity["name"];
-	    			   $stats=["strength"=>$result_activity["strength"],
-	    			   "dexterity"=>$result_activity["dexterity"],
-	    			   "stamina"=>$result_activity["stamina"],
-	    			   "speed"=>$result_activity["speed"],
-	    			   "intelligence"=>$result_activity["intelligence"]];
-		   
-	    			   $activity = new Activity($name, $stats);
-	    			   $activity->from_db($result_activity); 
-	    			   $equipment->set_activity($activity); 
-	    	 }
-	    }
+	    // hydratation
+	    $equipments = [];
+	    $equipments = $this->hydrate($result);
 	    return $equipments;
 	}
 
 	public function get_team_id($id)
 	{
+		// Retourne la liste de tous les personnages du team_id donné.
 		$query  = $this->pdo->query('SELECT * FROM equipments WHERE team_id = '.$id);
 	    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+	    
+	    // hydratation
 	    $equipments = [];
-
-	    foreach ($result as $data) {
-	    	$equipment = new Equipment;
-	    	$equipment->from_db($data);
-	    	$equipments[] = $equipment;
-        
-	    	$query_activity  = $this->pdo->query('SELECT * FROM activities WHERE id = '.$equipment->get_activity_id());
-	    	$result_activity = $query_activity->fetch(PDO::FETCH_ASSOC);
-	    		if ($result_activity['id']){
-	    			   $name = $result_activity["name"];
-	    			   $stats=["strength"=>$result_activity["strength"],
-	    			   "dexterity"=>$result_activity["dexterity"],
-	    			   "stamina"=>$result_activity["stamina"],
-	    			   "speed"=>$result_activity["speed"],
-	    			   "intelligence"=>$result_activity["intelligence"]];
-		   
-	    			   $activity = new Activity($name, $stats);
-	    			   $activity->from_db($result_activity); 
-	    			   $equipment->set_activity($activity); 
-	    	 }
-	    }
+	    $equipments = $this->hydrate($result);
 	    return $equipments;	
 	}
 
@@ -214,25 +165,25 @@ class Equipment_manager {
 	     // hydratation
       	     $list_equipment = [];
      	     $list_equipment = $this->hydrate($buyable_equipments);
-      	     return $list_equipment;
+      	return $list_equipment;
 	}
 
 	private function hydrate(array $list_donnee)
     	{
-      	     $list_equipment = [];
-      	     foreach ($list_donnee as $key => $donnee) {
+      	    $list_equipment = [];
+      	    foreach ($list_donnee as $key => $donnee) {
         		$equipment = new Equipment();
         		$equipment->from_db($donnee);
         		$query_activity  = $this->pdo->query('SELECT * FROM activities WHERE id = '.$equipment->get_activity_id());
         		$result_activity = $query_activity->fetch(PDO::FETCH_ASSOC);
         		if ($result_activity['id']){
-	    		$name = $result_activity["name"];
-	    		$stats=["strength"=>$result_activity["strength"],
-	    		"dexterity"=>$result_activity["dexterity"],
-	    		"stamina"=>$result_activity["stamina"],
-	    		"speed"=>$result_activity["speed"],
-	    		"intelligence"=>$result_activity["intelligence"]];
-	   	}
+	    			$name = $result_activity["name"];
+	    			$stats=["strength"=>$result_activity["strength"],
+	    			"dexterity"=>$result_activity["dexterity"],
+	    			"stamina"=>$result_activity["stamina"],
+	    			"speed"=>$result_activity["speed"],
+	    			"intelligence"=>$result_activity["intelligence"]];
+	   			}
         		$activity = new Activity($name, $stats);
 	    	$activity->from_db($result_activity); 
 	    	$equipment->set_activity($activity); 
