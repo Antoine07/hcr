@@ -142,6 +142,22 @@ CREATE TABLE `races` (
   `date` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+
+--
+-- Structure de la table `race_historic`
+--
+
+CREATE TABLE `race_historic` (
+  `id` INT(10) UNSIGNED NOT NULL,
+  `race_id` INT(10) UNSIGNED DEFAULT NULL,
+  `team_id` INT(10) UNSIGNED DEFAULT NULL,
+  `content` TEXT,
+  `position` INT(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 --
 -- Index pour la table `users`
 --
@@ -188,6 +204,12 @@ ALTER TABLE `equipments`
 -- Index pour la table `races`
 --
 ALTER TABLE `races`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `race_historic`
+--
+ALTER TABLE `race_historic`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -238,6 +260,12 @@ ALTER TABLE `equipments`
 -- Index pour la table `races`
 --
 ALTER TABLE `races`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Index pour la table `race_historic`
+--
+ALTER TABLE `race_historic`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 
@@ -313,3 +341,14 @@ FOREIGN KEY(activity_id)
 REFERENCES activities(id) 
 ON DELETE SET NULL;
 
+ALTER TABLE race_historic 
+ADD CONSTRAINT race_historic_race_id_races_id 
+FOREIGN KEY(race_id) 
+REFERENCES races(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE race_historic 
+ADD CONSTRAINT race_historic_team_id_teams_id 
+FOREIGN KEY(team_id) 
+REFERENCES teams(id) 
+ON DELETE SET NULL;
