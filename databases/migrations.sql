@@ -38,13 +38,13 @@ CREATE TABLE `spaceships` (
   `id` int(10) UNSIGNED NOT NULL,
   `team_id` int(10) UNSIGNED DEFAULT NULL,
   `pilot_id` int(10) UNSIGNED DEFAULT NULL,
-  `mechanic_id` int(10) UNSIGNED DEFAULT NULL,  
+  `mechanic_id` int(10) UNSIGNED DEFAULT NULL,
+  `nav_module_id` int(10) UNSIGNED DEFAULT NULL,
+  `pow_module_id` int(10) UNSIGNED DEFAULT NULL,
+  `comp_module_id_1`int(10) UNSIGNED DEFAULT NULL,
+  `comp_module_id_2`int(10) UNSIGNED DEFAULT NULL,
   `name` varchar(255) NOT NULL,
-  `aerodynamics` SMALLINT UNSIGNED NOT NULL,
-  `solidity` SMALLINT UNSIGNED NOT NULL,
-  `cosiness` SMALLINT UNSIGNED NOT NULL,
-  `shipping` SMALLINT UNSIGNED NOT NULL,
-  `speed` SMALLINT UNSIGNED NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -129,6 +129,20 @@ CREATE TABLE `users` (
   `creation_date` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `races`
+--
+
+CREATE TABLE `races` (
+  `id` INT(10) UNSIGNED NOT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `duration` INT(10) NOT NULL,
+  `ladder` TINYINT(1) NOT NULL DEFAULT 0,
+  `date` DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Index pour la table `users`
 --
@@ -169,7 +183,13 @@ ALTER TABLE `activities`
 -- Index pour la table `equipments`
 --
 ALTER TABLE `equipments`
-  ADD PRIMARY KEY (`id`);  
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `races`
+--
+ALTER TABLE `races`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `team`
@@ -216,6 +236,11 @@ ALTER TABLE `activities`
 ALTER TABLE `equipments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
+-- Index pour la table `races`
+--
+ALTER TABLE `races`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
 
 ALTER TABLE modules 
 ADD CONSTRAINT modules_team_id_teams_id
@@ -239,6 +264,30 @@ ALTER TABLE `spaceships`
 ADD CONSTRAINT `spaceships_mechanic_id_npcs_id`
 FOREIGN KEY(`mechanic_id`) 
 REFERENCES `npcs`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_nav_module_id_modules_id`
+FOREIGN KEY(`nav_module_id`) 
+REFERENCES `modules`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_pow_module_id_modules_id`
+FOREIGN KEY(`pow_module_id`)
+REFERENCES `modules`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_comp_module_id_1_modules_id`
+FOREIGN KEY(`comp_module_id_1`)
+REFERENCES `modules`(`id`) 
+ON DELETE SET NULL;
+
+ALTER TABLE `spaceships` 
+ADD CONSTRAINT `spaceships_comp_module_id_2_modules_id`
+FOREIGN KEY(`comp_module_id_2`)
+REFERENCES `modules`(`id`) 
 ON DELETE SET NULL;
 
 ALTER TABLE npcs 

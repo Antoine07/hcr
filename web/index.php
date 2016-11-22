@@ -55,7 +55,18 @@ if ( '/' === $uri) {
 	
 	$equipment_manager->store($list_equipment);
  
-}elseif ( $prefix.'/qg' === $uri) {
+} elseif($prefix.'/generaterace' === $uri) {
+
+	$manager = new game\Race_manager(get_pdo());
+	$races = array_merge(
+		$manager->generate(5, true, NULL, strtotime("-1 week")), 
+		$manager->generate(5, false, NULL, strtotime("-1 week")),
+		$manager->generate(5, true),
+		$manager->generate(5, false)
+	);
+	$manager->store($races);
+
+} elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){
 		qg_action();
 	 }else{
