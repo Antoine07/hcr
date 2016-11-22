@@ -14,7 +14,6 @@ if(isset($_SESSION['user'])) {
 	$user_id = $_SESSION['user']['id'];
 }
 
-
 if ( '/' === $uri) {
 	 if($user_id != null){
 	 	header('Location: '.$prefix.'/qg');
