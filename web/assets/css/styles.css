@@ -23,9 +23,7 @@ body{
 	background-size: cover;
 	background-position:fixed;
 	background-repeat: no-repeat;
-	font-family: 'Raleway', sans-serif; 
-	overflow:hidden
-	
+	font-family: 'Raleway', sans-serif;
 }
 .row{
 	margin-bottom: 0;
@@ -81,7 +79,7 @@ nav ul a:hover {
 	background-color: #494949;
 	color: #00a9ff;
 	width: 124.8438px!important;
-	left: 1154.16px!important	;
+	left: 1152.16px!important	;
 }
 
 .nav_deco li > a, .nav_deco li > span{
@@ -621,6 +619,7 @@ input:-webkit-autofill {
 	margin: 1em auto;
     	padding: 2em 3em;
 }
+
 .shop_top{
 	background-color: rgba(0, 0, 0, 0.7);
     	box-shadow: 2px 2px 7px #000000;
@@ -676,45 +675,101 @@ input:-webkit-autofill {
 .shop_sell .dropdown-content li > span {
 	color:#00a9ff;
 }
-.shop_buy{
+.content_shop_item h5{
+	color:#efefef;
+	font-weight: 200;
+	text-transform:uppercase;
+	text-align: center;
+	border-bottom: 1px solid #EFEFEF;
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+.shop_left{
 	background-color: rgba(0, 0, 0, 0.7);
     	box-shadow: 2px 2px 7px #000000;
     	border: 1px solid;
     	border-color: rgba(0, 0, 0, 0.2);
     	display:block;
-    	height: auto;
-    	padding: 0.5em 4em!important;
-    	text-align: center;
-    	margin-bottom: 2em;
+    	height:auto;
+   	width:48.7%!important;
+    	margin-right: 2em;
 }
-.shop_buy p{
-	font-size: 1.2em;
-	color:#FFF
+.shop_right{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	width:48.7%!important;
+
 }
-.shop_buy button{
+.content_card{
+	overflow:scroll!important;
+	height:20em;
+}
+
+.shop_less {
+	display: flex;
+}
+
+.shop_portrait{
+	width: 96px;
+	height: 96px;
+	image-rendering: pixelated;
+}
+.shop_card h6{
+	cursor: pointer;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 1.3em;
+	flex:1;
+	padding: 0.8em 1.3em;
+	line-height:1.30em;
+	overflow: scroll;
+}
+
+.shop_card h6 span {
+	font-weight:200;
+	font-size: 0.8em;
+	color:#00a9ff;
+}
+
+.shop_card .shop_element{
+	padding: 0;
+    	background: rgba(46, 46, 46, 0.27);
+    	margin-bottom: 2%;
+}
+.buy{
+	margin: 0.9em;
+}
+.buy:focus,.buy:hover{
+	background: #00a9ff
+;	
+	opacity: 0.7;
+}
+.drop {
+    	float: left;
+	padding: 0.8em 0.5em;
+	color: white;
+}
+.more .shop_stats{
+	color:#FFF;
+	padding-left: 20px;
+	margin: 0;
+	padding: 1em;
+	background: rgba(46, 46, 46, 0.4);
+}
+
+.shop_stats li{
+	display: inline-block!important;
+}
+.shop_stats span{
+	color:#00a9ff;
+}
+.shop_card button{
 	background-color: #00a9ff;
-	margin: 2em auto 0em auto;
 	display: block;
 }
-.shop_buy button:hover{
-	transition: all ease 0.6s;
-	transform: scale(1.05);
-	background-color: #125091;
- 	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
- 	 	        0 1px 7px 0 rgba(0, 0, 0, 0.12), 
- 	 	        0 3px 1px -1px rgba(0, 0, 0, 0.2);
-}
-.shop_buy button:focus{
-	background-color: #125091;
-}
-.shop_buy .btn:focus{
-	background-color: #125091;
-}
-.shop_buy .input-field{
-	margin-left: 9em;
-}
-
-
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* STYLISATION DE COURSES.PHP *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */

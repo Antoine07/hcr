@@ -145,7 +145,7 @@ class Equipment_manager {
 // RECUPERE TOUS LES EQUIPEMENTS et LES ACTIVITES ASSOCIES DANS LA DB ET RENVOIE UN TABLEAU CONTENANT LES INSTANCES HYDRATEES DE EQUIPEMENT
 	public function get_all()
 	{
-		$query  = $this->pdo->query('SELECT * FROM equipments');
+	    $query  = $this->pdo->query('SELECT * FROM equipments');
 	    $result = $query->fetchAll(PDO::FETCH_ASSOC);
 	    $equipments = [];
 
@@ -206,15 +206,46 @@ class Equipment_manager {
     	// Retourne la liste de tous les personnages.
       	$pdo = $this->pdo;
 
-	    $prepare = $pdo->prepare("SELECT * FROM equipments WHERE team_id=NULL");
+	    $prepare = $pdo->prepare("SELECT * FROM equipments WHERE team_id IS NULL");
 	    $prepare->execute();
 
 	    $buyable_equipments = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
+	     // hydratation
+      	     $list_equipment = [];
+     	     $list_equipment = $this->hydrate($buyable_equipments);
+      	     return $list_equipment;
 	}
+
+	private function hydrate(array $list_donnee)
+    	{
+      	     $list_equipment = [];
+      	     foreach ($list_donnee as $key => $donnee) {
+        		$equipment = new Equipment();
+        		$equipment->from_db($donnee);
+        		$query_activity  = $this->pdo->query('SELECT * FROM activities WHERE id = '.$equipment->get_activity_id());
+        		$result_activity = $query_activity->fetch(PDO::FETCH_ASSOC);
+        		if ($result_activity['id']){
+	    		$name = $result_activity["name"];
+	    		$stats=["strength"=>$result_activity["strength"],
+	    		"dexterity"=>$result_activity["dexterity"],
+	    		"stamina"=>$result_activity["stamina"],
+	    		"speed"=>$result_activity["speed"],
+	    		"intelligence"=>$result_activity["intelligence"]];
+	   	}
+        		$activity = new Activity($name, $stats);
+	    	$activity->from_db($result_activity); 
+	    	$equipment->set_activity($activity); 
+        		$list_equipment[] = $equipment;
+     	}
+
+      	     return $list_equipment;
+    	}
+
 // SETTER POUR PDO
 	public function set_pdo(PDO $pdo)
    {
     $this->pdo = $pdo;
    }
 }
+

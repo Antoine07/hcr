@@ -15,7 +15,6 @@
 			</div>
 		</div>
 		<div class="row">
-			
 			<div class="col s6 offset-s3 shop_sell">
 				<div class="input-field">
 					<select>
@@ -27,43 +26,92 @@
 				</div>
 			</div> 
 		</div>
-		<div class="row">
-			<?php foreach ($mod_buyable_list as $key => $module): ?>
-				<div class="col s6 offset-s3 shop_buy">
-					<p>
-					<?php echo $module->get_name(); ?> : 
-					<?php echo $module->get_type(); ?>
-					</p>
-					<p style="font-size:.9em">
-						<?php $stats = $module->get_stats(); ?>
-						<?php foreach ($stats as $name => $value):?>
-							<?php if($value!=0): ?>
-								<?php switch ($name) {
-									case 'aerodynamics': 	$name = 'Aer';
-										break;
-									case 'solidity': 			$name = 'Sol';
-										break;
-									case 'cosiness': 			$name = 'Conf';
-										break;
-									case 'speed': 				$name = 'Vit';
-										break;
-									case 'shipping': 			$name = 'Nav';
-										break;
-									default:
-										break;
-								}?>
-								<?php echo $name; ?>: 
-								<?php echo $value; ?>
-								<span>|</span>
-							<?php endif ?>
-						<?php endforeach ?>
-					</p>
-					<button class="btn waves-effect waves-light" type="submit" name="action" id="reg_link">acheter 
-					<span><?php echo $module->get_price(); ?></span>
-					</button>
-				</div> 
+		<div class="row content_shop_item">
+		 	<div class="col s6 shop_left">
+				<h5>Modules</h5>
+				<div class="content_card">
+					<?php foreach ($mod_buyable_list as $key => $module): ?>
+						<div class="shop_card">
+							<div class="shop_element">
+								<div class="shop_less">
+									<i class="material-icons drop">arrow_drop_down</i>
+									<h6>
+										<?php echo $module->get_name(); ?>
+										<br>
+										<span>
+											<?php echo $module->get_type(); ?>
+										</span>
+									</h6>
+									<button class="btn buy waves-effect waves-light"> <?php echo $module->get_price(); ?> crédits</button>	
+								</div>
+								<div class="more" style="display: none;">
+									<ul class="shop_stats">
+										<?php $stats = $module->get_stats(); ?>
+										<?php foreach ($stats as $name => $value):?>
+											<?php if($value!=0): ?>
+												<?php switch ($name) {
+													case 'aerodynamics': $name = 'Aer';
+														break;
+													case 'solidity': $name = 'Sol';
+														break;
+													case 'cosiness': $name = 'Conf';
+														break;
+													case 'speed': $name = 'Vit';
+														break;
+													case 'shipping': $name = 'Nav';
+														break;
+													default:
+														break;
+												}?>
+												<?php echo $name; ?>: 
+												<?php echo $value; ?>
+											<?php endif ?>
+										<?php endforeach ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+					<?php endforeach ?>
+				</div>
+			</div>
+		 	<div class="col s6 shop_right">
+		 		<h5>Equipements</h5>
+				<div class="content_card">
+					<?php foreach ($equipment_buyable_list as $key => $equipment): ?>
+						<div class="shop_card">
+							<div class="shop_element">
+								<div class="shop_less">
+									<i class="material-icons drop">arrow_drop_down</i>
+									<h6>
+										<?php echo $equipment->get_name(); ?>
+										<br>
+										<span>
+											<?php echo $equipment->get_brand(); ?>
+										</span>
+									</h6>
+									<button class="btn buy waves-effect waves-light"> <?php echo $equipment->get_price(); ?> crédits</button>	
+								</div>
+								<div class="more" style="display: none;">
+									<ul class="shop_stats">
 
-			<?php endforeach ?>
+										<?php $activity = $equipment->get_activity();
+										$stats = $equipment->get_activity()->get_stats(); ?>
+										<?php foreach ($stats as $name => $value):?>
+											<?php if($value!=0): ?>
+												<?php switch ($name) {
+
+												}?>
+												<?php echo $name; ?>: 
+												<?php echo $value; ?>
+											<?php endif ?>
+										<?php endforeach ?>
+									</ul>
+								</div>
+							</div>
+						</div>
+					<?php endforeach ?>
+				</div>
+		 	</div>
 		</div>
 	</div>
 <style>body{background:#F4F4F4; overflow: scroll}</style>

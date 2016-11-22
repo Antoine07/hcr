@@ -127,7 +127,7 @@ class Equipment
     public function set_id($id)
     {
         if (!is_numeric($id)) {
-            throw new Exception("Erreur la valeur :".$id." n'a pas un nombre comme value");                   
+            // throw new Exception("Erreur la valeur :".$id." n'a pas un nombre comme value");                   
         }else{
             $this ->id = $id;
         }
@@ -135,7 +135,7 @@ class Equipment
     public function set_activity_id($activity_id)
     {
         if (!is_numeric($activity_id)) {
-            throw new Exception("Erreur la valeur :".$activity_id." n'a pas un nombre comme value");                   
+            // throw new Exception("Erreur la valeur :".$activity_id." n'a pas un nombre comme value");                   
         }else{
             $this ->activity_id = $activity_id;
         }
@@ -143,7 +143,7 @@ class Equipment
     public function set_team_id($team_id)
     {
         if (!is_numeric($team_id)) {
-            throw new Exception("Erreur la valeur :".$team_id." n'a pas un nombre comme value");                   
+            // throw new Exception("Erreur la valeur :".$team_id." n'a pas un nombre comme value");                   
         }else{
             $this ->team_id = $team_id;
         }
@@ -164,6 +164,5 @@ class Equipment
         $this->set_price($this->generatePrice());  
     }  
 }
-$equipement=new Equipment();
-$equipement->from_random();
+
 
