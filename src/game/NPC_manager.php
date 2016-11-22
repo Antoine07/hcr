@@ -87,6 +87,16 @@ class NPC_manager {
 			imagepng($array[$i]->get_image(), 'images/'.$id.'.png');
 		}
 	}
+
+	/**
+	 * [genere et stock des NPC aléatoires]
+	 * @param  [int]    $nb   [nombre de NPCs à générer]
+	 * @param  [string] $type [type des NPCs 'pilote' || 'mecanicien']
+	 */
+    public function populate($nb, $type){
+        $list_npc = $this->generate($nb,$type);
+        $this->store($list_npc);
+    }
 	
 	public function update(NPC $npc, $property, $value){
 	    

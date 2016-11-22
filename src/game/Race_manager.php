@@ -59,6 +59,11 @@ class Race_manager {
 			$array[$i]->set_id($first_id + $i);
 		}
 	}
+
+    public function populate($nb, $ladder=false, $size=NULL, $timestamp=NULL){
+        $list_npc = $this->generate($nb,$ladder,$size,$timestamp);
+        $this->store($list_npc);
+    }
 	
 	public function get_single($id){
 		
