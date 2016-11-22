@@ -72,9 +72,41 @@ class Spaceship_manager
     	$request = "SELECT * FROM spaceships WHERE id=?"; 
     	$prepare =  $pdo->prepare($request); 
     	$prepare-> bindValue(1,$id,PDO::PARAM_INT); 
+
     	$prepare->execute();
-    	return $prepare->fetch(PDO::FETCH_ASSOC); 
+    	
+        $prepare->fetch(PDO::FETCH_ASSOC);
+
+        $list_spacehips = [];
+        $list_spacehips = $this->hydrate($donnee_module);
+        $spaceship = $list_spacehips[0];
+
+        return $spaceship; 
     }
+
+       public function get_by_team(Team $team)
+    {
+        $pdo = $this->get_pdo();
+
+        $id = $team->get_id();
+
+        $request = "SELECT * FROM spaceships WHERE team_id=?"; 
+
+        $prepare =  $pdo->prepare($request); 
+
+        $prepare-> bindValue(1,$id,PDO::PARAM_INT); 
+
+        $prepare->execute();
+
+        $donnee_module = $prepare->fetch(PDO::FETCH_ASSOC);
+
+        $list_spacehips = [];
+        $list_spacehips = $this->hydrate($donnee_module);
+        $spaceship = $list_spacehips[0];
+
+        return $spaceship;
+    }
+
 
 // RECUPERE TOUS LES XXX DANS LA DB ET RENVOIE UN TABLEAU CONTENANT LES INSTANCES HYDRATEES DE XXX
     public function get_all()
@@ -84,6 +116,10 @@ class Spaceship_manager
     	$prepare =  $pdo->prepare($request); 
     	$prepare->execute();
     	return $prepare->fetchAll(PDO::FETCH_ASSOC); 
+
+        $list_spacehips = [];
+        $list_spacehips = $this->hydrate($donnee_module);
+        return $list_spacehips;
     }
 
 
@@ -99,7 +135,21 @@ class Spaceship_manager
     	$this->pdo = $pdo; 
     }
 
+    /**
+     * @param  [array] : Tableau de tableau associatif contenant les propriétés d'un objet
+     * @return [array] : Tableau contenant instance(s) hydratée(s) de Module
+     */
+    private function hydrate(array $list_donnee)
+    {
+      $list_spacehips = [];
+      foreach ($list_donnee as $key => $donnee) {
+        $spaceship = new Spaceship();
+        $spaceship->from_db($donnee);
+        $list_spacehips[] = $spaceship;
+      }
 
+      return $list_spacehips;
+    }
 }
 
 
