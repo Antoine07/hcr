@@ -67,14 +67,14 @@ class Module {
         $statMax = array_search(max($this->stats),$this->stats);
         switch ($statMax) {
           case 'aerodynamics' :
-            $tName=['Aileron','Tete','Aile'];
+            $tName=['Aileron','Tete','Aile','Aéroloupe','Moteur'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' qui glisse',' léger', ' lisse',' aérodinamique'];
+            $tName=[' qui glisse',' léger(e)', ' lisse',' aérodynamique',' interstellaire','fin(e)','GEMINI'];
             $name .= $tName[array_rand($tName)];
 
             break;
           case 'solidity' :
-            $tName=['Coque','Bouclier','Champ de protection'];
+            $tName=['Coque','Bouclier','Champ de protection','Blindage','Drone de défense'];
             $name .= $tName[array_rand($tName)];
             $tName=[' solide',' bien dur',' impénétrable', ' exosolaire',' ONIX',' TITANIUM',' COLOSSUS',' TITAN'];
             $name .= $tName[array_rand($tName)];
@@ -83,19 +83,19 @@ class Module {
           case 'cosiness' :
             $tName=['Cockpit','Siège en cuir','Oreiller','Climatisation','Lampe à lave'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible'];
+            $tName=[' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible','GALILEO'];
             $name .= $tName[array_rand($tName)];
 
             break;
           case 'speed' :
-            $tName=['Propulseur','Booster','Nitro','Turbo'];
+            $tName=['Propulseur','Booster','Nitro','Turbo','Technograde'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' puissant',' DRAKO',' Vulkan',' Ragnarok',' à matière noire',' thermique',' qui pète'];
+            $tName=[' puissant',' DRAKO',' Vulkan',' Ragnarok',' à matière noire',' thermique',' qui pète', 'ISS'];
             $name .= $tName[array_rand($tName)];
 
             break;
           case 'shipping' :
-            $tName=['Radar','Détecteur','Boussole','GPS','Rétroviseur'];
+            $tName=['Radar','Détecteur','Boussole','GPS','Rétroviseur','Drone suiveur','Ordinateur de bord'];
             $name .= $tName[array_rand($tName)];
             $tName=[' précis',' à micro-ondes',' substellaire',' intergalactique',' du turfu'];
             $name .= $tName[array_rand($tName)];

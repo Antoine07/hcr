@@ -46,8 +46,10 @@ class Activity{
 	}
 }
 
-$list_activity[0] = new Activity('faire des pompes', ['strength'=> 5]);
-$list_activity[1] = new Activity('courir', ['stamina'=> 5]);
-$list_activity[2] = new Activity('calcul mental', ['intelligence'=> 5]);
+$list_activity[0] = new Activity('La musculation pour les nuls', ['strength'=> 5]);
+$list_activity[1] = new Activity('La survie pour les nuls', ['stamina'=> 5]);
+$list_activity[2] = new Activity('Les connaissances pour les nuls', ['intelligence'=> 5]);
+$list_activity[3] = new Activity('Le Kamasutra pour les nuls', ['dexterity'=> 5]);
+$list_activity[4] = new Activity('Le Sprint pour les nuls', ['speed'=> 5]);
 
     
