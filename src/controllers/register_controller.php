@@ -5,8 +5,8 @@ function store_action(){
 	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
 	$_SESSION['old']['email'] = $_POST['email'];
 
-	$username = h($_POST['pseudo']);
-	$email = h($_POST['email']);
+	$username = $_POST['pseudo'];
+	$email = $_POST['email'];
 
 	$pdo = get_pdo();
 
