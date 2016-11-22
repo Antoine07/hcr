@@ -10,11 +10,18 @@ class Spaceship_manager
         $this->set_pdo($pdo); 
     }
 
+    public function generate(Team $team )
+    {
+       $spaceship =  new Spaceship();
+       $spaceship->from_random(); 
+        return $spaceship; 
+
+    }
+
 
     // STOCK LES INSTANCES SITUES DANS $array DANS LA DB
-    public function store(Team $team, Spaceship $spaceship)
+    public function store(Spaceship $spaceship)
     {
-
     	$pdo = $this->get_pdo(); 
     	$req = ('INSERT INTO spaceships(name,aerodynamics,solidity,cosiness,shipping,speed,team_id) VALUES(?,?,?,?,?,?,?)');
 
@@ -30,7 +37,7 @@ class Spaceship_manager
     	$prepare->bindValue(4,$stats['cosiness'], PDO::PARAM_INT);
     	$prepare->bindValue(5,$stats['shipping'], PDO::PARAM_INT);
     	$prepare->bindValue(6,$stats['speed'], PDO::PARAM_INT);
-    	$prepare->bindValue(7,$team->get_id(), PDO::PARAM_INT);
+    	$prepare->bindValue(7,$spaceship->get_id(), PDO::PARAM_INT);
     	$prepare->execute();
 
 
