@@ -22,7 +22,7 @@
 
 		$spaceship_manager = new game\Spaceship_manager($pdo);
 
-		$spaceship = $spaceship_manager->get_by_team($team);
+		$spaceship = $spaceship_manager->get_where('team_id = '.$team_id);
 		}
 
 		include '../views/qg.php' ;
