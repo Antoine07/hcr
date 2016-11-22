@@ -15,16 +15,49 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col s6 offset-s3 shop_sell">
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>Vendre un objet</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
+			<div class="col s12 shop_sell" align="center">
+				<button class="btn btnsell waves-effect waves-light" id="btnsell">Vendre des objets</button>
+				<a href="#"><i class="material-icons dispnone close_sell" id="close_sell">close</i></a>
 			</div> 
+		</div>
+		<div class="row">
+			<div class="content_sell dispnone" id="content_sell">	
+				<div class="col s6 sell_modules">
+					<h5>Modules</h5>
+					<div class="content_object">
+						<div class="sell_card">
+							<h6>Objet 1</h6>
+							<button class="btn btnsell waves-effect waves-light" id="btnsell">
+								Vendre l'objet
+							</button>
+						</div>
+						<div class="sell_card">
+							<h6>Objet 1</h6>
+							<button class="btn btnsell waves-effect waves-light" id="btnsell">
+								Vendre l'objet
+							</button>
+						</div>
+						<div class="sell_card">
+							<h6>Objet 1</h6>
+							<button class="btn btnsell waves-effect waves-light" id="btnsell">
+								Vendre l'objet
+							</button>
+						</div>
+						<div class="sell_card">
+							<h6>Objet 1</h6>
+							<button class="btn btnsell waves-effect waves-light" id="btnsell">
+								Vendre l'objet
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col s6 sell_equipments">
+					<h5>Equipements</h5>
+					<div class="content_object">
+						
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="row content_shop_item">
 		 	<div class="col s6 shop_left">
@@ -114,6 +147,6 @@
 		 	</div>
 		</div>
 	</div>
-<style>body{background:#F4F4F4; overflow: scroll}</style>
+<style>body{background:#F4F4F4;}</style>
 <?php $content = ob_get_clean() ; ?>
 <?php include 'master.php' ?>
