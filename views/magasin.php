@@ -75,7 +75,9 @@
 											<?php echo $module->get_type(); ?>
 										</span>
 									</h6>
-									<button class="btn buy waves-effect waves-light"> <?php echo $module->get_price(); ?> crédits</button>	
+									<form action="/index.php/buy" methode="POST">
+										<button type="submit" class="btn buy waves-effect waves-light"> <?php echo $module->get_price(); ?> crédits</button>
+									</form>
 								</div>
 								<div class="more" style="display: none;">
 									<ul class="shop_stats">

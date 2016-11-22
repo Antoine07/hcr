@@ -82,7 +82,13 @@ if ( '/' === $uri) {
 		shop_action();
 	 }else{
 	  	header('Location: '.$prefix.'/login');
-	  }
+	 }
+}elseif ( $prefix.'/buy' === $uri) {
+	if($user_id != null){
+		buy_action();
+	 }else{
+	  	header('Location: '.$prefix.'/login');
+	 }
 }elseif ( $prefix.'/race' === $uri) {
 	if($user_id != null){
 		race_action();
