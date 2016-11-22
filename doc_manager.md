@@ -65,11 +65,11 @@ $maclasse_manager->store($moninstance);
 
 Ce sont les différentes methodes `update_quelquechose()` qui s'en chargent.
 
-**update:** Modifie une ligne dans la base de donnée. elle prend en parametre, au minimum, une instance à modifier. En générale un second parametre est nécessaire pour savoir quoi modifier.
+**update:** Modifie une ligne dans la base de donnée. elle prend en parametre, une instance à modifier, la propriété à modifier (string), et la nouvelle valeur de cette propriété
 
 ```bash
-# Modifie $moninstance dans la base de donnée
-$maclasse_manager->update($moninstance);
+# Modifie la propriété $moninstance par $value elle même et met à jour la base de donnée
+$maclasse_manager->update($moninstance, 'propriété', $value);
 ```
 
 Il existe plusieur methodes update en fonction des manager. Et tous les manager n'ont pas les mêmes. Regarder dans les src/game/classe_manager.php pour avoir les info sur les différents update.
