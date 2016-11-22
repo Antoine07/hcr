@@ -24,7 +24,7 @@
 								<div class="bar_less">
 									<i class="material-icons drop">arrow_drop_down</i>
 									<img class="bar_portrait" src="../images/<?php echo $pilote->get_id()?>.png" alt="">
-									<h6><?php echo h($pilote->get_name()) ?>
+									<h6><?php echo $pilote->get_name() ?>
 										<br><span>
 											<?php echo $pilote->get_race() ?> - 
 											<?php echo $pilote->get_job() ?>
