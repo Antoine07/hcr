@@ -7,7 +7,6 @@
 require_once __DIR__.'/../app.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
 $prefix = '/' . getEnv('URL_PREFIX');
 $user_id = null;
 
@@ -48,6 +47,13 @@ if ( '/' === $uri) {
 	$list_module = $module_manager->generate(10);
 	
 	$module_manager->store($list_module);
+ 
+}elseif($prefix.'/generateequipment' === $uri) {
+	$equipment_manager = new game\Equipment_manager(get_pdo());
+
+	$list_equipment = $equipment_manager->generate(10);
+	
+	$equipment_manager->store($list_equipment);
  
 }elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){

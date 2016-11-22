@@ -83,6 +83,13 @@ class Module_manager {
         }
       }
       $prepare->execute();
+
+      // récupération des id sur les instances de Module
+      $first_id = $this->pdo->lastInsertId();
+      for ($i=0; $i < count($list_module); $i++) {
+           $list_module[$i]->set_id($first_id + $i);
+      }
+
     }
 
     // RECUPERE UN Module DANS LA DB ET RENVOIE UN TABLEAU CONTENANT L'INSTANCE HYDRATEE DE Module
@@ -98,12 +105,13 @@ class Module_manager {
       $prepare->bindValue(1,$id,PDO::PARAM_INT);
       $prepare->execute();
 
-	  $donnee_module = $prepare->fetch(PDO::FETCH_ASSOC);
+	  $donnee_module = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
       // hydratation
       $list_modules = [];
       $list_modules = $this->hydrate($donnee_module);
-      return $list_modules;
+      $module = $list_modules[0];
+      return $module;
     }
 
     // RECUPERE TOUS LES Module DANS LA DB
@@ -144,8 +152,9 @@ class Module_manager {
       return $list_modules;
     }
 
-    // todo : tester la fonction get_all_by_team_id
+    // RECUPERE TOUS LES Module D'UNE TEAM
     /**
+     * @param  [Team]  : Instance d'une Team
      * @return [array] : Tableau contenant instance(s) hydratée(s) de Module
      */
     public function get_all_by_team(Team $team)

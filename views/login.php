@@ -24,24 +24,27 @@
 	 		<div>
 	 			<div class="input-field">
 	 				<i class="material-icons prefix">perm_identity</i>
-			          		<input id="identifiants" name="pseudo" type="text" class="validate">
+			          		<input id="identifiants" name="pseudo" type="text" class="validate" autocomplete="off">
 			          		<label for="icon_prefix">Identifiants</label>		
 	 			</div>
 	 			<div class="input-field">
 				          	<i class="material-icons prefix">email</i>
-          					<input id="email" name="email" type="email" class="validate">
+          					<input id="email" name="email" type="email" class="validate" autocomplete="off">
           					<label for="email">Email</label>
 				</div>
 				<div class="input-field">
 				          	<i class="material-icons prefix">lock_outline</i>
-				          	<input id="icon_prefix" name="password" type="password" class="validate">
-				          	<label for="icon_prefix">Mot de passe</label>
+				          	<input id="password" name="password" type="password" class="validate" autocomplete="off">
+				          	<label for="password">Mot de passe</label>
 				</div>
-				<div class="input-field"></div>
-				<button class="btn waves-effect waves-light regbtn" type="submit" name="action" id="subscribe">S'inscrire</button>
-
+				<div class="input-field">
+					<i class="material-icons prefix">lock_outline</i>
+				          	<input id="re_password" name="password" type="password" class="validate" autocomplete="off">
+				          	<label for="re_password">Confirmez votre mot de passe</label>
+				</div>
 	 		</div>
  		</form>
+ 		<button class="btn waves-effect waves-light regbtn dispnone"  id="subscribe_post">S'inscrire</button>
  	</div>
 <?php $content = ob_get_clean() ; ?>
 <?php include 'master_login.php' ?>

@@ -78,13 +78,14 @@ class NPC_manager {
 	    }
 
 	    $prepare->execute();
-	    
-	    for ($i=0; $i < $nb_NPC; $i++) {
 
-	    	$starting_id = $this->pdo->lastInsertId();
-	    	$npc_id     = $starting_id + $i;
-	    	imagepng($array[$i]->get_image(), 'images/'.$npc_id.'.png');
-	    }
+		$first_id = $this->pdo->lastInsertId();
+
+		for ($i=0; $i < count($array); $i++) {
+			$id = $first_id + $i;
+			$array[$i]->set_id($first_id + $i);
+			imagepng($array[$i]->get_image(), 'images/'.$id.'.png');
+		}
 	}
 	
 	public function update(NPC $npc, $property, $value){
