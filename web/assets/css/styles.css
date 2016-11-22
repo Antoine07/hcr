@@ -29,13 +29,18 @@ body{
 	margin-bottom: 0;
 }
 ::-webkit-scrollbar{
-  width:2px;
+  	width:2px;
 } 
-
+-moz-scrollbar{
+	width:2px;
+}
 ::-webkit-scrollbar-thumb{
 	background-color: rgba(0,169,255,1);
 }
-::-webkit-scrollbar-corner {							/* Coin de la fenêtre */
+::-moz-scrollbar-thumb{
+	background-color: rgba(0,169,255,1);
+}
+::-webkit-scrollbar-corner {	
 	overflow: hidden;
 }  
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
@@ -444,8 +449,7 @@ input:-webkit-autofill {
 	margin: 0.9em;
 }
 .buy:focus,.buy:hover{
-	background: #00a9ff
-;	
+	background: #00a9ff;	
 	opacity: 0.7;
 }
 .drop {
@@ -616,8 +620,7 @@ input:-webkit-autofill {
 
 
 .content_shop{
-	margin: 1em auto;
-    	padding: 2em 3em;
+    	padding: 2em 3em 1em 3em;
 }
 
 .shop_top{
@@ -653,6 +656,63 @@ input:-webkit-autofill {
 .shop_team{
 	text-transform: uppercase;
 }
+/* ********************** VENTE D'ITEM ********************** */
+.btnsell{
+	margin: 0.9em auto;
+	background: #00a9ff;	
+}
+.btnsell:focus,.btnsell:hover{
+	background: #125091;	
+	opacity: 0.7;
+}
+.close_sell{
+	font-size:30px;
+	float: right;
+	margin:0.6em 0 0 0;
+}
+.close_sell:hover{
+	transition:all ease 0.7s;
+	-ms-transform: scale(1.1); /* IE 9 */
+    	-webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    	transform: scale(1.1);
+    	color:#FFF;
+}
+.content_sell h5{
+	color:#efefef;
+	font-weight: 200;
+	text-transform:uppercase;
+	text-align: center;
+	border-bottom: 1px solid #EFEFEF;
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+.content_sell ul li{
+	color:#FFF;
+	font-size:1.2em;
+	font-weight: 100;
+	text-align: center
+}
+.content_sell button{
+	font-weight: 300;
+}
+.sell_modules{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	height:auto;
+   	width:48.7%!important;
+    	margin-right: 2em;
+}
+.sell_equipments{
+	background-color: rgba(0, 0, 0, 0.7);
+    	box-shadow: 2px 2px 7px #000000;
+    	border: 1px solid;
+    	border-color: rgba(0, 0, 0, 0.2);
+    	display:block;
+    	width:48.7%!important;
+}
 .shop_sell{
 	background-color: rgba(0, 0, 0, 0.7);
     	box-shadow: 2px 2px 7px #000000;
@@ -663,18 +723,6 @@ input:-webkit-autofill {
     	padding: 0.5em 4em!important;
     	margin-bottom: 1.5em;
 }
-.shop_sell .select-wrapper{
-    	color: #FFF;
-}
-.shop_sell .select-wrapper .caret{
-    	color: #FFF!important;;
-}
-.shop_sell .dropdown-content {
-	background-color:#282828;
-}
-.shop_sell .dropdown-content li > span {
-	color:#00a9ff;
-}
 .content_shop_item h5{
 	color:#efefef;
 	font-weight: 200;
@@ -684,6 +732,29 @@ input:-webkit-autofill {
 	padding-bottom: 0.5em;
 	margin-bottom: 1em;
 }
+.content_object{
+	overflow: scroll!important;
+    	height: 20em;
+}
+.sell_card{
+	padding: 0;
+    	background: rgba(46, 46, 46, 0.27);
+    	margin-bottom: 2%;
+    	display: flex;
+}
+.sell_card h6{
+	color: #FFF;
+	font-weight: bold;
+	font-size: 1.3em;
+	flex:1;
+	padding: 0.8em 1.3em;
+	line-height:1.30em;
+}
+.sell_card button{
+	display: block;
+	margin-right:2em;
+}
+/* ********************** ACHAT D'ITEM ********************** */
 .shop_left{
 	background-color: rgba(0, 0, 0, 0.7);
     	box-shadow: 2px 2px 7px #000000;
@@ -693,6 +764,7 @@ input:-webkit-autofill {
     	height:auto;
    	width:48.7%!important;
     	margin-right: 2em;
+    	z-index:2;
 }
 .shop_right{
 	background-color: rgba(0, 0, 0, 0.7);
@@ -701,6 +773,7 @@ input:-webkit-autofill {
     	border-color: rgba(0, 0, 0, 0.2);
     	display:block;
     	width:48.7%!important;
+    	z-index:2;
 
 }
 .content_card{
@@ -741,13 +814,13 @@ input:-webkit-autofill {
 }
 .buy{
 	margin: 0.9em;
+	background:#00a9ff;
 }
 .buy:focus,.buy:hover{
-	background: #00a9ff
-;	
+	background: #125091;	
 	opacity: 0.7;
 }
-.drop {
+.drop{
     	float: left;
 	padding: 0.8em 0.5em;
 	color: white;
@@ -768,6 +841,10 @@ input:-webkit-autofill {
 }
 .shop_card button{
 	background-color: #00a9ff;
+	display: block;
+}
+.shop_card button:hover, .shop_card button:focus{
+	background-color: #125091;
 	display: block;
 }
 /* *!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!*!* */
