@@ -32,7 +32,7 @@ class Equipment
         $name = ['strength'=>['Altère', 'Table de musculation', 'Medecine ball', 'Sac de frappe'],
                 'dexterity'=>['Console de jeu', 'Bilboquet', 'Simulateur de pilotage', 'Table de ping-pong', 'Coffret de magicien'],
                 'stamina'=>['Corde à sauter', 'Cabine de froid', 'Poupée gonflable', 'Boost de combinaison'],
-                'speed' =>['Tapis de course','Roller', "exercice d'assemblage de pièces de vaisseaux", 'optimisateur de mouvements'],
+                'speed' =>['Tapis de course','Roller', "Exercice d'assemblage de pièces de vaisseaux", 'Optimisateur de mouvements'],
                 'intelligence'=> ['Livre','Échéquier', 'Sudoku', 'Jeux de Go', 'Artefact culturel']];
         $this->generateStats($this->list_stats);
         $stat = $this->stats;
