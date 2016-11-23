@@ -70,20 +70,20 @@ function buy_action(){
 				];
 				$dialogue = [
 					"humain"=>[	['...'],
-							   	['\J\'accepte votre proposition !','Affaire conclu !','C\'est un plaisir !'],
+							   	['J\'accepte votre proposition !','Affaire conclu !','C\'est un plaisir !'],
 							   	['Vous essayer de m\'arnaquer ?!','A ce prix la ? Certainemant pas !','Faite vous un peu d\'argents et revenez me voire !']],
 
 					"robot"=>[	['...'],
-							   	[''.$item_name.' lance le protocole d\'acceptation.',''.$item_name.' accepte : transfert de crédits en cours...',''.$item_name.' initie le déplacement vert nouveau QG...'],
-							   	[''.$item_name.' détecte que offre < demande...',''.$item_name.' changement de status : Outré !',''.$item_name.' protocole de refu engagé...']],
+							   	[$item_name.' lance le protocole d\'acceptation.',$item_name.' accepte : transfert de crédits en cours...',$item_name.' initie le déplacement vert nouveau QG...'],
+							   	[$item_name.' détecte que offre < demande...',$item_name.' changement de status : Outré !',$item_name.' protocole de refu engagé...','Tentative de négociation abusive détecté !']],
 
 					"alien"=>[	['...'],
 							   	['Nenu anan\'dam to gaman\'nin\'candi.','Ku peak k\'nta l\'tow.','An dam a\'lk nam.'],
 							   	['Lok numa t\'sani mokmok...','Ku jaxum '.$item->get_price().' !!! Mok\'nolok !','Tr\'ik dnte anan fe\'ce !']]
 				];
-				$message[0].='<br/>'.$dialogue[$race][0][0];
-				$message[1].='<br/>'.$dialogue[$race][1][array_rand($dialogue[$race][1])];
-				$message[2].='<br/>'.$dialogue[$race][2][array_rand($dialogue[$race][2])];
+				$message[0].="<br/>"."`` ".$dialogue[$race][0][0]." ``";
+				$message[1].="<br/>"."`` ".$dialogue[$race][1][array_rand($dialogue[$race][1])]." ``";
+				$message[2].="<br/>"."`` ".$dialogue[$race][2][array_rand($dialogue[$race][2])]." ``";
 
 				break;
 			

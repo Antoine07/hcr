@@ -56,7 +56,7 @@
 
 <?php if (isset($_SESSION['message'])): ?>
   <script>
-    Materialize.toast("<?php echo $_SESSION['message']; ?>",4000);
+    Materialize.toast("<?php echo $_SESSION['message']; ?>",8000);
   </script>
 <?php endif ?>
 
