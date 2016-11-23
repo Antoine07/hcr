@@ -72,6 +72,11 @@ class Spaceship_manager
             return $spaceship;                    
         }
     }
+// RECUPERE LES DONNEES D'UN XXX EN FONCTION DE SON ID DANS LA DB ET RENVOIE UN INSTANCE DE XXX
+    public function get_by_team($id)
+    {
+       return $this->get_where("team_id=".$id);
+    }
 // RECUPERE TOUS LES XXX DANS LA DB ET RENVOIE UN TABLEAU CONTENANT LES INSTANCES HYDRATEES DE XXX
     public function get_all()
     {
