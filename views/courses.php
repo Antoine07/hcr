@@ -17,7 +17,7 @@
 		 <div class="row content_race_item">
 			<div class="col s6 race_left">
 				<h5>Courses</h5>
-				<div class="content_card">
+				<div class="content_card_race">
 					<?php foreach ($future_races as $race): ?>
 						<div class="race_card">
 							<div class="race_element">
@@ -51,7 +51,7 @@
 			</div>
 			 <div class="col s6 race_right">
 			 	<h5>Courses Précédentes</h5>
-				<div class="content_card">
+				<div class="content_card_race">
 					<?php foreach ($past_races as $race): ?>
 						<div class="race_card">
 							<div class="race_element">
@@ -70,6 +70,6 @@
 			</div>  
  		</div>
 	</div>
-<style>body{background:#F4F4F4; overflow: scroll}</style>
+<style>body{background:#F4F4F4;}</style>
 <?php $content = ob_get_clean() ; ?>
 <?php include 'master.php' ?>

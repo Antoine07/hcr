@@ -410,9 +410,9 @@ input:-webkit-autofill {
     	width:48.7%!important;
 
 }
-.content_card{
+.content_card_bar{
 	overflow:scroll!important;
-	height:20em;
+	height: 24.1em;
 }
 
 .bar_less {
@@ -920,9 +920,9 @@ input:-webkit-autofill {
     	width:48.7%!important;
 
 }
-.content_card{
+.content_card_race{
 	overflow:scroll!important;
-	height:20em;
+	height:24.1em;
 }
 .race_card h6{
 	cursor: pointer;

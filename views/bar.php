@@ -17,7 +17,7 @@
 		 <div class="row content_bar_item">
 			<div class="col s6 bar_left">
 				<h5>Pilotes</h5>
-				<div class="content_card">
+				<div class="content_card_bar">
 					<?php foreach ($npcs_pilotes as $pilote): ?>
 						<div class="bar_card">
 							<div class="bar_element">
@@ -53,7 +53,7 @@
 			</div>
 			 <div class="col s6 bar_right">
 				<h5>Mécaniciens</h5>
-				<div class="content_card">
+				<div class="content_card_bar">
 					<?php foreach ($npcs_mecaniciens as $mecanicien): ?>
 						<div class="bar_card">
 							<div class="bar_element">
