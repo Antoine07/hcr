@@ -98,7 +98,7 @@ class Race_manager {
 	    $races = [];
 
 	    foreach ($result as $data) {
-	    	$race = new race;
+	    	$race = new Race;
 	    	$race->from_db($data);
 	    	$races[] = $race;
 	    }
