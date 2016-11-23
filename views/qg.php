@@ -1,20 +1,6 @@
 <?php ob_start() ; ?>
 	<div class="content_qg">
 		<div class="row">
-			<div class="col s12 qg_top">
-				<h4>QG	</h4>
-				<ul class="qg_list">
-					<li class="qg_team">team JOJO</li>
-					<span>|</span>
-					<li>50.000 c</li>
-					<span>|</span>
-					<li>203 points</li>
-					<span>|</span>
-					<li>7ème</li>
-				</ul>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col s6">
 				<div class="qg_card">
 					<h6><?php echo $pilot->get_name();?></h6>

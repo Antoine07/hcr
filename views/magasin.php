@@ -1,20 +1,6 @@
 <?php ob_start() ; ?>
 	<div class="content_shop">
 		<div class="row">
-			<div class="col s12 shop_top">
-				<h4>Magasin</h4>
-				<ul class="shop_list">
-					<li class="shop_team">team JOJO</li>
-					<span>|</span>
-					<li>50.000 c</li>
-					<span>|</span>
-					<li>203 points</li>
-					<span>|</span>
-					<li>7ème</li>
-				</ul>
-			</div>
-		</div>
-		<div class="row">
 			<div class="col s12 shop_sell" align="center">
 				<button class="btn btnsell waves-effect waves-light" id="btnsell">Vendre des objets</button>
 				<a href="#"><i class="material-icons dispnone close_sell" id="close_sell">close</i></a>
