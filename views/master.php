@@ -4,7 +4,7 @@
 <!-- Début du HEAD -->
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Hyper Cosmic Racer</title>
 	<link rel="stylesheet" href="/assets/css/materialize.css">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="/assets/css/styles.css">
