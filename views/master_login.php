@@ -23,5 +23,9 @@
 <script src="https://use.fontawesome.com/445f146961.js"></script>
 <script src="/assets/js/materialize.min.js"></script>
 <script src="/assets/js/main.js"></script>
+<?php if($_SESSION['errors']){
+	echo "<script>Materialize.toast('".$_SESSION['errors']['pseudo']."', 4000);</script>";
+}
+?>
 </html>
 <!-- Fin du HTML -->
