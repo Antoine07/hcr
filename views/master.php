@@ -53,5 +53,12 @@
 <script src="https://use.fontawesome.com/445f146961.js"></script>
 <script src="/assets/js/materialize.min.js"></script>
 <script src="/assets/js/main.js"></script>
+
+<?php if ($_SESSION['message']): ?>
+  <script>
+    Materialize.toast("<?php echo $_SESSION['message']; ?>",4000);
+  </script>
+<?php endif ?>
+
 </html>
 <!-- Fin du HTML -->

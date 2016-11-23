@@ -12,6 +12,7 @@ class Equipment
     private $stats;
     private $activity=[];
     private $id = NULL;
+    private $team_id;
     private $activity_id;
 
     function __construct()
@@ -39,9 +40,9 @@ class Equipment
 
         $gename = $name[$stat][array_rand($name[$stat])];
         $name   = ['strength'=>[' en kryptonite',  ' en adamantine', ' en titane', ' en zinc'],
-                'dexterity'=>[' interstellaire', ' cosmique', ' planétaire', 'galactique'],
+                'dexterity'=>[' interstellaire', ' cosmique', ' planétaire', ' galactique'],
                 'stamina'=>[' humain(e)', ' alien', ' synthétique'],
-                'speed' =>[' à particules', ' moléculaire', ' dimensionnel', 'universel'],
+                'speed' =>[' à particules', ' moléculaire', ' dimensionnel', ' universel'],
                 'intelligence'=> [' de savant humain', ' de savant extraterrestre', ' de savant robotique']];
 
         $gename .= $name[$stat][array_rand($name[$stat])];
