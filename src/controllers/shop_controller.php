@@ -1,16 +1,8 @@
 <?php 
-	function shop_action(){
-		// + pour test (création et attribution de la team)
-		$test_pdo          = get_pdo();
-		$test_team_manager = new game\Team_manager($test_pdo);
-		/*$test_new_team = $test_team_manager->create('Sheep_hopoteam');
-		$test_team_manager->store($test_new_team);*/
-
-		
+	function shop_action(){		
 		$pdo          = get_pdo();
 		
 		$team_id = $_SESSION['user']['team_id'];
-
     	$module_manager    = new game\Module_manager($pdo);
     	$equipment_manager = new game\Equipment_manager($pdo);
     	$team_manager      = new game\Team_manager($pdo);

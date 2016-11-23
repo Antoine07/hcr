@@ -2,18 +2,7 @@
 
 function buy_action(){
 	if($_SERVER['REQUEST_METHOD'] == 'POST') // si on est en méthode POST
-	{
-		// + pour test (création et attribution de la team)
-		$test_pdo          = get_pdo();
-		$test_team_manager = new game\Team_manager($test_pdo);
-		/*$test_new_team = $test_team_manager->create('Sheep_hopoteam');
-		$test_team_manager->store($test_new_team);*/
-
-		$test_team = $test_team_manager->get_single(1);
-		$_SESSION['user']['team_id'] = $test_team->get_id();
-		// Fin du + pour test
-
-		
+	{	
 		$prefix              = '/' . getEnv('URL_PREFIX');
 		$team_id             = $_SESSION['user']['team_id'];
 		$item_id             = $_POST['item_id'];
