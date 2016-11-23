@@ -30,8 +30,11 @@
 											<?php echo $pilote->get_job() ?>
 										</span>
 									</h6>
-
-									<button class="btn buy waves-effect waves-light"> <?php echo $pilote->get_price();?> crédits</button>	
+									<form action="/index.php/buy" method="POST">
+										<input name="item_category" type="text" hidden="none" value="NPC">
+										<input name="item_id" type="number" hidden="none" value=<?php echo $pilote->get_id(); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $pilote->get_price(); ?> c">
+									</form>
 								</div>
 								<div class="more" style="display: none;">
 									<ul class="bar_stats">
@@ -76,8 +79,12 @@
 											<?php echo $mecanicien->get_job() ?>
 										</span>
 									</h6>
-
-									<button class="btn buy waves-effect waves-light"> <?php echo $mecanicien->get_price();?> crédits</button>	
+									
+									<form action="/index.php/buy" method="POST">
+										<input name="item_category" type="text" hidden="none" value="NPC">
+										<input name="item_id" type="number" hidden="none" value=<?php echo $mecanicien->get_id(); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $mecanicien->get_price(); ?> c">
+									</form>
 								</div>
 								<div class="more" style="display: none;">
 									<ul class="bar_stats">

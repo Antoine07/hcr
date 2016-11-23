@@ -54,7 +54,7 @@
 <script src="/assets/js/materialize.min.js"></script>
 <script src="/assets/js/main.js"></script>
 
-<?php if ($_SESSION['message']): ?>
+<?php if (isset($_SESSION['message'])): ?>
   <script>
     Materialize.toast("<?php echo $_SESSION['message']; ?>",4000);
   </script>
