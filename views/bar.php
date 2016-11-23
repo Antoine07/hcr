@@ -35,15 +35,25 @@
 								</div>
 								<div class="more" style="display: none;">
 									<ul class="bar_stats">
-										<li>Int: <?php echo $pilote->get_stats('intelligence');?></li>
-										<span>|</span>
-										<li>Dex: <?php echo $pilote->get_stats('dexterity');?></li>
-										<span>|</span>
-										<li>End: <?php echo $pilote->get_stats('stamina');?></li>
-										<span>|</span>
-										<li>Rap: <?php echo $pilote->get_stats('speed');?></li>
-										<span>|</span>
-										<li>For: <?php echo $pilote->get_stats('strength');?></li>
+										<li>Intelligence : 
+										<span><?php echo $pilote->get_stats('intelligence');?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Dextérité : 
+										<span><?php echo $pilote->get_stats('dexterity');?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Endurance : 
+										<span><?php echo $pilote->get_stats('stamina');?><span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Rapidité : 
+										<span><?php echo $pilote->get_stats('speed');?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Force : 
+										<span><?php echo $pilote->get_stats('strength');?><span>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -71,15 +81,25 @@
 								</div>
 								<div class="more" style="display: none;">
 									<ul class="bar_stats">
-										<li>Int: <?php echo $mecanicien->get_stats('intelligence');?></li>
-										<span>|</span>
-										<li>Dex: <?php echo $mecanicien->get_stats('dexterity');?></li>
-										<span>|</span>
-										<li>End: <?php echo $mecanicien->get_stats('stamina');?></li>
-										<span>|</span>
-										<li>Rap: <?php echo $mecanicien->get_stats('speed');?></li>
-										<span>|</span>
-										<li>For: <?php echo $mecanicien->get_stats('strength');?></li>
+										<li>Intelligence : 
+										<span><?php echo $mecanicien->get_stats('intelligence');?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Dextérité : 
+										<span><?php echo $mecanicien->get_stats('dexterity');?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Endurance : 
+										<span><?php echo $mecanicien->get_stats('stamina');?><span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Rapidité : 
+										<span><?php echo $mecanicien->get_stats('speed');?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Force : 
+										<span><?php echo $mecanicien->get_stats('strength');?><span>
+										</li>
 									</ul>
 								</div>
 							</div>

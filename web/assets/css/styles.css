@@ -16,7 +16,10 @@
 .dispnone{
 	display:none!important;
 }
-
+/* *********** COULEURS *********** */
+.grey-span{
+	color:#737272!important;
+}
 /* *********** Stylisation du Body *********** */
 body{
 	background-image: url('../../images/background.jpg');
@@ -84,7 +87,7 @@ nav ul a:hover {
 	background-color: #494949;
 	color: #00a9ff;
 	width: 124.8438px!important;
-	left: 1152.16px!important	;
+	left: 90.3%!important;
 }
 
 .nav_deco li > a, .nav_deco li > span{
