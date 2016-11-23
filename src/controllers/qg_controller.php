@@ -83,7 +83,8 @@
 		$list_activities = $prepare->fetchALL();
 
 		}
-
+		$nom_page = 'Qg';
+		include '../views/header_team.php';
 		include '../views/qg.php';
 }
 	

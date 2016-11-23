@@ -43,6 +43,8 @@
                             </ul>
     	     </div>
   	</nav>
+
+    <?php echo $header?? '' ;  ?>
 	<!-- Fin de la NAV -->
 	  	<?php echo $content?? '' ; ?>
 </body>

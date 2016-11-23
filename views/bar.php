@@ -1,19 +1,5 @@
 <?php ob_start() ; ?>
 	<div class="content_bar">
-		<div class="row">
-			<div class="col s12 bar_top">
-				<h4>Bar</h4>
-				<ul class="bar_list">
-					<li class="bar_team">team JOJO</li>
-					<span>|</span>
-					<li>50.000 c</li>
-					<span>|</span>
-					<li>203 points</li>
-					<span>|</span>
-					<li>7ème</li>
-				</ul>
-			</div>
-		</div>
 		 <div class="row content_bar_item">
 			<div class="col s6 bar_left">
 				<h5>Pilotes</h5>

@@ -38,7 +38,7 @@ class Team {
 
 	public function from_name($name){
 		$this->set_name($name);
-		$this->set_credit(1000);
+		$this->set_credit(10000);
 	}
 
 	// HYDRATATION

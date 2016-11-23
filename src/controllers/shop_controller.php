@@ -6,9 +6,6 @@
 		/*$test_new_team = $test_team_manager->create('Sheep_hopoteam');
 		$test_team_manager->store($test_new_team);*/
 
-		$test_team = $test_team_manager->get_single(1);
-		$_SESSION['user']['team_id'] = $test_team->get_id();
-		// Fin du + pour test
 		
 		$pdo          = get_pdo();
 		
@@ -25,6 +22,8 @@
 
     	$mod_salable_list 		= $module_manager->get_all_by_team($team);
     	$equipment_salable_list = $equipment_manager->get_team_id($team_id);
+		$nom_page = 'Magasin';
+    	include '../views/header_team.php' ;
 		include '../views/magasin.php' ;
 		$_SESSION['message']=NULL;
 	}
