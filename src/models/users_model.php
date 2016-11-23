@@ -1,6 +1,6 @@
 <?php 
 
-function add_user($username, $password, $email, $creation_date){
+function add_user($username, $password, $email, $creation_date, $team_id){
 
 	$pdo = get_pdo();
 
@@ -8,12 +8,13 @@ function add_user($username, $password, $email, $creation_date){
 
 	$credits = 1000;
 
-	$prepare = $pdo->prepare('INSERT INTO users (email, username, password, creation_date) VALUES (?, ?, ?, ?)') ;
+	$prepare = $pdo->prepare('INSERT INTO users (email, username, password, creation_date, team_id) VALUES (?, ?, ?, ?, ?)') ;
 
 	$prepare->bindValue(1, $email, PDO::PARAM_STR);
 	$prepare->bindValue(2, $username, PDO::PARAM_STR);
 	$prepare->bindValue(3, $pass, PDO::PARAM_STR);
 	$prepare->bindValue(4, $creation_date, PDO::PARAM_STR);
+	$prepare->bindValue(5, $team_id, PDO::PARAM_INT);
 
 	$prepare->execute();
 	// Connexion après inscription

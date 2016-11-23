@@ -26,15 +26,15 @@ class Team {
 	public function get_credit()		{return $this->credit;}
 
 	// SETTER
-	public function set_id(int $value)				{return $this->id 			= $value;}
-	public function set_name(string $value)			{return $this->name 		= $value;}
-	public function set_pilote(array $value)		{return $this->pilote 		= $value;}
-	public function set_mecanicien(array $value)	{return $this->mecanicien 	= $value;}
-	public function set_vaisseau(array $value)		{return $this->vaisseau 	= $value;}
-	public function set_module(array $value)		{return $this->module 		= $value;}
-	public function set_equipement(array $value)	{return $this->equipement 	= $value;}
-	public function set_score(int $value)			{return $this->score 		= $value;}
-	public function set_credit(int $value)			{return $this->credit 		= $value;}
+	public function set_id(int $value)				{$this->id 			= $value;}
+	public function set_name(string $value)			{$this->name 		= $value;}
+	public function set_pilote(array $value)		{$this->pilote 		= $value;}
+	public function set_mecanicien(array $value)	{$this->mecanicien 	= $value;}
+	public function set_vaisseau(array $value)		{$this->vaisseau 	= $value;}
+	public function set_module(array $value)		{$this->module 		= $value;}
+	public function set_equipement(array $value)	{$this->equipement 	= $value;}
+	public function set_score(int $value)			{$this->score 		= $value;}
+	public function set_credit(int $value)			{$this->credit 		= $value;}
 
 	public function from_name($name){
 		$this->set_name($name);

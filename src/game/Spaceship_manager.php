@@ -37,6 +37,8 @@ class Spaceship_manager
     	$prepare->execute();
 
         $spaceship->set_id($this->pdo->lastInsertId());
+
+        return $this->pdo->lastInsertId();
     }
 
     // MET A JOUR L INTERFACE spaceship DANS LA DB

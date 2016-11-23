@@ -20,12 +20,10 @@ class Team_manager {
 // STOCK LES INSTANCES SITUES DANS $array DANS LA DB
 	public function store(Team $team){
 
-		$pdo = get_pdo();
-
 		$name = $team->get_name();
 		$credits = $team->get_credit();
 
-		$prepare = $pdo->prepare('INSERT INTO teams (name, credit) VALUES (?, ?)') ;
+		$prepare = $this->pdo->prepare('INSERT INTO teams (name, credit) VALUES (?, ?)') ;
 
 		$prepare->bindValue(1, $name, PDO::PARAM_STR);
 		$prepare->bindValue(2, $credits, PDO::PARAM_INT);
@@ -33,8 +31,10 @@ class Team_manager {
 		$prepare->execute();
 
 		$first_id = $this->pdo->lastInsertId();
+		echo $first_id;
 
 		$team->set_id($first_id);
+		return $team;
 	}
 
     public function update(Team $team, $property, $value){
