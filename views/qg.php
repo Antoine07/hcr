@@ -17,27 +17,34 @@
 		<div class="row">
 			<div class="col s6">
 				<div class="qg_card">
-					<h6>Mitch Polid - Pilote</h6>
+					<h6><?php echo $pilot->get_name();?></h6>
 						<ul class="qg_stats">
-							<li>Int: 34</li>
+							<li>Intelligence: <?php  echo $pilot->get_stats('intelligence')?></li>
 							<span>|</span>
-							<li>Dex: 120</li>
+							<li>Dextérité: <?php  echo $pilot->get_stats('dexterity')?></li>
 							<span>|</span>
-							<li>End: 200</li>
+							<li>Endurance: <?php  echo $pilot->get_stats('stamina')?></li>
 							<span>|</span>
-							<li>Rap: 213</li>
+							<li>Rapidité: <?php  echo $pilot->get_stats('speed')?></li>
 							<span>|</span>
-							<li>For: 304</li>
+							<li>Force: <?php  echo $pilot->get_stats('strength')?></li>
 						</ul>
 
-					<div class="input-field">
-						<select>
-							<option value="" disabled selected>Activité</option>
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-							<option value="3">Option 3</option>
-						</select>
-					</div>
+					<form action="<?php echo url('qg') ?>" method="POST">
+						<div class="input-field"   title="Activité assginé avant la course. Elle permet d'augmenter les compétences de ce personnage">
+							<select name="activity1">
+								<option value="" disabled selected>Activité</option>
+								<?php foreach ($list_activities as $activity): ?>
+									<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
+								<?php endforeach ?>								<?php foreach ($list_equipment as $equipment): ?>
+									<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+						<div class="input-field">
+							<button class="btn waves-effect waves-light" type="submit">Entrainer</button>	
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="col s6 qg_spaceship">
@@ -47,80 +54,124 @@
 		<div class="row">
 			<div class="col s6">
 				<div class="qg_card">
-					<h6>Mitch Polid - Mécanicien</h6>
+					<h6><?php echo $mechanic->get_name();?></h6>
 						<ul class="qg_stats">
-							<li>Int: 34</li>
+							<li>Intelligence: <?php  echo $mechanic->get_stats('intelligence')?></li>
 							<span>|</span>
-							<li>Dex: 129</li>
+							<li>Dextérité: <?php  echo $mechanic->get_stats('dexterity')?></li>
 							<span>|</span>
-							<li>End: 200</li>
+							<li>Endurance: <?php  echo $mechanic->get_stats('stamina')?></li>
 							<span>|</span>
-							<li>Rap: 213</li>
+							<li>Rapidité: <?php  echo $mechanic->get_stats('speed')?></li>
 							<span>|</span>
-							<li>For: 304</li>
+							<li>Force: <?php  echo $mechanic->get_stats('strength')?></li>
 						</ul>
 
-					<div class="input-field">
-						<select>
-							<option value="" disabled selected>Activité</option>
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-							<option value="3">Option 3</option>
-						</select>
-					</div>
+					<form action="<?php echo url('qg') ?>" method="POST">
+						<div class="input-field"   title="Activité assginé avant la course. Elle permet d'augmenter les compétences de ce personnage">
+							<select name="activity2">
+								<option value="" disabled selected>Activité</option>
+								<?php foreach ($list_activities as $activity): ?>
+									<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
+								<?php endforeach ?><?php foreach ($list_equipment as $equipment): ?>
+									<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+								<?php endforeach ?>
+							</select>
+						</div>
+						<div class="input-field">
+							<button class="btn waves-effect waves-light" type="submit">Entrainer</button>	
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="col offset-s1 s4 qg_infos_spaceship">
 				<div class="qg_card">
-					<h6>Speed runner AS-250 - Vaisseau</h6>
+					<h6><?php echo $spaceship->get_name(); ?></h6>
 					<ul class="qg_stats">
-						<li>Aero: 34</li>
+						<li>Aerodynamique: <?php echo $spaceship->get_stats('aerodynamics'); ?></li>
 						<span>|</span>
-						<li>Sol: 120</li>
+						<li>Solidité: <?php echo $spaceship->get_stats('solidity'); ?></li>
 						<span>|</span>
-						<li>Conf: 200</li>
+						<li>Confort: <?php echo $spaceship->get_stats('cosiness'); ?></li>
 						<span>|</span>
-						<li>Nav: 213</li>
+						<li>Navigation: <?php echo $spaceship->get_stats('shipping'); ?></li>
 						<span>|</span>
-						<li>Vit: 105</li>
+						<li>Vitesse: <?php echo $spaceship->get_stats('speed'); ?></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="qg_module">
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>Module Navigation</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>Module Puissance</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>Module 3</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>Module 4</option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
+				<form action="<?php echo url('qg'); ?>" method ="POST">
+					<div class="input-field" title="Module obligatoire. Il permet d'augmenter fortement sa navigation. Si non équipé, vous ne pourrez participer a la course">
+						<select name="shipping">
+							<option value="" disabled selected>Module Navigation</option>
+							<?php foreach ($list_module as $module): ?>
+								<?php if ($module->get_type() == 'shipping'): ?>
+									<?php if ($spaceship->get_modules('nav')): ?>
+										<?php if ($module->get_id()==$spaceship->get_modules('nav')->get_id()): ?>
+											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<?php continue; ?>							
+										<?php endif ?>
+									<?php endif ?>
+									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+								<?php endif ?>
+							<?php endforeach ?>
+						</select>
+					</div>
+					<div class="input-field"  title="Module obligatoire. Il permet d'augmenter fortement sa vitesse. Si non équipé, vous ne pourrez participer a la course">
+						<select name="power">
+							<option value="" disabled selected>Module Puissance</option>
+							<?php foreach ($list_module as $module): ?>
+								<?php if ($module->get_type() == 'speed'): ?>
+									<?php if ($spaceship->get_modules('pow')): ?>
+										<?php if ($module->get_id()==$spaceship->get_modules('pow')->get_id()): ?>
+											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<?php continue; ?>							
+										<?php endif ?>
+									<?php endif ?>
+									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+								<?php endif ?>
+							<?php endforeach ?>
+						</select>
+					</div>
+					<div class="input-field"  title="Module facultatif. Il permet d'augmenter ses charactéristique. Si non équipé, vous pourrez participer a la course">
+						<select name='mod3'>
+							<option value="" disabled selected>Module 3</option>
+							<?php foreach ($list_module as $module): ?>
+								<?php if ($module->get_type() == 'complementaire'): ?>
+									<?php if ($spaceship->get_modules('comp_1')): ?>
+										<?php if ($module->get_id()==$spaceship->get_modules('comp_1')->get_id()): ?>
+											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<?php continue; ?>							
+										<?php endif ?>
+									<?php endif ?>
+									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+								<?php endif ?>
+							<?php endforeach ?>
+						</select>
+					</div>
+					<div class="input-field"  title="Module facultatif. Il permet d'augmenter ses charactéristique. Si non équipé, vous pourrez participer a la course">
+						<select name='mod4'>
+							<option value="" disabled selected>Module 4</option>
+							<?php foreach ($list_module as $module): ?>
+								<?php if ($module->get_type() == 'complementaire'): ?>
+									<?php if ($spaceship->get_modules('comp_2')): ?>
+										<?php if ($module->get_id()==$spaceship->get_modules('comp_2')->get_id()): ?>
+											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<?php continue; ?>							
+										<?php endif ?>
+									<?php endif ?>
+									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+								<?php endif ?>
+							<?php endforeach ?>	
+						</select>
+					</div>
+					<div class="input-field"   title="Valider vos changements !">
+						<button class="btn waves-effect waves-light" type="submit">Changer</button>	
+					</div>
+				</form>	
 			</div>
 		</div>
 	</div>

@@ -36,12 +36,15 @@ class Spaceship
 
     public function get_modules($type=NULL){
         $module_manager = new Module_manager(get_pdo());
-        if($type){
+        if($type && $this->modules_id[$type]){
             $module = $module_manager->get_single($this->modules_id[$type]);
-        } else {
+        } elseif ($type && is_null($this->modules_id[$type])) {
+            return null;
+        }
+        else {
             $module = [];
             foreach ($this->modules_id as $key => $value) {
-                $module[]=$module_manager->get_single($value);
+               if($value) $module[]=$module_manager->get_single($value);
             }
         }
         return $module;
