@@ -90,9 +90,9 @@ if ( '/' === $uri) {
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	 }
-}elseif ( $prefix.'/buy_module' === $uri) {
+}elseif ( $prefix.'/buy' === $uri) {
 	if($user_id != null){
-		buy_module_action();
+		buy_action();
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	 }

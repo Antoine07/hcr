@@ -2,6 +2,7 @@
 
 class Module {
   private $id=NULL;
+  private $team_id;
   private $name;
   private $price;
   private $brand;
@@ -17,6 +18,7 @@ class Module {
   
   // getter
   public function get_id()        {return $this->id;}
+  public function get_team_id()   {return $this->team_id;}
   public function get_name()      {return $this->name;}
   public function get_price()     {return $this->price;}
   public function get_brand()     {return $this->brand;}
@@ -26,11 +28,12 @@ class Module {
   public function get_stat(string $name){return $this->stats[$name];}
 
   // setter
-  public function set_id(int $value)          {$this->id    = $value;}
-  public function set_name(string $value)     {$this->name  = $value;}
-  public function set_price(int $value)       {$this->price = $value;}
-  public function set_brand(string $value)    {$this->brand = $value;}
-  public function set_type(string $value)     {$this->type  = $value;}
+  public function set_id(int $value)          {$this->id      = $value;}
+  public function set_team_id($value)         {$this->team_id = $value;}
+  public function set_name(string $value)     {$this->name    = $value;}
+  public function set_price(int $value)       {$this->price   = $value;}
+  public function set_brand(string $value)    {$this->brand   = $value;}
+  public function set_type(string $value)     {$this->type    = $value;}
   public function set_aerodynamics(int $value){$this->stats['aerodynamics']  = $value;}
   public function set_solidity(int $value)    {$this->stats['solidity']      = $value;}
   public function set_cosiness(int $value)    {$this->stats['cosiness']      = $value;}

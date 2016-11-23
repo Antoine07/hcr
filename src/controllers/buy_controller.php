@@ -1,6 +1,6 @@
 <?php 
 
-function buy_module_action(){
+function buy_action(){
 	if($_SERVER['REQUEST_METHOD'] == 'POST') // si on est en méthode POST
 	{
 		// + pour test (création et attribution de la team)
@@ -16,37 +16,58 @@ function buy_module_action(){
 		
 		$prefix = '/' . getEnv('URL_PREFIX');
 		$team_id   = $_SESSION['user']['team_id'];
-		$module_id = $_POST['module_id'];
+		$item_id = $_POST['item_id'];
+		$item_category = $_POST['item_category'];
 
-		echo '<pre>';
-		  print_r($_SESSION['user']);
-		echo '</pre>';
-
-		$_SESSION['message'] = '';
+		$_SESSION['message'] = NULL;
 		$pdo            = get_pdo();
-		$module_manager = new game\Module_manager($pdo);
+
+		// Récupération des données
+		switch ($item_category) {
+			case 'module':
+				$item_manager 	= new game\Module_manager($pdo);
+				break;
+			case 'equipment':
+				$item_manager 	= new game\Equipment_manager($pdo);
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 		$team_manager   = new game\Team_manager($pdo);
 		
-		$module = $module_manager->get_single($module_id);
-		$team   = $team_manager->get_single($team_id);
+		$item = $item_manager->get_single($item_id);
+		$team = $team_manager->get_single($team_id);
 
-		$mod_p = $module->get_price();
-		$tea_c = $team->get_credit();
-		if ($mod_p<=$tea_c) {
-			$_SESSION['message'] = "Module acheté !";
+		$item_p       = $item->get_price();
+		$item_team_id = $item->get_team_id();
+		$team_c       = $team->get_credit();
 
-			$new_tea_c = $tea_c-$mod_p;
-			$team_id = $team->get_id();
+		// Traitement des données
 
-			$team_manager->update($team,'credit',$new_tea_c);
-			$module_manager->update($module ,'team_id',$team_id);
-			header('Location: '.$prefix.'/shop');
-		}else{
-			$_SESSION['message'] = "Vous n'avez pas assez de crédit !";
-			header('Location: '.$prefix.'/shop');
+		if($item_team_id){
+			$_SESSION['message'] = "Trop tard ! Quelqu'un a été plus rapide que vous";
 		}
+		else
+		{
+			if ($item_p<=$team_c) {
+				$_SESSION['message'] = $item->get_name()." a bien été ajouté à votre inventaire !";
+
+				$new_team_c = $team_c-$item_p;
+				$team_id    = $team->get_id();
+
+				$team_manager->update($team,'credit',$new_team_c);
+				$item_manager->update($item ,'team_id',$team_id);
+			}else{
+				$_SESSION['message'] = "Vous n'avez pas assez de crédit !";
+				
+			}
+		}
+		header('Location: '.$prefix.'/shop');
+		
 		/*echo '<pre>';
-			print_r($module);
+			print_r($item);
 			echo '<hr/><br/>';
 			print_r($team);
 		echo '</pre>';*/

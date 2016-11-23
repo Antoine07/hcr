@@ -75,8 +75,9 @@
 											<?php echo $module->get_type(); ?>
 										</span>
 									</h6>
-									<form action="/index.php/buy_module" method="POST">
-										<input name="module_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
+									<form action="/index.php/buy" method="POST">
+										<input name="item_category" type="text" hidden="none" value="module">
+										<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
 										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $module->get_price(); ?> c">
 									</form>
 								</div>
@@ -125,7 +126,11 @@
 											<?php echo $equipment->get_brand(); ?>
 										</span>
 									</h6>
-									<button class="btn buy waves-effect waves-light"> <?php echo $equipment->get_price(); ?> crédits</button>	
+									<form action="/index.php/buy" method="POST">
+										<input name="item_category" type="text" hidden="none" value="equipment">
+										<input name="item_id" type="number" hidden="none" value=<?php echo $equipment->get_id(); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $equipment->get_price(); ?> c">
+									</form>	
 								</div>
 								<div class="more" style="display: none;">
 									<ul class="shop_stats">

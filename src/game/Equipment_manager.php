@@ -31,7 +31,7 @@ class Equipment_manager {
 /**
  * [stocke les equipements et activités associées dans la base de données]
  * @param  [array] $list_equipment [tableau d'instance des équipements]
- * @return [type]                 [description]
+ * @return [type]                  [description]
  */
 	public function store($list_equipment)
 	{
@@ -99,6 +99,18 @@ class Equipment_manager {
     public function populate($nb){
         $list_equipment = $this->generate($nb);
         $this->store($list_equipment);
+    }
+
+
+    public function update(Equipment $equipment, $property, $value){
+      
+        $setter = 'set_'.$property;
+        if(method_exists($equipment, $setter)){
+            $equipment->$setter($value);
+        }
+        $request=("UPDATE equipments SET ".$property."=".$value." WHERE id=".$equipment->get_id());
+        $prepare=$this->pdo->prepare($request);
+        $prepare->execute();
     }
 
 	public function update_team_id(Equipment $equipment, Team $team)
