@@ -25,24 +25,26 @@
 				<div class="col s6 sell_modules">
 					<h5>Modules</h5>
 					<div class="content_object">
-						<div class="sell_card">
-							<h6>Objet 1</h6>
-							<button class="btn btnsell waves-effect waves-light" id="btnsell">
-								Vendre l'objet
-							</button>
-						</div>
-						<div class="sell_card">
-							<h6>Objet 1</h6>
-							<button class="btn btnsell waves-effect waves-light" id="btnsell">
-								Vendre l'objet
-							</button>
-						</div>
-						<div class="sell_card">
-							<h6>Objet 1</h6>
-							<button class="btn btnsell waves-effect waves-light" id="btnsell">
-								Vendre l'objet
-							</button>
-						</div>
+						<?php foreach ($mod_salable_list as $key => $module): ?>
+							<?php 
+								$price = $module->get_price();
+								$sell_price = $price/2;
+							?>
+							<div class="sell_card">
+								<div class="shop_element">
+									<div class="shop_less">
+										<h6>
+											<?php echo $module->get_name(); ?>
+										</h6>
+										<form action="/index.php/sell" method="POST">
+											<input name="item_category" type="text" hidden="none" value="module">
+											<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
+											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" <?php echo $sell_price ?> c">
+										</form>
+									</div>
+								</div>
+							</div>
+						<?php endforeach ?>
 						<div class="sell_card">
 							<h6>Objet 1</h6>
 							<button class="btn btnsell waves-effect waves-light" id="btnsell">
@@ -54,7 +56,26 @@
 				<div class="col s6 sell_equipments">
 					<h5>Equipements</h5>
 					<div class="content_object">
-						
+						<?php foreach ($equipment_salable_list as $key => $equipment): ?>
+							<?php 
+								$price = $equipment->get_price();
+								$sell_price = $price/2;
+							?>
+							<div class="sell_card">
+								<div class="shop_element">
+									<div class="shop_less">
+										<h6>
+											<?php echo $equipment->get_name(); ?>
+										</h6>
+										<form action="/index.php/sell" method="POST">
+											<input name="item_category" type="text" hidden="none" value="equipment">
+											<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
+											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" <?php echo $sell_price ?> c">
+										</form>
+									</div>
+								</div>
+							</div>
+						<?php endforeach ?>
 					</div>
 				</div>
 			</div>
