@@ -7,14 +7,17 @@ function store_action(){
 
 	$username = h($_POST['pseudo']);
 	$email = h($_POST['email']);
+	$team_name = $_POST['team_name'];
 
 	$pdo = get_pdo();
 
 	$query_p = sprintf('SELECT username FROM users WHERE username="'.$username.'";');
 	$query_m = sprintf('SELECT email FROM users WHERE email="'.$email.'";');
+	$query_t = sprintf('SELECT name FROM teams WHERE name="'.$team_name.'";');
 
 	$verif_p = $pdo->query($query_p);
 	$verif_m = $pdo->query($query_m);
+	$verif_t = $pdo->query($query_t);
 
 	if(empty($_POST['pseudo'])){
 		$_SESSION['errors']['pseudo'] = 'Veuillez renseigner un pseudo';
@@ -30,10 +33,17 @@ function store_action(){
 		$_SESSION['errors']['email'] = 'Veuillez renseigner un email';
 		header('Location: /');
 	}
+
+	if(empty($_POST['team_name'])){
+		$_SESSION['errors']['team_name'] = 'Veuillez renseigner un nom pour votre team';
+		header('Location: /');
+	}
      
 	if ($donnees = $verif_p->fetch()){ $_SESSION['errors']['pseudo'] = 'Pseudo déjà utilisé'; header('Location: /');}
 
 	if ($donnees = $verif_m->fetch()){ $_SESSION['errors']['email'] = 'Email déjà utilisé'; header('Location: /');}
+	
+	if ($donnees = $verif_t->fetch()){ $_SESSION['errors']['team_name'] = 'Nom de team déjà utilisé'; header('Location: /');}
 
 	if(empty($_SESSION['errors'])){
 
@@ -45,7 +55,7 @@ function store_action(){
 
 	// CREATE TEAM
 		$team = new game\Team;
-		$team->from_name($username);
+		$team->from_name($team_name);
 
 	// STORE TEAM
 		$team_manager = new game\Team_manager($pdo);

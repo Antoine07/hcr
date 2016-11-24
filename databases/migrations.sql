@@ -89,6 +89,7 @@ CREATE TABLE `activities` (
 CREATE TABLE `npcs` (
   `id` int(10) UNSIGNED NOT NULL,
   `team_id` int(10) UNSIGNED DEFAULT NULL,
+  `activity_id` int(10) UNSIGNED DEFAULT NULL,
   `name` VARCHAR(255) NOT NULL,
   `strength` SMALLINT UNSIGNED NOT NULL,
   `dexterity` SMALLINT UNSIGNED NOT NULL,
@@ -109,7 +110,7 @@ CREATE TABLE `npcs` (
 CREATE TABLE `teams` (
   `id` INT(10) UNSIGNED NOT NULL,
   `name` VARCHAR(30) NOT NULL,
-  `score` INT(10) UNSIGNED NOT NULL,
+  `score` INT(10) UNSIGNED DEFAULT 0,
   `credit` INT(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -345,6 +346,12 @@ ALTER TABLE npcs
 ADD CONSTRAINT npcs_team_id_teams_id 
 FOREIGN KEY(team_id) 
 REFERENCES teams(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE npcs 
+ADD CONSTRAINT npcs_activity_id_activities_id 
+FOREIGN KEY(activity_id) 
+REFERENCES activities(id) 
 ON DELETE SET NULL;
 
 ALTER TABLE users 

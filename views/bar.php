@@ -1,5 +1,6 @@
 <?php ob_start() ; ?>
 	<div class="content_bar">
+		<?php echo $header_team; ?>
 		 <div class="row content_bar_item">
 			<div class="col s6 bar_left">
 				<h5>Pilotes</h5>

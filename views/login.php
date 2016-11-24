@@ -28,6 +28,11 @@
 			          		<label for="icon_prefix">Identifiants</label>		
 	 			</div>
 	 			<div class="input-field">
+	 				<i class="material-icons prefix">supervisor_account</i>
+			          		<input id="team_name" name="team_name" type="text" class="validate" autocomplete="off">
+			          		<label for="icon_prefix">Nom de votre team</label>		
+	 			</div>
+	 			<div class="input-field">
 				          	<i class="material-icons prefix">email</i>
           					<input id="email" name="email" type="email" class="validate" autocomplete="off">
           					<label for="email">Email</label>
