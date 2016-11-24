@@ -53,22 +53,25 @@ function buy_action(){
 				$sufix = '/bar';
 				$race = $item->get_race();
 				$message = [
-					'Trop tard ! '.$item_name.' est parti pour quelqu\'un d\'autre.',
+					'Trop tard ! '.$item_name.' est parti pour quelqu\'un d\'autre :',
 					$item_name.' fait désormais parti de votre équipe !',
-					$item_name.' demande plus de crédit.'
+					$item_name.' demande plus de crédit :'
 				];
 				$dialogue = [
 					"humain"=>[	['...'],
-							   	['J\'accepte votre proposition !','Affaire conclu !','C\'est un plaisir !'],
-							   	['Vous essayer de m\'arnaquer ?!','A ce prix la ? Certainemant pas !','Faite vous un peu d\'argents et revenez me voire !']],
+							   	['J\'accepte votre proposition !','Affaire conclue !','C\'est un plaisir !'],
+							   	['Vous essayez de m\'arnaquer ?!','A ce prix là ? Certainement pas !','Faites vous un peu d\'argent et revenez me voir !','C\'est tout ce que vous avez à me proposer ?','Je vaux bien plus que cela...']
+							  ],
 
 					"robot"=>[	['...'],
-							   	[$item_name.' lance le protocole d\'acceptation.',$item_name.' accepte : transfert de crédits en cours...',$item_name.' initie le déplacement vert nouveau QG...'],
-							   	[$item_name.' détecte que offre < demande...',$item_name.' changement de status : Outré !',$item_name.' protocole de refu engagé...','Tentative de négociation abusive détecté !']],
+							   	[$item_name.' lance le protocole d\'acceptation.',$item_name.' accepte : transfert de crédits en cours...',$item_name.' initie le déplacement vert nouveau QG...','Mise en quarantaine du statut chaumeur.',$item_name.' ajoute les membres de '.$team->get_name().' dans liste amis'],
+							   	[$item_name.' détecte que: offre inférieur à la demande...','Changement de statut : Outré !','Protocole de refus engagé...',$item_name.' Détecte une tentative de négociation abusive !']
+							 ],
 
 					"alien"=>[	['...'],
 							   	['Nenu anan\'dam to gaman\'nin\'candi.','Ku peak k\'nta l\'tow.','An dam a\'lk nam.'],
-							   	['Lok numa t\'sani mokmok...','Ku jaxum '.$item->get_price().' !!! Mok\'nolok !','Tr\'ik dnte anan fe\'ce !']]
+							   	['Lok numa t\'sani mokmok...','Ku jaxum '.$item->get_price().' !!! Mok\'nolok !','Tr\'ik dnte anan fe\'ce !','Moks\'tu nach\'al muluk... Neko da ?','Drabno anan\'dam k\'tana d\'han kuh']
+							 ]
 				];
 				$message[0].="<br/>"."`` ".$dialogue[$race][0][0]." ``";
 				$message[1].="<br/>"."`` ".$dialogue[$race][1][array_rand($dialogue[$race][1])]." ``";
