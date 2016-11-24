@@ -5,7 +5,8 @@
 		$future_races = $manager->get_future();
 		$past_races  = $manager->get_past();
 		$team_manager = new game\Team_manager(get_pdo());
-
+		$nom_page = 'Courses';
+		include '../views/header_team.php' ;
 		include '../views/courses.php' ;
 	}
 	function participate_action(){
