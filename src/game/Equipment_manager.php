@@ -96,8 +96,14 @@ class Equipment_manager {
      * @param  [number] : Nombre d'Equipment(s) souhaité(s)
      * @return [nothing]!
      */
-    public function populate($nb){
-        $list_equipment = $this->generate($nb);
+    public function populate(){
+        $pdo = $this->pdo;
+
+        $res = $pdo->query('SELECT COUNT(*) FROM users;');
+
+        $res = $res->fetch();
+
+        $list_equipment = $this->generate($res['COUNT(*)']*2);
         $this->store($list_equipment);
     }
 

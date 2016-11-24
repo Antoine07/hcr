@@ -39,33 +39,25 @@ if ( '/' === $uri) {
 	 }
 }elseif($prefix.'/generatespaceships' === $uri) {
 
-	$spaceship = new game\Spaceship();
-	$spaceship->from_random();
-	$manager = new game\Spaceship_manager(get_pdo());
-	$manager->store($spaceship);
-	$manager->update($spaceship, 'team_id', 1);
 
-	echo '<pre>';
-	print_r($spaceship->get_team());
-	echo '</pre>';
-	$manager->delete($spaceship);
+	$manager = new game\Spaceship_manager(get_pdo());
+	$manager->populate();
+
 
 }elseif($prefix.'/generatenpc' === $uri) {
-	generate_NPCs_action(10, 10);
- 
-}elseif($prefix.'/generatemodule' === $uri) {
-	$module_manager = new game\Module_manager(get_pdo());
 
-	$list_module = $module_manager->generate(10);
+	$manager = new game\NPC_manager(get_pdo());
+	$manager->populate();
+
+}elseif($prefix.'/generatemodule' === $uri) {
 	
-	$module_manager->store($list_module);
+	$manager = new game\Module_manager(get_pdo());
+	$manager->populate();
  
 }elseif($prefix.'/generateequipment' === $uri) {
-	$equipment_manager = new game\Equipment_manager(get_pdo());
 
-	$list_equipment = $equipment_manager->generate(10);
-	
-	$equipment_manager->store($list_equipment);
+	$equipment_manager = new game\Equipment_manager(get_pdo());
+	$equipment_manager->populate();
  
 } elseif($prefix.'/generaterace' === $uri) {
 

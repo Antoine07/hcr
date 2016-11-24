@@ -94,8 +94,14 @@ class Module_manager {
      * @param  [number] : Nombre de module(s) souhaité(s)
      * @return [nothing]!
      */
-    public function populate($nb){
-        $list_module = $this->generate($nb);
+    public function populate(){
+        $pdo = $this->pdo;
+
+        $res = $pdo->query('SELECT COUNT(*) FROM users;');
+
+        $res = $res->fetch();
+
+        $list_module = $this->generate($res['COUNT(*)']*2);
         $this->store($list_module);
     }
 
