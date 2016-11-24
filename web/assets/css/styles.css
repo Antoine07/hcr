@@ -16,6 +16,10 @@
 .dispnone{
 	display:none!important;
 }
+
+.flex {
+	display: flex;
+}
 /* *********** COULEURS *********** */
 .grey-span{
 	color:#737272!important;
