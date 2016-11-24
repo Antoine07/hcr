@@ -36,4 +36,5 @@
 	  		$(".shop_left, .shop_right").fadeIn(350, function() {});
   		});
 	});
+   	$('select').material_select();
 });
