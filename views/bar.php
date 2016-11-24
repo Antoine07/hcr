@@ -8,7 +8,6 @@
 						<div class="bar_card">
 							<div class="bar_element">
 								<div class="bar_less">
-									<i class="material-icons drop">arrow_drop_down</i>
 									<img class="bar_portrait" src="../images/<?php echo $pilote->get_id()?>.png" alt="">
 									<h6><?php echo $pilote->get_name() ?>
 										<br><span>
@@ -22,7 +21,7 @@
 										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $pilote->get_price(); ?> c">
 									</form>
 								</div>
-								<div class="more" style="display: none;">
+								<div class="more">
 									<ul class="bar_stats">
 										<li>Intelligence : 
 										<span><?php echo $pilote->get_stats('intelligence');?></span>
@@ -57,7 +56,6 @@
 						<div class="bar_card">
 							<div class="bar_element">
 								<div class="bar_less">
-									<i class="material-icons drop">arrow_drop_down</i>
 									<img class="bar_portrait" src="../images/<?php echo $mecanicien->get_id()?>.png" alt="">
 									<h6><?php echo $mecanicien->get_name() ?>
 										<br><span>
@@ -72,7 +70,7 @@
 										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $mecanicien->get_price(); ?> c">
 									</form>
 								</div>
-								<div class="more" style="display: none;">
+								<div class="more">
 									<ul class="bar_stats">
 										<li>Intelligence : 
 										<span><?php echo $mecanicien->get_stats('intelligence');?></span>

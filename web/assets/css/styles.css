@@ -418,8 +418,6 @@ input:-webkit-autofill {
 
 }
 .content_card_bar{
-	overflow:scroll!important;
-	height: 24.1em;
 }
 
 .bar_less {
@@ -784,8 +782,7 @@ input:-webkit-autofill {
 
 }
 .content_card{
-	overflow:scroll!important;
-	height:20em;
+
 }
 
 .shop_less {
