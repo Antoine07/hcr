@@ -73,7 +73,22 @@
 										<?php echo h($module->get_name()); ?>
 										<br>
 										<span>
-											<?php echo h($module->get_type()); ?>
+											<?php ;
+												switch ($module->get_type()) {
+													case 'shipping':
+														echo "Navigation";
+														break;
+													case 'speed':
+														echo "Puissance";
+														break;
+													case 'complementaire':
+														echo "Complémentaire";
+														break;
+													default:
+														# code...
+														break;
+												}
+											 ?>
 										</span>
 									</h6>
 									<form action="/index.php/buy" method="POST">
