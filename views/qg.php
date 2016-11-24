@@ -126,6 +126,8 @@
 										<?php else: ?>	
 											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
+									<?php else: ?>
+										<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 									<?php endif ?>
 								<?php endif ?>
 							<?php endforeach ?>
@@ -143,6 +145,8 @@
 										<?php else: ?>	
 											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
+									<?php else: ?>
+										<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 									<?php endif ?>
 								<?php endif ?>
 							<?php endforeach ?>
@@ -160,6 +164,8 @@
 										<?php else: ?>
 											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
+									<?php else: ?>
+										<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 									<?php endif ?>
 								<?php endif ?>
 							<?php endforeach ?>
