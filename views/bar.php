@@ -7,6 +7,7 @@
 				<div class="content_card_bar">
 					<?php foreach ($npcs_pilotes as $pilote): ?>
 						<?php $hide_stat=npc_stats_hide($pilote); ?>
+						<?php $color_stat=npc_stats_color($pilote); ?>
 						<div class="bar_card">
 							<div class="bar_element">
 								<div class="bar_less">
@@ -25,24 +26,24 @@
 								</div>
 								<div class="more">
 									<ul class="bar_stats">
-										<li>Intelligence : 
-										<span><?php echo $hide_stat['intelligence']? '??' : h($pilote->get_stats('intelligence'));?></span>
+										<li <?php echo 'class="'.$color_stat['intelligence'].'-text"' ?> >Intelligence : 
+										<span <?php echo 'class="'.$color_stat['intelligence'].'-text"' ?> ><?php echo $hide_stat['intelligence']? '???' : h($pilote->get_stats('intelligence'));?></span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Dextérité : 
-										<span><?php echo $hide_stat['dexterity']? '??' : h($pilote->get_stats('dexterity'));?></span>
+										<li <?php echo 'class="'.$color_stat['dexterity'].'-text"' ?> >Dextérité : 
+										<span <?php echo 'class="'.$color_stat['dexterity'].'-text"' ?> ><?php echo $hide_stat['dexterity']? '???' : h($pilote->get_stats('dexterity'));?></span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Endurance : 
-										<span><?php echo $hide_stat['stamina']? '??' : h($pilote->get_stats('stamina'));?><span>
+										<li <?php echo 'class="'.$color_stat['stamina'].'-text"' ?> >Endurance : 
+										<span <?php echo 'class="'.$color_stat['stamina'].'-text"' ?> ><?php echo $hide_stat['stamina']? '???' : h($pilote->get_stats('stamina'));?><span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Rapidité : 
-										<span><?php echo $hide_stat['speed']? '??' : h($pilote->get_stats('speed'));?></span>
+										<li <?php echo 'class="'.$color_stat['speed'].'-text"' ?> >Rapidité : 
+										<span <?php echo 'class="'.$color_stat['speed'].'-text"' ?> ><?php echo $hide_stat['speed']? '???' : h($pilote->get_stats('speed'));?></span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Force : 
-										<span><?php echo $hide_stat['strength']? '??' : h($pilote->get_stats('strength'));?><span>
+										<li <?php echo 'class="'.$color_stat['strength'].'-text"' ?> >Force : 
+										<span <?php echo 'class="'.$color_stat['strength'].'-text"' ?> ><?php echo $hide_stat['strength']? '???' : h($pilote->get_stats('strength'));?><span>
 										</li>
 									</ul>
 								</div>
@@ -56,6 +57,7 @@
 				<div class="content_card_bar">
 					<?php foreach ($npcs_mecaniciens as $mecanicien): ?>
 						<?php $hide_stat=npc_stats_hide($mecanicien); ?>
+						<?php $color_stat=npc_stats_color($mecanicien); ?>
 						<div class="bar_card">
 							<div class="bar_element">
 								<div class="bar_less">
@@ -75,24 +77,24 @@
 								</div>
 								<div class="more">
 									<ul class="bar_stats">
-										<li>Intelligence : 
-										<span><?php echo $hide_stat['intelligence']? '??' : h($mecanicien->get_stats('intelligence'));?></span>
+										<li <?php echo 'class="'.$color_stat['intelligence'].'-text"' ?> >Intelligence : 
+										<span <?php echo 'class="'.$color_stat['intelligence'].'-text"' ?> ><?php echo $hide_stat['intelligence']? '???' : h($mecanicien->get_stats('intelligence'));?></span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Dextérité : 
-										<span><?php echo $hide_stat['dexterity']? '??' : h($mecanicien->get_stats('dexterity'));?></span>
+										<li <?php echo 'class="'.$color_stat['dexterity'].'-text"' ?> >Dextérité : 
+										<span <?php echo 'class="'.$color_stat['dexterity'].'-text"' ?> ><?php echo $hide_stat['dexterity']? '???' : h($mecanicien->get_stats('dexterity'));?></span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Endurance : 
-										<span><?php echo $hide_stat['stamina']? '??' : h($mecanicien->get_stats('stamina'));?><span>
+										<li <?php echo 'class="'.$color_stat['stamina'].'-text"' ?> >Endurance : 
+										<span <?php echo 'class="'.$color_stat['stamina'].'-text"' ?> ><?php echo $hide_stat['stamina']? '???' : h($mecanicien->get_stats('stamina'));?><span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Rapidité : 
-										<span><?php echo $hide_stat['speed']? '??' : h($mecanicien->get_stats('speed'));?></span>
+										<li <?php echo 'class="'.$color_stat['speed'].'-text"' ?> >Rapidité : 
+										<span <?php echo 'class="'.$color_stat['speed'].'-text"' ?> ><?php echo $hide_stat['speed']? '???' : h($mecanicien->get_stats('speed'));?></span>
 										</li>
 										<span class="grey-span">|</span>
-										<li>Force : 
-										<span><?php echo $hide_stat['strength']? '??' : h($mecanicien->get_stats('strength'));?><span>
+										<li <?php echo 'class="'.$color_stat['strength'].'-text"' ?> >Force : 
+										<span <?php echo 'class="'.$color_stat['strength'].'-text"' ?> ><?php echo $hide_stat['strength']? '???' : h($mecanicien->get_stats('strength'));?><span>
 										</li>
 									</ul>
 								</div>
