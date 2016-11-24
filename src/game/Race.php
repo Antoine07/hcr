@@ -15,7 +15,7 @@ class Race {
 	public function get_duration(){return $this->duration;}
 	public function get_ladder(){return $this->ladder;}
 	public function get_cost(){return $this->get_duration()*10;}
-	public function get_date(){return $this->date;}
+	public function get_date(){return explode(' ', $this->date)[0];}
 	public function get_credits_reward(int $position=NULL){
 		
 		$total_credits_reward = $this->get_duration() * 200;

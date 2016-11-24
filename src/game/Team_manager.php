@@ -145,6 +145,46 @@ class Team_manager {
 		return $teams;
 	}
 
+	public function get_by_race($id){
+
+		$pdo = $this->pdo;
+		$prepare = $pdo->prepare('SELECT team_id FROM races_participants WHERE race_id='.$id);
+		$prepare->execute();
+
+		$result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+		$teams = [];
+
+		foreach($result as $data) {
+			if(!$data['team_id']){continue;}
+			$teams[]= $this->get_single($data['team_id']);
+		}
+
+		return $teams;
+	}
+
+	public function is_participating($team_id, $race_id) {
+		$pdo = $this->pdo;
+		$prepare = $pdo->prepare('SELECT team_id FROM races_participants WHERE race_id='.$race_id.' AND team_id='.$team_id);
+		$prepare->execute();
+
+		$result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+		if(count($result)){
+			return TRUE;
+		}
+		return FALSE;
+	}
+
+	public function has_participated($team_id, $race_id) {
+		$pdo = $this->pdo;
+		$prepare = $pdo->prepare('SELECT team_id FROM races_history WHERE race_id='.$race_id.' AND team_id='.$team_id);
+		$prepare->execute();
+		$result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+		if(count($result)){
+			return TRUE;
+		}
+		return FALSE;		
+	}
+
 // SETTER POUR PDO
 	public function set_pdo($pdo)
 	{

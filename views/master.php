@@ -60,6 +60,7 @@
   <script>
     Materialize.toast("<?php echo $_SESSION['message']; ?>",8000);
   </script>
+  <?php $_SESSION['message'] = NULL;?>
 <?php endif ?>
 
 </html>

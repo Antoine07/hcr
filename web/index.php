@@ -77,6 +77,39 @@ if ( '/' === $uri) {
 		$manager->generate(5, false)
 	);
 	$manager->store($races);
+	$past_races = $manager->get_past();
+	$team_manager = new game\Team_manager(get_pdo());
+	$teams = $team_manager->get_all();
+	
+	foreach ($past_races as $key => $race) {
+		foreach ($teams as $key => $team) {
+			$chance = mt_rand(1,100);
+			if ($chance > 50) {continue;}
+			$manager->add_participant($team->get_id(), $race->get_id());
+			$manager->add_log_entry($team->get_id(), $race->get_id(), 'Il s\'est passé plein de choses dans cette course !', mt_rand(1,5));
+		}
+	}
+
+} elseif($prefix.'/showparticipants' === $uri) {
+	$manager = new game\Race_manager(get_pdo());
+	$races = $manager->get_future();
+	$team_manager = new game\Team_manager(get_pdo());
+	foreach ($races as $key => $race) {
+		echo '<pre>';
+		print_r($race);
+		echo '</pre>';
+		echo '<pre>';
+		print_r($team_manager->get_by_race($race->get_id()));
+		echo '</pre>';
+	}
+
+} elseif($prefix.'/giverewards' === $uri){
+	
+	$manager = new game\Race_manager(get_pdo());
+	$races = $manager->get_past();
+	foreach ($races as $key => $race) {
+		$manager->give_rewards($race->get_id());
+	}
 
 } elseif ( $prefix.'/qg' === $uri) {
 	if($user_id != null){
@@ -102,6 +135,16 @@ if ( '/' === $uri) {
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	  }
+}elseif ($prefix.'/participate' === $uri) {
+	if($user_id != null){
+		echo '<pre>';
+		print_r($_POST);
+		echo '</pre>';
+		participate_action();
+	}else{
+	  	header('Location: '.$prefix.'/login');
+	}	
+
 }elseif ( $prefix.'/deconnexion' === $uri) {
 	deco_action();
 }

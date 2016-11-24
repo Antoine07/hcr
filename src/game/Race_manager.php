@@ -67,7 +67,7 @@ class Race_manager {
 	
 	public function get_single($id){
 		
-		$query  = $this->pdo->query('SELECT * FROM races WHERE id = '.$id);
+		$query  = $this->pdo->query('SELECT * FROM races WHERE id='.$id);
 	    $result = $query->fetch(PDO::FETCH_ASSOC);
 	    if ($result['id']){
 			$Race = new Race();
@@ -89,6 +89,14 @@ class Race_manager {
 	    }
 
 	    return $races;
+	}
+
+	public function get_past(){
+		return $this->get_where('date < CURDATE() ORDER BY date DESC');
+	}
+
+	public function get_future(){
+		return $this->get_where('date >= CURDATE() ORDER BY date');
 	}
 
 	public function get_where($condition){
@@ -114,5 +122,69 @@ class Race_manager {
     	$prepare = $pdo->prepare("DELETE FROM races WHERE id=?");
     	$prepare->bindValue(1,$id,PDO::PARAM_INT);
     	$prepare->execute();
-    }	
+    }
+
+    public function add_log_entry($team_id, $race_id, $content, $position) {
+    	$pdo = $this->pdo;
+       	$prepare = $pdo->prepare("INSERT INTO races_history (`race_id`,`team_id`, `content`, `position`) VALUES (?, ?, ?, ?);");
+       	$prepare->bindValue(1, $race_id, PDO::PARAM_INT);
+       	$prepare->bindValue(2, $team_id, PDO::PARAM_INT);
+       	$prepare->bindValue(3, $content, PDO::PARAM_STR);
+       	$prepare->bindValue(4, $position, PDO::PARAM_INT);
+       	$prepare->execute();
+    }
+
+    public function get_log_entry($team_id, $race_id) {
+
+ 	    $query = $this->pdo->query('SELECT * FROM races_history WHERE team_id='.$team_id.' AND race_id='.$race_id);
+	    $result = $query->fetch(PDO::FETCH_ASSOC);
+	    return $result;   	
+    }
+
+    public function add_participant($team_id, $race_id) {
+    	$pdo = $this->pdo;
+       	$prepare = $pdo->prepare("INSERT INTO races_participants (`race_id`,`team_id`) VALUES (?, ?);");
+       	$prepare->bindValue(1, $race_id, PDO::PARAM_INT);
+       	$prepare->bindValue(2, $team_id, PDO::PARAM_INT);
+       	$prepare->execute();
+    }
+
+    public function give_rewards($race_id){
+    	
+    	$race = $this->get_single($race_id);
+
+    	$team_manager = new Team_manager($this->pdo);
+    	$teams = $team_manager->get_by_race($race_id);
+
+    	foreach ($teams as $team) {
+    		$team_id = $team->get_id();
+    		
+    		if ($team_manager->has_participated($team_id, $race_id)) {
+    			
+    			$log = $this->get_log_entry($team_id, $race_id);
+    			
+    			if ($log['position'] <= 3) {
+
+    				$score_reward =   (int) $race->get_score_reward($log['position']);
+    				$credits_reward = (int) $race->get_credits_reward($log['position']);
+
+    				$team_credits = $team->get_credit() + $credits_reward;
+    				$team_score   = $team->get_score() + $score_reward;
+
+    				$team_manager->update($team, 'score', $team_score);
+    				$team_manager->update($team, 'credit', $team_credits);
+    				
+    				echo $team->get_name().' est arrivé '.$log['position'].'eme à la course '.$race->get_name().' et gagne '.$credits_reward.' credits ainsi que '.$score_reward.' points de classement';
+    				
+    				echo '<pre>';
+    				print_r($log);
+    				echo '</pre>';
+    				
+    				echo '<pre>';
+    				print_r($team);
+    				echo '</pre>';			
+    			}
+    		}
+    	}
+    }
 }

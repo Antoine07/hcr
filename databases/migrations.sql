@@ -149,12 +149,25 @@ CREATE TABLE `races` (
 -- Structure de la table `race_historic`
 --
 
-CREATE TABLE `race_historic` (
+CREATE TABLE `races_history` (
   `id` INT(10) UNSIGNED NOT NULL,
   `race_id` INT(10) UNSIGNED DEFAULT NULL,
   `team_id` INT(10) UNSIGNED DEFAULT NULL,
   `content` TEXT,
   `position` INT(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+
+--
+-- Structure de la table `races_participants`
+--
+
+CREATE TABLE `races_participants` (
+  `id` INT(10) UNSIGNED NOT NULL,
+  `race_id` INT(10) UNSIGNED DEFAULT NULL,
+  `team_id` INT(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -209,7 +222,13 @@ ALTER TABLE `races`
 --
 -- Index pour la table `race_historic`
 --
-ALTER TABLE `race_historic`
+ALTER TABLE `races_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `race_historic`
+--
+ALTER TABLE `races_participants`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -265,9 +284,14 @@ ALTER TABLE `races`
 --
 -- Index pour la table `race_historic`
 --
-ALTER TABLE `race_historic`
+ALTER TABLE `races_history`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
+--
+-- Index pour la table `race_historic`
+--
+ALTER TABLE `races_participants`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE modules 
 ADD CONSTRAINT modules_team_id_teams_id
@@ -341,14 +365,26 @@ FOREIGN KEY(activity_id)
 REFERENCES activities(id) 
 ON DELETE SET NULL;
 
-ALTER TABLE race_historic 
-ADD CONSTRAINT race_historic_race_id_races_id 
+ALTER TABLE races_history 
+ADD CONSTRAINT races_history_race_id_races_id 
 FOREIGN KEY(race_id) 
 REFERENCES races(id) 
 ON DELETE SET NULL;
 
-ALTER TABLE race_historic 
-ADD CONSTRAINT race_historic_team_id_teams_id 
+ALTER TABLE races_history 
+ADD CONSTRAINT races_history_team_id_teams_id 
+FOREIGN KEY(team_id) 
+REFERENCES teams(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE races_participants 
+ADD CONSTRAINT races_participants_race_id_races_id 
+FOREIGN KEY(race_id) 
+REFERENCES races(id) 
+ON DELETE SET NULL;
+
+ALTER TABLE races_participants 
+ADD CONSTRAINT races_participants_team_id_teams_id 
 FOREIGN KEY(team_id) 
 REFERENCES teams(id) 
 ON DELETE SET NULL;
