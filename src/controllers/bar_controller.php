@@ -40,3 +40,17 @@
 
         return $hide_list;
     }
+
+    function npc_stats_color(game\NPC $npc){
+    	$color_list=[];
+    	$stats = $npc->get_stats();
+    	$max = max($stats);
+    	$min = min($stats);
+        foreach ($stats as $key =>$stat) {
+            $color_list[$key]='white';
+        	if($stat>=$max) {$color_list[$key]='green';}
+        	if($stat<=$min) {$color_list[$key]='red';}
+        }
+
+        return $color_list;
+    }
