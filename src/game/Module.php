@@ -87,14 +87,14 @@ class Module {
           case 'solidity' :
             $tName=['Coque','Bouclier','Champ de protection','Blindage','Drone de défense'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' solide',' bien dur',' impénétrable', ' exosolaire',' ONIX',' TITANIUM',' COLOSSUS',' TITAN'];
+            $tName=[' solide',' bien dur(e)',' impénétrable', ' exosolaire',' ONIX',' TITANIUM',' COLOSSUS',' TITAN'];
             $name .= $tName[array_rand($tName)];
 
             break;
           case 'cosiness' :
             $tName=['Cockpit','Siège en cuir','Oreiller','Climatisation','Lampe à lave'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' en mousse',' rambouré',' jolie',' sublime',' magnifique',' moche',' horrible',' GALILEO'];
+            $tName=[' en mousse',' rambouré(e)',' joli(e)',' sublime',' magnifique',' GALILEO'];
             $name .= $tName[array_rand($tName)];
 
             break;
@@ -108,7 +108,7 @@ class Module {
           case 'shipping' :
             $tName=['Radar','Détecteur','Boussole','GPS','Rétroviseur','Drone suiveur','Ordinateur de bord'];
             $name .= $tName[array_rand($tName)];
-            $tName=[' précis',' à micro-ondes',' substellaire',' intergalactique',' du turfu'];
+            $tName=[' précis(e)',' à micro-ondes',' substellaire',' intergalactique'];
             $name .= $tName[array_rand($tName)];
 
             break;
