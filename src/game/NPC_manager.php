@@ -93,8 +93,17 @@ class NPC_manager {
 	 * @param  [int]    $nb   [nombre de NPCs à générer]
 	 * @param  [string] $type [type des NPCs 'pilote' || 'mecanicien']
 	 */
-    public function populate($nb, $type){
-        $list_npc = $this->generate($nb,$type);
+    public function populate(){
+    	$pdo = $this->pdo;
+
+        $res = $pdo->query('SELECT COUNT(*) FROM users;');
+
+        $res = $res->fetch();
+
+        $list_npc = $this->generate($res['COUNT(*)']*2,'pilote');
+        $this->store($list_npc);        
+
+        $list_npc = $this->generate($res['COUNT(*)']*2,'mecanicien');
         $this->store($list_npc);
     }
 	
