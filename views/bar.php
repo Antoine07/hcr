@@ -6,6 +6,7 @@
 				<h5>Pilotes</h5>
 				<div class="content_card_bar">
 					<?php foreach ($npcs_pilotes as $pilote): ?>
+						<?php $hide_stat=npc_stats_hide($pilote); ?>
 						<div class="bar_card">
 							<div class="bar_element">
 								<div class="bar_less">
@@ -25,23 +26,23 @@
 								<div class="more">
 									<ul class="bar_stats">
 										<li>Intelligence : 
-										<span><?php echo h($pilote->get_stats('intelligence'));?></span>
+										<span><?php echo $hide_stat['intelligence']? '??' : h($pilote->get_stats('intelligence'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Dextérité : 
-										<span><?php echo h($pilote->get_stats('dexterity'));?></span>
+										<span><?php echo $hide_stat['dexterity']? '??' : h($pilote->get_stats('dexterity'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Endurance : 
-										<span><?php echo h($pilote->get_stats('stamina'));?><span>
+										<span><?php echo $hide_stat['stamina']? '??' : h($pilote->get_stats('stamina'));?><span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Rapidité : 
-										<span><?php echo h($pilote->get_stats('speed'));?></span>
+										<span><?php echo $hide_stat['speed']? '??' : h($pilote->get_stats('speed'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Force : 
-										<span><?php echo h($pilote->get_stats('strength'));?><span>
+										<span><?php echo $hide_stat['strength']? '??' : h($pilote->get_stats('strength'));?><span>
 										</li>
 									</ul>
 								</div>
@@ -54,6 +55,7 @@
 				<h5>Mécaniciens</h5>
 				<div class="content_card_bar">
 					<?php foreach ($npcs_mecaniciens as $mecanicien): ?>
+						<?php $hide_stat=npc_stats_hide($mecanicien); ?>
 						<div class="bar_card">
 							<div class="bar_element">
 								<div class="bar_less">
@@ -74,23 +76,23 @@
 								<div class="more">
 									<ul class="bar_stats">
 										<li>Intelligence : 
-										<span><?php echo h($mecanicien->get_stats('intelligence'));?></span>
+										<span><?php echo $hide_stat['intelligence']? '??' : h($mecanicien->get_stats('intelligence'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Dextérité : 
-										<span><?php echo h($mecanicien->get_stats('dexterity'));?></span>
+										<span><?php echo $hide_stat['dexterity']? '??' : h($mecanicien->get_stats('dexterity'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Endurance : 
-										<span><?php echo h($mecanicien->get_stats('stamina'));?><span>
+										<span><?php echo $hide_stat['stamina']? '??' : h($mecanicien->get_stats('stamina'));?><span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Rapidité : 
-										<span><?php echo h($mecanicien->get_stats('speed'));?></span>
+										<span><?php echo $hide_stat['speed']? '??' : h($mecanicien->get_stats('speed'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Force : 
-										<span><?php echo h($mecanicien->get_stats('strength'));?><span>
+										<span><?php echo $hide_stat['strength']? '??' : h($mecanicien->get_stats('strength'));?><span>
 										</li>
 									</ul>
 								</div>
