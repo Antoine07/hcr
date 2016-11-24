@@ -19,7 +19,7 @@ function login_post_action(){
 	
 	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
 
-	$pseudo 		= $_POST['pseudo'];
+	$pseudo 		= h($_POST['pseudo']);
 	$password		= sha1(getenv('CRYPT'). $_POST['password']);
 
 	$prefix 		= getenv('URL_PREFIX');
@@ -43,7 +43,7 @@ function login_post_action(){
      
 	if ($donnees = $verif_p->fetch() && empty($_SESSION['errors'])){ 
 
-		$username			= $_POST['pseudo'];
+		$username			= h($_POST['pseudo']);
 		$password		= sha1(getenv('CRYPT'). $_POST['password']);
 
 		get_user($username, $password);

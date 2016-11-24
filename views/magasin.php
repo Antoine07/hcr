@@ -21,12 +21,12 @@
 								<div class="shop_element">
 									<div class="shop_less">
 										<h6>
-											<?php echo $module->get_name(); ?>
+											<?php echo h($module->get_name()); ?>
 										</h6>
 										<form action="/index.php/sell" method="POST">
 											<input name="item_category" type="text" hidden="none" value="module">
-											<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
-											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" vendre : <?php echo $sell_price ?> c">
+											<input name="item_id" type="number" hidden="none" value=<?php echo h($module->get_id()); ?>>
+											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" vendre : <?php echo h($sell_price) ?> c">
 										</form>
 									</div>
 								</div>
@@ -46,12 +46,12 @@
 								<div class="shop_element">
 									<div class="shop_less">
 										<h6>
-											<?php echo $equipment->get_name(); ?>
+											<?php echo h($equipment->get_name()); ?>
 										</h6>
 										<form action="/index.php/sell" method="POST">
 											<input name="item_category" type="text" hidden="none" value="equipment">
-											<input name="item_id" type="number" hidden="none" value=<?php echo $equipment->get_id(); ?>>
-											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" vendre : <?php echo $sell_price ?> c">
+											<input name="item_id" type="number" hidden="none" value=<?php echo h($equipment->get_id()); ?>>
+											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" vendre : <?php echo h($sell_price) ?> c">
 										</form>
 									</div>
 								</div>
@@ -71,16 +71,16 @@
 								<div class="shop_less">
 									<i class="material-icons drop">arrow_drop_down</i>
 									<h6>
-										<?php echo $module->get_name(); ?>
+										<?php echo h($module->get_name()); ?>
 										<br>
 										<span>
-											<?php echo $module->get_type(); ?>
+											<?php echo h($module->get_type()); ?>
 										</span>
 									</h6>
 									<form action="/index.php/buy" method="POST">
 										<input name="item_category" type="text" hidden="none" value="module">
-										<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
-										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $module->get_price(); ?> c">
+										<input name="item_id" type="number" hidden="none" value=<?php echo h($module->get_id()); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo h($module->get_price()); ?> c">
 									</form>
 								</div>
 								<div class="more" style="display: none;">
@@ -102,8 +102,8 @@
 													default:
 														break;
 												}?>
-												<?php echo $name; ?>: 
-												<?php echo $value; ?>
+												<?php echo h($name); ?>: 
+												<?php echo h($value); ?>
 											<?php endif ?>
 										<?php endforeach ?>
 									</ul>
@@ -122,16 +122,16 @@
 								<div class="shop_less">
 									<i class="material-icons drop">arrow_drop_down</i>
 									<h6>
-										<?php echo $equipment->get_name(); ?>
+										<?php echo h($equipment->get_name()); ?>
 										<br>
 										<span>
-											<?php echo $equipment->get_brand(); ?>
+											<?php echo h($equipment->get_brand()); ?>
 										</span>
 									</h6>
 									<form action="/index.php/buy" method="POST">
 										<input name="item_category" type="text" hidden="none" value="equipment">
-										<input name="item_id" type="number" hidden="none" value=<?php echo $equipment->get_id(); ?>>
-										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $equipment->get_price(); ?> c">
+										<input name="item_id" type="number" hidden="none" value=<?php echo h($equipment->get_id()); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo h($equipment->get_price()); ?> c">
 									</form>	
 								</div>
 								<div class="more" style="display: none;">
@@ -144,8 +144,8 @@
 												<?php switch ($name) {
 
 												}?>
-												<?php echo $name; ?>: 
-												<?php echo $value; ?>
+												<?php echo h($name); ?>: 
+												<?php echo h($value); ?>
 											<?php endif ?>
 										<?php endforeach ?>
 									</ul>
