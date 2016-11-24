@@ -59,6 +59,11 @@ if ( '/' === $uri) {
 	$equipment_manager = new game\Equipment_manager(get_pdo());
 	$equipment_manager->populate();
  
+}elseif($prefix.'/do' === $uri) {
+
+	$manager = new game\NPC_manager(get_pdo());
+	$manager->do_activity();
+ 
 } elseif($prefix.'/generaterace' === $uri) {
 
 	$manager = new game\Race_manager(get_pdo());

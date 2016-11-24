@@ -74,17 +74,7 @@ class NPC {
 
 	public function set_activity_id($activity_id) {
 
-		if(is_null($activity_id)) 
-		{
 			$this->activity_id = $activity_id;
-
-			return;
-		}
-
-		if(!is_numeric($activity_id)) {
-			throw new \Exception('Cette valeur n\'est pas un nombre');
-		}
-		$this->activity_id = $activity_id;
 	}
 
 	public function set_name($name){

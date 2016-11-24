@@ -2,16 +2,17 @@
 $list_activity = [];
 
 class Activity{
-	use Trait_hydrate;
 	private $name;
-	private $stats;
+	private $stats = [];
 
 	function __construct($name, $stats){
 		$this ->set_name($name);
 		$this ->set_stats($stats);      
 	}
-	public function from_db($data){
 
+	use Trait_hydrate;
+
+	public function from_db($data){
         $this->hydrate($data);  
     }
 
@@ -25,11 +26,33 @@ class Activity{
 	}
 	public function set_name($name)
 	{
-		if (is_string($name)) {
 			$this ->name  = $name;
-		}else{
-			throw new Exception("Erreur un str est demandé");
-		}
+
+	}
+	public function set_strength($strength)
+	{
+			$this ->stats['strength']  = $strength;
+
+	}
+	public function set_dexterity($dexterity)
+	{
+			$this ->stats['dexterity']  = $dexterity;
+
+	}
+	public function set_stamina($stamina)
+	{
+			$this ->stats['stamina']  = $stamina;
+
+	}
+	public function set_speed($speed)
+	{
+			$this ->stats['speed']  = $speed;
+
+	}
+	public function set_intelligence($intelligence)
+	{
+			$this ->stats['intelligence']  = $intelligence;
+
 	}
 	public function set_stats($stats)
 	{
