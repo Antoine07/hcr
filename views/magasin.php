@@ -69,7 +69,6 @@
 						<div class="shop_card">
 							<div class="shop_element">
 								<div class="shop_less">
-									<i class="material-icons drop">arrow_drop_down</i>
 									<h6>
 										<?php echo h($module->get_name()); ?>
 										<br>
@@ -83,29 +82,29 @@
 										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo h($module->get_price()); ?> c">
 									</form>
 								</div>
-								<div class="more" style="display: none;">
+								<div class="more">
 									<ul class="shop_stats">
 										<?php $stats = $module->get_stats(); ?>
-										<?php foreach ($stats as $name => $value):?>
-											<?php if($value!=0): ?>
-												<?php switch ($name) {
-													case 'aerodynamics': $name = 'Aer';
-														break;
-													case 'solidity': $name = 'Sol';
-														break;
-													case 'cosiness': $name = 'Conf';
-														break;
-													case 'speed': $name = 'Vit';
-														break;
-													case 'shipping': $name = 'Nav';
-														break;
-													default:
-														break;
-												}?>
-												<?php echo h($name); ?>: 
-												<?php echo h($value); ?>
-											<?php endif ?>
-										<?php endforeach ?>
+										
+										<li>Aerodynamique : 
+										<span><?php echo $stats['aerodynamics']; ?><span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Solidité : 
+										<span><?php echo $stats['solidity']; ?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Confort : 
+										<span><?php echo $stats['cosiness']; ?><span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Navigation : 
+										<span><?php echo $stats['shipping']; ?></span>
+										</li>				
+										<span class="grey-span">|</span>
+										<li>Vitesse : 
+										<span><?php echo $stats['speed']; ?></span>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -120,7 +119,6 @@
 						<div class="shop_card">
 							<div class="shop_element">
 								<div class="shop_less">
-									<i class="material-icons drop">arrow_drop_down</i>
 									<h6>
 										<?php echo h($equipment->get_name()); ?>
 										<br>
@@ -134,20 +132,29 @@
 										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo h($equipment->get_price()); ?> c">
 									</form>	
 								</div>
-								<div class="more" style="display: none;">
+								<div class="more">
 									<ul class="shop_stats">
-
 										<?php $activity = $equipment->get_activity();
 										$stats = $equipment->get_activity()->get_stats(); ?>
-										<?php foreach ($stats as $name => $value):?>
-											<?php if($value!=0): ?>
-												<?php switch ($name) {
-
-												}?>
-												<?php echo h($name); ?>: 
-												<?php echo h($value); ?>
-											<?php endif ?>
-										<?php endforeach ?>
+										<li>Intelligence : 
+										<span><?php echo $stats['intelligence']; ?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Dextérité : 
+										<span><?php echo $stats['dexterity']; ?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Endurance : 
+										<span><?php echo $stats['stamina']; ?><span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Rapidité : 
+										<span><?php echo $stats['speed']; ?></span>
+										</li>
+										<span class="grey-span">|</span>
+										<li>Force : 
+										<span><?php echo $stats['strength']; ?><span>
+										</li>
 									</ul>
 								</div>
 							</div>
