@@ -104,12 +104,6 @@ function buy_action(){
 			}
 		}
 		header('Location: '.$prefix.$sufix);
-		
-		/*echo '<pre>';
-			print_r($item);
-			echo '<hr/><br/>';
-			print_r($team);
-		echo '</pre>';*/
-		//$module_manager->update_team_id($module,$team);
+
 	}
 }
