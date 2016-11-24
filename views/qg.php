@@ -40,7 +40,7 @@
 							</select>
 						</div>
 						<div class="input-field">
-							<button class="btn waves-effect waves-light" type="submit">Entrainer</button>	
+							<button class="btn waves-effect waves-light buy" type="submit">Entrainer</button>	
 						</div>
 					</form>
 				</div>
@@ -89,7 +89,7 @@
 							</select>
 						</div>
 						<div class="input-field">
-							<button class="btn waves-effect waves-light" type="submit">Entrainer</button>	
+							<button class="btn waves-effect waves-light buy" type="submit">Entrainer</button>	
 						</div>
 					</form>
 				</div>
@@ -182,8 +182,8 @@
 							<?php endforeach ?>	
 						</select>
 					</div>
-					<div class="input-field"   title="Valider vos changements !">
-						<button class="btn waves-effect waves-light" type="submit">Changer</button>	
+					<div class="input-field mr0"   title="Valider vos changements !">
+						<button class="btn waves-effect waves-light buy" type="submit">Changer</button>	
 					</div>
 				</form>	
 			</div>
