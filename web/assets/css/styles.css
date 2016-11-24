@@ -59,11 +59,12 @@ body{
 
 	/* *********** Stylisation de la Nav *********** */
 nav{
-	background-color: rgba(0, 0, 0, 0.7);
-    	box-shadow: 2px 2px 7px #000000;
-    	border: 1px solid;
-    	border-color: rgba(0, 0, 0, 0.2);
-    	position:fixed;
+	background-color: #444;
+    box-shadow: 2px 2px 7px #000000;
+    border: 1px solid;
+    border-color: rgb(0, 0, 0);
+    position:fixed;
+    z-index: 10;
 }
 .navicon{
 	margin-left: 1em;
@@ -102,7 +103,7 @@ nav ul a:hover {
 .element {
 	display: inline;
 	position: relative;
-	z-index: 2;
+	z-index: 0;
 	text-decoration: none;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -431,14 +432,12 @@ input:-webkit-autofill {
 	image-rendering: pixelated;
 }
 .bar_card h6{
-	cursor: pointer;
 	color: #FFF;
 	font-weight: bold;
 	font-size: 1.3em;
 	flex:1;
 	padding: 0.8em 1.3em;
 	line-height:1.30em;
-	overflow: scroll;
 }
 
 .bar_card h6 span {
@@ -803,14 +802,12 @@ input:-webkit-autofill {
 	image-rendering: pixelated;
 }
 .shop_card h6{
-	cursor: pointer;
 	color: #FFF;
 	font-weight: bold;
 	font-size: 1.3em;
 	flex:1;
 	padding: 0.8em 1.3em;
 	line-height:1.30em;
-	overflow: scroll;
 }
 
 .shop_card h6 span {
@@ -937,7 +934,6 @@ input:-webkit-autofill {
 	height:24.1em;
 }
 .race_card h6{
-	cursor: pointer;
 	color: #FFF;
 	font-weight: 400;
 	font-size: 1.2em;
