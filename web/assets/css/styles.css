@@ -63,6 +63,7 @@ nav{
     	box-shadow: 2px 2px 7px #000000;
     	border: 1px solid;
     	border-color: rgba(0, 0, 0, 0.2);
+    	position:fixed;
 }
 .navicon{
 	margin-left: 1em;
@@ -364,7 +365,7 @@ input:-webkit-autofill {
     	display:block;
     	height:5em;
     	padding:0.1em 1.4em!important;
-    	margin:-1em auto 1.5em auto;
+    	margin:3em auto 1.5em auto;
 }
 .bar_top h4{
 	color: #efefef;
@@ -501,7 +502,7 @@ input:-webkit-autofill {
     	display:block;
     	height:5em;
     	padding:0.1em 1.4em!important;
-    	margin:-1em auto 1.5em auto;
+    	margin:3em auto 1.5em auto;
 }
 .qg_top h4{
 	color: #efefef;
@@ -643,7 +644,7 @@ input:-webkit-autofill {
     	display:block;
     	height:5em;
     	padding:0.1em 1.4em!important;
-    	margin:-1em auto 1.5em auto;
+    	margin:3em auto 1.5em auto;
 }
 .shop_top h4{
 	color: #efefef;
@@ -877,7 +878,7 @@ input:-webkit-autofill {
     	display:block;
     	height:5em;
     	padding:0.1em 1.4em!important;
-    	margin:-1em auto 1.5em auto;
+    	margin:3em auto 1.5em auto;
 }
 .race_top h4{
 	color: #efefef;
