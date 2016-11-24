@@ -21,6 +21,11 @@
 
 		$mechanic = $spaceship->get_mechanic();
 
+		$npc_manager = new game\NPC_manager($pdo);
+		$npcs_all = $npc_manager->get_where('team_id='.$team_id);
+		$npcs = [];
+
+
 		$equipment_manager = new game\Equipment_manager($pdo);
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST)){
@@ -66,11 +71,23 @@
 				$npc_manager = new game\NPC_manager($pdo);
 				$npc_manager -> update($spaceship->get_mechanic(),'activity_id',$_POST['activity2']);	
 			}
+
+			if(!empty($_POST['change_npc'])) {
+				$npc_id = $_POST['change_npc'];
+				$job = $_POST['job'];
+				$spaceship_manager->change_npc($spaceship, $npc_id, $job);
+			}
 	
 		}
 
+		$pilot = $spaceship->get_pilot();
 
+		$mechanic = $spaceship->get_mechanic();
 
+		foreach ($npcs_all as $key => $npc) {
+			if($npc->get_id() == $pilot->get_id() || $npc->get_id() == $mechanic->get_id()) {continue;}
+			$npcs[]=$npc;
+		}
 
 		$list_equipment = $equipment_manager->get_team_id($team_id);
 

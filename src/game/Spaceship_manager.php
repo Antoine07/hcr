@@ -136,6 +136,10 @@ class Spaceship_manager
             $this->update($spaceship, $type_name, 'NULL');
         }
     }
+
+    public function change_npc($spaceship, $npc_id, $job) {
+        $this->update($spaceship, $job.'_id', $npc_id);
+    }
 // GETTER
 	public function get_pdo()
 	{

@@ -67,7 +67,6 @@
 							<span>|</span>
 							<li>Force: <?php  echo h($mechanic->get_stats('strength'))?></li>
 						</ul>
-
 					<form action="<?php echo url('qg') ?>" method="POST">
 						<div class="input-field"   title="Activité assginé avant la course. Elle permet d'augmenter les compétences de ce personnage">
 							<select name="activity2">
@@ -195,6 +194,41 @@
 					</div>
 				</form>	
 			</div>
+		</div>
+		<h4 class="dortoir">Dortoir</h4>
+		<div class="npc_select">
+			<?php foreach ($npcs as $npc): ?>
+				<div class="qg_card">
+					<div class="flex">
+						<img class="bar_portrait" src="../images/<?php echo h($npc->get_id()) ?>.png" alt="">
+						<h6><?php echo h($npc->get_name());?></h6>	
+					</div>
+					<ul class="qg_stats">
+						<li>Intelligence: <?php  echo h($npc->get_stats('intelligence'))?></li>
+						<span>|</span>
+						<li>Dextérité: <?php  echo h($npc->get_stats('dexterity'))?></li>
+						<span>|</span>
+						<li>Endurance: <?php  echo h($npc->get_stats('stamina'))?></li>
+						<span>|</span>
+						<li>Rapidité: <?php  echo h($npc->get_stats('speed'))?></li>
+						<span>|</span>
+						<li>Force: <?php  echo h($npc->get_stats('strength'))?></li>
+					</ul>
+					<div class="assign_npc" style="text-align: center">
+						<form action="<?php echo url('qg') ?>" method="POST">
+							<input name="change_npc" type="text" hidden="none" value="<?php echo h($npc->get_id()) ?>">
+							<input name="job" type="text" hidden="none" value="pilot">
+							<button class="btn waves-effect waves-light buy" type="submit">Assigner au poste de pilote</button>
+						</form>
+						<form action="<?php echo url('qg') ?>" method="POST">
+							<input name="change_npc" type="text" hidden="none" value="<?php echo h($npc->get_id()) ?>">
+							<input name="job" type="text" hidden="none" value="mechanic">
+							<button class="btn waves-effect waves-light buy" type="submit">Assigner au poste de mécanicien</button>
+						</form>						
+					</div>
+					
+				</div>
+			<?php endforeach ?>
 		</div>
 	</div>
 <style>body{background:#F4F4F4;</style>
