@@ -3,7 +3,7 @@
 	<?php echo $header_team; ?>
 		<div class="row">
 			<div class="col s12 shop_sell" align="center">
-				<button class="btn btnsell waves-effect waves-light" id="btnsell">Vendre des objets</button>
+				<button class="btn btnsell waves-effect waves-light" id="btnsell"> Vendre des objets </button>
 				<a href="#"><i class="material-icons dispnone close_sell" id="close_sell">close</i></a>
 			</div> 
 		</div>
@@ -26,18 +26,12 @@
 										<form action="/index.php/sell" method="POST">
 											<input name="item_category" type="text" hidden="none" value="module">
 											<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
-											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" <?php echo $sell_price ?> c">
+											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" vendre : <?php echo $sell_price ?> c">
 										</form>
 									</div>
 								</div>
 							</div>
 						<?php endforeach ?>
-						<div class="sell_card">
-							<h6>Objet 1</h6>
-							<button class="btn btnsell waves-effect waves-light" id="btnsell">
-								Vendre l'objet
-							</button>
-						</div>
 					</div>
 				</div>
 				<div class="col s6 sell_equipments">
@@ -56,8 +50,8 @@
 										</h6>
 										<form action="/index.php/sell" method="POST">
 											<input name="item_category" type="text" hidden="none" value="equipment">
-											<input name="item_id" type="number" hidden="none" value=<?php echo $module->get_id(); ?>>
-											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" <?php echo $sell_price ?> c">
+											<input name="item_id" type="number" hidden="none" value=<?php echo $equipment->get_id(); ?>>
+											<input type="submit" class="btn btnsell waves-effect waves-light" id="btnsell" value=" vendre : <?php echo $sell_price ?> c">
 										</form>
 									</div>
 								</div>

@@ -129,6 +129,12 @@ if ( '/' === $uri) {
 	 }else{
 	  	header('Location: '.$prefix.'/login');
 	 }
+}elseif ( $prefix.'/sell' === $uri) {
+	if($user_id != null){
+		sell_action();
+	 }else{
+	  	header('Location: '.$prefix.'/login');
+	 }
 }elseif ( $prefix.'/race' === $uri) {
 	if($user_id != null){
 		race_action();

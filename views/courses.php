@@ -1,20 +1,7 @@
 <?php ob_start() ; ?>
 	<div class="content_race">
-		<div class="row">
-			<div class="col s12 race_top">
-				<h4>Bar</h4>
-				<ul class="race_list">
-					<li class="race_team">team JOJO</li>
-					<span>|</span>
-					<li>50.000 c</li>
-					<span>|</span>
-					<li>203 points</li>
-					<span>|</span>
-					<li>7ème</li>
-				</ul>
-			</div>
-		</div>
-		 <div class="row content_race_item">
+		<?php echo $header_team; ?>
+		<div class="row content_race_item">
 			<div class="col s6 race_left">
 				<h5>Courses</h5>
 				<div class="content_card_race">
@@ -43,7 +30,7 @@
 					<?php endforeach ?>
 				</div>
 			</div>
-			 <div class="col s6 race_right">
+			<div class="col s6 race_right">
 			 	<h5>Courses Précédentes</h5>
 				<div class="content_card_race">
 					<?php foreach ($past_races as $race): ?>
