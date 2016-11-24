@@ -5,19 +5,19 @@
 			<div class="col s6">
 				<div class="qg_card">
 					<div class="flex">
-						<img class="bar_portrait" src="../images/<?php echo $pilot->get_id() ?>.png" alt="">
-						<h6><?php echo $pilot->get_name();?></h6>	
+						<img class="bar_portrait" src="../images/<?php echo h($pilot->get_id()) ?>.png" alt="">
+						<h6><?php echo h($pilot->get_name());?></h6>	
 					</div>
 					<ul class="qg_stats">
-						<li>Intelligence: <?php  echo $pilot->get_stats('intelligence')?></li>
+						<li>Intelligence: <?php  echo h($pilot->get_stats('intelligence'))?></li>
 						<span>|</span>
-						<li>Dextérité: <?php  echo $pilot->get_stats('dexterity')?></li>
+						<li>Dextérité: <?php  echo h($pilot->get_stats('dexterity'))?></li>
 						<span>|</span>
-						<li>Endurance: <?php  echo $pilot->get_stats('stamina')?></li>
+						<li>Endurance: <?php  echo h($pilot->get_stats('stamina'))?></li>
 						<span>|</span>
-						<li>Rapidité: <?php  echo $pilot->get_stats('speed')?></li>
+						<li>Rapidité: <?php  echo h($pilot->get_stats('speed'))?></li>
 						<span>|</span>
-						<li>Force: <?php  echo $pilot->get_stats('strength')?></li>
+						<li>Force: <?php  echo h($pilot->get_stats('strength'))?></li>
 					</ul>
 					<form action="<?php echo url('qg') ?>" method="POST">
 						<div class="input-field"   title="Activité assginé avant la course. Elle permet d'augmenter les compétences de ce personnage">
@@ -25,16 +25,16 @@
 								<option value="" disabled selected>Activité</option>
 								<?php foreach ($list_activities as $activity): ?>
 									<?php if ($spaceship->get_pilot()->get_activity_id() == $activity['id']): ?>
-										<option value="<?php echo $activity['id']?>" selected><?php echo $activity['name']?></option>
+										<option value="<?php echo h($activity['id'])?>" selected><?php echo h($activity['name'])?></option>
 									<?php else: ?>
-										<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
+										<option value="<?php echo h($activity['id'])?>"><?php echo h($activity['name'])?></option>
 									<?php endif ?>
 								<?php endforeach ?>								
 								<?php foreach ($list_equipment as $equipment): ?>
 									<?php if ($spaceship->get_pilot()->get_activity_id()== $equipment->get_activity_id()): ?>
-										<option value="<?php echo $equipment->get_activity_id()?>" selected><?php echo $equipment->get_activity()->get_name()?></option>
+										<option value="<?php echo h($equipment->get_activity_id())?>" selected><?php echo h($equipment->get_activity()->get_name())?></option>
 									<?php else: ?>
-										<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+										<option value="<?php echo h($equipment->get_activity_id()) ?>"><?php echo h($equipment->get_activity()->get_name())?></option>
 									<?php endif ?>
 								<?php endforeach ?>
 							</select>
@@ -53,19 +53,19 @@
 			<div class="col s6">
 				<div class="qg_card">
 					<div class="flex">
-						<img class="bar_portrait" src="../images/<?php echo $mechanic->get_id() ?>.png" alt="">
-						<h6><?php echo $mechanic->get_name();?></h6>
+						<img class="bar_portrait" src="../images/<?php echo h($mechanic->get_id()) ?>.png" alt="">
+						<h6><?php echo h($mechanic->get_name());?></h6>
 					</div>
 						<ul class="qg_stats">
-							<li>Intelligence: <?php  echo $mechanic->get_stats('intelligence')?></li>
+							<li>Intelligence: <?php  echo h($mechanic->get_stats('intelligence'))?></li>
 							<span>|</span>
-							<li>Dextérité: <?php  echo $mechanic->get_stats('dexterity')?></li>
+							<li>Dextérité: <?php  echo h($mechanic->get_stats('dexterity'))?></li>
 							<span>|</span>
-							<li>Endurance: <?php  echo $mechanic->get_stats('stamina')?></li>
+							<li>Endurance: <?php  echo h($mechanic->get_stats('stamina'))?></li>
 							<span>|</span>
-							<li>Rapidité: <?php  echo $mechanic->get_stats('speed')?></li>
+							<li>Rapidité: <?php  echo h($mechanic->get_stats('speed'))?></li>
 							<span>|</span>
-							<li>Force: <?php  echo $mechanic->get_stats('strength')?></li>
+							<li>Force: <?php  echo h($mechanic->get_stats('strength'))?></li>
 						</ul>
 
 					<form action="<?php echo url('qg') ?>" method="POST">
@@ -74,16 +74,16 @@
 								<option value="" disabled selected>Activité</option>
 								<?php foreach ($list_activities as $activity): ?>
 									<?php if ($spaceship->get_mechanic()->get_activity_id() == $activity['id']): ?>
-										<option value="<?php echo $activity['id']?>" selected><?php echo $activity['name']?></option>
+										<option value="<?php echo $activity['id']?>" selected><?php echo h($activity['name'])?></option>
 									<?php else: ?>
-										<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
+										<option value="<?php echo h($activity['id'])?>"><?php echo h($activity['name'])?></option>
 									<?php endif ?>
 								<?php endforeach ?>								
 								<?php foreach ($list_equipment as $equipment): ?>
 									<?php if ($spaceship->get_mechanic()->get_activity_id()== $equipment->get_activity_id()): ?>
-										<option value="<?php echo $equipment->get_activity_id()?>" selected><?php echo $equipment->get_activity()->get_name()?></option>
+										<option value="<?php echo h($equipment->get_activity_id())?>" selected><?php echo h($equipment->get_activity()->get_name())?></option>
 									<?php else: ?>
-										<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+										<option value="<?php echo h($equipment->get_activity_id()) ?>"><?php echo h($equipment->get_activity()->get_name())?></option>
 									<?php endif ?>
 								<?php endforeach ?>
 							</select>
@@ -96,17 +96,17 @@
 			</div>
 			<div class="col offset-s1 s4 qg_infos_spaceship">
 				<div class="qg_card">
-					<h6><?php echo $spaceship->get_name(); ?></h6>
+					<h6><?php echo h($spaceship->get_name()); ?></h6>
 					<ul class="qg_stats">
-						<li>Aerodynamique: <?php echo $spaceship->get_stats('aerodynamics'); ?></li>
+						<li>Aerodynamique: <?php echo h($spaceship->get_stats('aerodynamics')); ?></li>
 						<span>|</span>
-						<li>Solidité: <?php echo $spaceship->get_stats('solidity'); ?></li>
+						<li>Solidité: <?php echo h($spaceship->get_stats('solidity')); ?></li>
 						<span>|</span>
-						<li>Confort: <?php echo $spaceship->get_stats('cosiness'); ?></li>
+						<li>Confort: <?php echo h($spaceship->get_stats('cosiness')); ?></li>
 						<span>|</span>
-						<li>Navigation: <?php echo $spaceship->get_stats('shipping'); ?></li>
+						<li>Navigation: <?php echo h($spaceship->get_stats('shipping')); ?></li>
 						<span>|</span>
-						<li>Vitesse: <?php echo $spaceship->get_stats('speed'); ?></li>
+						<li>Vitesse: <?php echo h($spaceship->get_stats('speed')); ?></li>
 					</ul>
 				</div>
 			</div>
@@ -121,10 +121,10 @@
 								<?php if ($module->get_type() == 'shipping'): ?>
 									<?php if ($spaceship->get_modules('nav')): ?>
 										<?php if ($module->get_id()==$spaceship->get_modules('nav')->get_id()): ?>
-											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<option value='<?php echo h($module->get_id());?>' selected><?php echo h($module->get_name());?></option>
 											<?php continue; ?>							
 										<?php else: ?>	
-											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
 								<?php endif ?>
@@ -138,10 +138,10 @@
 								<?php if ($module->get_type() == 'speed'): ?>
 									<?php if ($spaceship->get_modules('pow')): ?>
 										<?php if ($module->get_id()==$spaceship->get_modules('pow')->get_id()): ?>
-											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<option value='<?php echo h($module->get_id());?>' selected><?php echo h($module->get_name());?></option>
 											<?php continue; ?>							
 										<?php else: ?>	
-											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
 								<?php endif ?>
@@ -155,10 +155,10 @@
 								<?php if ($module->get_type() == 'complementaire'): ?>
 									<?php if ($spaceship->get_modules('comp_1')): ?>
 										<?php if ($module->get_id()==$spaceship->get_modules('comp_1')->get_id()): ?>
-											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<option value='<?php echo h($module->get_id());?>' selected><?php echo h($module->get_name());?></option>
 											<?php continue; ?>							
 										<?php else: ?>
-											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
 								<?php endif ?>
@@ -172,10 +172,10 @@
 								<?php if ($module->get_type() == 'complementaire'): ?>
 									<?php if ($spaceship->get_modules('comp_2')): ?>
 										<?php if ($module->get_id()==$spaceship->get_modules('comp_2')->get_id()): ?>
-											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
+											<option value='<?php echo h($module->get_id());?>' selected><?php echo h($module->get_name());?></option>
 											<?php continue; ?>							
 										<?php else: ?>
-											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
+											<option value="<?php echo h($module->get_id()); ?>"><?php echo h($module->get_name()); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
 								<?php endif ?>

@@ -10,38 +10,38 @@
 							<div class="bar_element">
 								<div class="bar_less">
 									<img class="bar_portrait" src="../images/<?php echo $pilote->get_id()?>.png" alt="">
-									<h6><?php echo $pilote->get_name() ?>
+									<h6><?php echo h($pilote->get_name()) ?>
 										<br><span>
-											<?php echo $pilote->get_race() ?> - 
-											<?php echo $pilote->get_job() ?>
+											<?php echo h($pilote->get_race()) ?> - 
+											<?php echo h($pilote->get_job()) ?>
 										</span>
 									</h6>
 									<form action="/index.php/buy" method="POST">
 										<input name="item_category" type="text" hidden="none" value="NPC">
-										<input name="item_id" type="number" hidden="none" value=<?php echo $pilote->get_id(); ?>>
-										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $pilote->get_price(); ?> c">
+										<input name="item_id" type="number" hidden="none" value=<?php echo h($pilote->get_id()); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo h($pilote->get_price()); ?> c">
 									</form>
 								</div>
 								<div class="more">
 									<ul class="bar_stats">
 										<li>Intelligence : 
-										<span><?php echo $pilote->get_stats('intelligence');?></span>
+										<span><?php echo h($pilote->get_stats('intelligence'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Dextérité : 
-										<span><?php echo $pilote->get_stats('dexterity');?></span>
+										<span><?php echo h($pilote->get_stats('dexterity'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Endurance : 
-										<span><?php echo $pilote->get_stats('stamina');?><span>
+										<span><?php echo h($pilote->get_stats('stamina'));?><span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Rapidité : 
-										<span><?php echo $pilote->get_stats('speed');?></span>
+										<span><?php echo h($pilote->get_stats('speed'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Force : 
-										<span><?php echo $pilote->get_stats('strength');?><span>
+										<span><?php echo h($pilote->get_stats('strength'));?><span>
 										</li>
 									</ul>
 								</div>
@@ -58,39 +58,39 @@
 							<div class="bar_element">
 								<div class="bar_less">
 									<img class="bar_portrait" src="../images/<?php echo $mecanicien->get_id()?>.png" alt="">
-									<h6><?php echo $mecanicien->get_name() ?>
+									<h6><?php echo h($mecanicien->get_name()) ?>
 										<br><span>
-											<?php echo $mecanicien->get_race() ?> - 
-											<?php echo $mecanicien->get_job() ?>
+											<?php echo h($mecanicien->get_race()) ?> - 
+											<?php echo h($mecanicien->get_job()) ?>
 										</span>
 									</h6>
 									
 									<form action="/index.php/buy" method="POST">
 										<input name="item_category" type="text" hidden="none" value="NPC">
-										<input name="item_id" type="number" hidden="none" value=<?php echo $mecanicien->get_id(); ?>>
-										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo $mecanicien->get_price(); ?> c">
+										<input name="item_id" type="number" hidden="none" value=<?php echo h($mecanicien->get_id()); ?>>
+										<input type="submit" class="btn buy waves-effect waves-light" value=" <?php echo h($mecanicien->get_price()); ?> c">
 									</form>
 								</div>
 								<div class="more">
 									<ul class="bar_stats">
 										<li>Intelligence : 
-										<span><?php echo $mecanicien->get_stats('intelligence');?></span>
+										<span><?php echo h($mecanicien->get_stats('intelligence'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Dextérité : 
-										<span><?php echo $mecanicien->get_stats('dexterity');?></span>
+										<span><?php echo h($mecanicien->get_stats('dexterity'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Endurance : 
-										<span><?php echo $mecanicien->get_stats('stamina');?><span>
+										<span><?php echo h($mecanicien->get_stats('stamina'));?><span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Rapidité : 
-										<span><?php echo $mecanicien->get_stats('speed');?></span>
+										<span><?php echo h($mecanicien->get_stats('speed'));?></span>
 										</li>
 										<span class="grey-span">|</span>
 										<li>Force : 
-										<span><?php echo $mecanicien->get_stats('strength');?><span>
+										<span><?php echo h($mecanicien->get_stats('strength'));?><span>
 										</li>
 									</ul>
 								</div>

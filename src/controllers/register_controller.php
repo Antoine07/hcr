@@ -2,12 +2,12 @@
 
 function store_action(){	
 	
-	$_SESSION['old']['pseudo'] = $_POST['pseudo'];
-	$_SESSION['old']['email'] = $_POST['email'];
+	$_SESSION['old']['pseudo'] = h($_POST['pseudo']);
+	$_SESSION['old']['email'] = h($_POST['email']);
 
 	$username = h($_POST['pseudo']);
 	$email = h($_POST['email']);
-	$team_name = $_POST['team_name'];
+	$team_name = h($_POST['team_name']);
 
 	$pdo = get_pdo();
 
@@ -47,9 +47,9 @@ function store_action(){
 
 	if(empty($_SESSION['errors'])){
 
-		$username		= $_POST['pseudo'];
-		$password		= $_POST['password'];
-		$email			= $_POST['email'];
+		$username		= h($_POST['pseudo']);
+		$password		= h($_POST['password']);
+		$email			= h($_POST['email']);
 
 		$creation_date = date('Y-m-d H:i:s');
 
