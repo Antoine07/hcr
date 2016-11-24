@@ -99,7 +99,7 @@ if ( '/' === $uri) {
 		print_r($race);
 		echo '</pre>';
 		echo '<pre>';
-		print_r($team_manager->get_by_race($race->get_id()));
+		print_r($manager->get_participants($race->get_id()));
 		echo '</pre>';
 	}
 

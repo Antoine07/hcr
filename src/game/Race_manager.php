@@ -149,6 +149,13 @@ class Race_manager {
        	$prepare->execute();
     }
 
+    public function get_participants($race_id) {
+
+		$pdo = $this->pdo;
+		$team_manager = new Team_manager($pdo);
+		return $team_manager->get_by_race($race_id);
+    }
+
     public function give_rewards($race_id){
     	
     	$race = $this->get_single($race_id);
