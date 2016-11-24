@@ -35,19 +35,25 @@
 
 	// ON CHECK SI LA TEAM POSSEDE ASSEZ DE CREDITS
 		if($current_credits > $cost) {
-		
 		// SI OUI
-		// ON AJOUTE UNE ENTREE DANS LA TABLE race_participants
-			$race_manager->add_participant($team_id, $race_id);
-		
-		// ON RETIRE LES CREDITS A LA TEAM
-			$processed_credits = $current_credits - $cost;
-			$team_manager->update($team, 'credit', $processed_credits);
+		// ON CHECK SI LA TEAM PEUT PARTICIPER (equipage requis, modules requis)
+			if($team_manager->can_participate($team_id)) {
+			// SI OUI
+			// ON AJOUTE UNE ENTREE DANS LA TABLE race_participants
+				$race_manager->add_participant($team_id, $race_id);
+			
+			// ON RETIRE LES CREDITS A LA TEAM
+				$processed_credits = $current_credits - $cost;
+				$team_manager->update($team, 'credit', $processed_credits);
 
-		// MESSAGE DE CONFIRMATION
-			$message = 'Votre inscription a bien été enregistrée.';
+			// MESSAGE DE CONFIRMATION
+				$message = 'Votre inscription a bien été enregistrée.';
+			} else {
+				$message = 'Votre équipe ne remplit pas les conditions pour s\'inscrire à la course';
+			}
+		
 		} else {
-			$message = 'Vous n\'avez pas assez de crédits pour parcitiper à cette course.';
+			$message = 'Vous n\'avez pas assez de crédits pour participer à cette course.';
 		}
 
 		$_SESSION['message'] = $message;

@@ -16,7 +16,6 @@ class Spaceship_manager
        return $spaceship; 
     }
 
-
     // STOCK LES INSTANCES SITUES DANS $array DANS LA DB
     public function store(Spaceship $spaceship)
     {
@@ -46,6 +45,7 @@ class Spaceship_manager
     {
         $setter = 'set_'.$property;
         $spaceship->$setter($value);
+
         $request=("UPDATE spaceships SET ".$property."=".$value." WHERE id=".$spaceship->get_id());
         $prepare=$this->pdo->prepare($request);
         $prepare->execute();
@@ -111,7 +111,31 @@ class Spaceship_manager
         return $spaceships;
     }
 
+    public function unequip_module($spaceship, $module) {
+        $type_name = NULL;
+        foreach ($spaceship->modules_id as $type => $module_id) {
+            if ($module->get_id() == $module_id) {
+                switch ($type) {
+                    case 'pow':
+                        $type_name = 'pow_module_id';
+                        break;
+                    case 'nav':
+                        $type_name = 'nav_module_id';
+                        break;
+                    case 'comp_1':
+                        $type_name = 'comp_module_id_1';
+                        break;    
+                    case 'comp_2':
+                        $type_name = 'comp_module_id_2';
+                        break;
+                }
+            }
+        }
+        if ($type_name) {
 
+            $this->update($spaceship, $type_name, 'NULL');
+        }
+    }
 // GETTER
 	public function get_pdo()
 	{

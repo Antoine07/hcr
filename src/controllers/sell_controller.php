@@ -7,7 +7,7 @@ function sell_action(){
 		$team_id             = $_SESSION['user']['team_id'];
 		$item_id             = $_POST['item_id'];
 		$item_category       = $_POST['item_category'];
-
+		$spaceship 			 = NULL;
 		$_SESSION['message'] = NULL;
 		$message             = [];
 		$pdo                 = get_pdo();
@@ -16,6 +16,8 @@ function sell_action(){
 		switch ($item_category) {
 			case 'module':
 				$item_manager = new game\Module_manager($pdo);
+				$spaceship_manager = new game\spaceship_manager($pdo);
+				$spaceship = $spaceship_manager->get_single($team_id);
 				break;
 			case 'equipment':
 				$item_manager = new game\Equipment_manager($pdo);
@@ -43,6 +45,12 @@ function sell_action(){
 
 		$team_manager->update($team,'credit',$new_team_c);
 		$item_manager->update($item ,'team_id','NULL');
+
+		if($spaceship) {
+
+			$spaceship_manager->unequip_module($spaceship, $item);
+		}
+
 		header('Location: '.$prefix.'/shop');
 	}
 }

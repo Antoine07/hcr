@@ -162,6 +162,27 @@ class Team_manager {
 		return $teams;
 	}
 
+	public function can_participate($team_id){
+
+		$pdo = $this->pdo;
+		$spaceship_manager = new Spaceship_manager($pdo);
+		$spaceship = $spaceship_manager->get_by_team($team_id);
+		
+		$pilot = $spaceship->get_pilot();
+		$mechanic = $spaceship->get_mechanic();
+
+		$navigation = $spaceship->get_modules('nav');
+		$power = $spaceship->get_modules('pow');
+
+		if(!$navigation){return FALSE;}
+		if(!$power){return FALSE;}
+		if(!$pilot){return FALSE;}
+		if(!$mechanic){return FALSE;}
+
+		return TRUE;
+
+	}
+
 	public function is_participating($team_id, $race_id) {
 		$pdo = $this->pdo;
 		$prepare = $pdo->prepare('SELECT team_id FROM races_participants WHERE race_id='.$race_id.' AND team_id='.$team_id);
