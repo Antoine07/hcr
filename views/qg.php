@@ -177,6 +177,8 @@
 										<?php else: ?>
 											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 										<?php endif ?>
+									<?php else: ?>
+										<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 									<?php endif ?>
 								<?php endif ?>
 							<?php endforeach ?>	
