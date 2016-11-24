@@ -23,9 +23,20 @@
 <script src="https://use.fontawesome.com/445f146961.js"></script>
 <script src="/assets/js/materialize.min.js"></script>
 <script src="/assets/js/main.js"></script>
-<?php if(isset($_SESSION['errors'])){
-	echo "<script>Materialize.toast('".$_SESSION['errors']['pseudo']."', 4000);</script>";
-}
+<?php 
+	if(isset($_SESSION['errors']['pseudo'])){
+		echo "<script>Materialize.toast('".$_SESSION['errors']['pseudo']."', 4000);</script>";
+	}
+	if(isset($_SESSION['errors']['email'])){
+		echo "<script>Materialize.toast('".$_SESSION['errors']['email']."', 4000);</script>";
+	}
+	if(isset($_SESSION['errors']['password'])){
+		echo "<script>Materialize.toast('".$_SESSION['errors']['password']."', 4000);</script>";
+	}
+	if(isset($_SESSION['errors']['team_name'])){
+		echo "<script>Materialize.toast('".$_SESSION['errors']['team_name']."', 4000);</script>";
+	}
+
 ?>
 </html>
 <!-- Fin du HTML -->

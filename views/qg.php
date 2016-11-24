@@ -1,5 +1,6 @@
 <?php ob_start() ; ?>
 	<div class="content_qg">
+		<?php echo $header_team; ?>
 		<div class="row">
 			<div class="col s6">
 				<div class="qg_card">
@@ -21,9 +22,18 @@
 							<select name="activity1">
 								<option value="" disabled selected>Activité</option>
 								<?php foreach ($list_activities as $activity): ?>
-									<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
-								<?php endforeach ?>								<?php foreach ($list_equipment as $equipment): ?>
-									<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+									<?php if ($spaceship->get_pilot()->get_activity_id() == $activity['id']): ?>
+										<option value="<?php echo $activity['id']?>" selected><?php echo $activity['name']?></option>
+									<?php else: ?>
+										<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
+									<?php endif ?>
+								<?php endforeach ?>								
+								<?php foreach ($list_equipment as $equipment): ?>
+									<?php if ($spaceship->get_pilot()->get_activity_id()== $equipment->get_activity_id()): ?>
+										<option value="<?php echo $equipment->get_activity_id()?>" selected><?php echo $equipment->get_activity()->get_name()?></option>
+									<?php else: ?>
+										<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+									<?php endif ?>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -58,9 +68,18 @@
 							<select name="activity2">
 								<option value="" disabled selected>Activité</option>
 								<?php foreach ($list_activities as $activity): ?>
-									<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
-								<?php endforeach ?><?php foreach ($list_equipment as $equipment): ?>
-									<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+									<?php if ($spaceship->get_mechanic()->get_activity_id() == $activity['id']): ?>
+										<option value="<?php echo $activity['id']?>" selected><?php echo $activity['name']?></option>
+									<?php else: ?>
+										<option value="<?php echo $activity['id']?>"><?php echo $activity['name']?></option>
+									<?php endif ?>
+								<?php endforeach ?>								
+								<?php foreach ($list_equipment as $equipment): ?>
+									<?php if ($spaceship->get_mechanic()->get_activity_id()== $equipment->get_activity_id()): ?>
+										<option value="<?php echo $equipment->get_activity_id()?>" selected><?php echo $equipment->get_activity()->get_name()?></option>
+									<?php else: ?>
+										<option value="<?php echo $equipment->get_activity_id() ?>"><?php echo $equipment->get_activity()->get_name()?></option>
+									<?php endif ?>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -99,9 +118,10 @@
 										<?php if ($module->get_id()==$spaceship->get_modules('nav')->get_id()): ?>
 											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
 											<?php continue; ?>							
+										<?php else: ?>	
+											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
-									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 								<?php endif ?>
 							<?php endforeach ?>
 						</select>
@@ -115,9 +135,10 @@
 										<?php if ($module->get_id()==$spaceship->get_modules('pow')->get_id()): ?>
 											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
 											<?php continue; ?>							
+										<?php else: ?>	
+											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
-									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 								<?php endif ?>
 							<?php endforeach ?>
 						</select>
@@ -131,9 +152,10 @@
 										<?php if ($module->get_id()==$spaceship->get_modules('comp_1')->get_id()): ?>
 											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
 											<?php continue; ?>							
+										<?php else: ?>
+											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
-									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 								<?php endif ?>
 							<?php endforeach ?>
 						</select>
@@ -147,9 +169,10 @@
 										<?php if ($module->get_id()==$spaceship->get_modules('comp_2')->get_id()): ?>
 											<option value='<?php echo $module->get_id();?>' selected><?php echo $module->get_name();?></option>
 											<?php continue; ?>							
+										<?php else: ?>
+											<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 										<?php endif ?>
 									<?php endif ?>
-									<option value="<?php echo $module->get_id(); ?>"><?php echo $module->get_name(); ?></option>							
 								<?php endif ?>
 							<?php endforeach ?>	
 						</select>

@@ -4,6 +4,7 @@
 <?php $team = $team_manager->get_single($id); ?>
 
 <?php ob_start(); ?>
+	<div class="content_header_time">
 		<div class="row">
 			<div class="col s12 qg_top">
 				<h4><?php echo $nom_page; ?>	</h4>
@@ -18,4 +19,5 @@
 				</ul>
 			</div>
 		</div>
-<?php $header = ob_get_clean(); ?>
+	</div>	
+<?php $header_team = ob_get_clean(); ?>

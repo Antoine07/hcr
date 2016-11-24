@@ -7,6 +7,7 @@ class NPC {
 
 	private $id      = NULL;
 	private $team_id = NULL;
+	private $activity_id = NULL;
 	private $name    = '';
 	private $race    = '';
 	private $job     = '';
@@ -69,6 +70,21 @@ class NPC {
 			throw new \Exception('Cette valeur n\'est pas un nombre');
 		}
 		$this->team_id = $team_id;
+	}
+
+	public function set_activity_id($activity_id) {
+
+		if(is_null($activity_id)) 
+		{
+			$this->activity_id = $activity_id;
+
+			return;
+		}
+
+		if(!is_numeric($activity_id)) {
+			throw new \Exception('Cette valeur n\'est pas un nombre');
+		}
+		$this->activity_id = $activity_id;
 	}
 
 	public function set_name($name){
@@ -140,6 +156,7 @@ class NPC {
 
 	public function get_id()		{return $this->id;     }
 	public function get_team_id()	{return $this->team_id;}
+	public function get_activity_id()	{return $this->activity_id;}
 	public function get_name()		{return $this->name;   }
 	public function get_race()		{return $this->race;   }
 	public function get_job()		{return $this->job;    }

@@ -1,5 +1,6 @@
 <?php ob_start() ; ?>
 	<div class="content_shop">
+	<?php echo $header_team; ?>
 		<div class="row">
 			<div class="col s12 shop_sell" align="center">
 				<button class="btn btnsell waves-effect waves-light" id="btnsell">Vendre des objets</button>

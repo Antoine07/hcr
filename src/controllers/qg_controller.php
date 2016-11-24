@@ -3,12 +3,25 @@
 
 		$team_id = $_SESSION['user']['team_id'];
 
-		if (!empty($team_id)) {
 		$pdo = get_pdo();
 
 		$spaceship_manager = new game\Spaceship_manager($pdo);
 
 		$spaceship = $spaceship_manager->get_where('team_id = '.$team_id);
+
+		$team_manager = new game\Team_manager($pdo);
+
+		$team = $team_manager->get_single($team_id);
+
+		$module_manager = new game\Module_manager($pdo);
+
+		$list_module = $module_manager -> get_all_by_team($team);
+
+		$pilot = $spaceship->get_pilot();
+
+		$mechanic = $spaceship->get_mechanic();
+
+		$equipment_manager = new game\Equipment_manager($pdo);
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST)){
 
@@ -46,29 +59,18 @@
 				}
 			}
 			if (!empty($_POST['activity1'])) {
-				$spaceship_manager -> update($spaceship,$_POST['activity1'],'');	
+				$npc_manager = new game\NPC_manager($pdo);
+				$npc_manager -> update($spaceship->get_pilot(),'activity_id',$_POST['activity1']);	
 			}
 			if (!empty($_POST['activity2'])) {
-				$spaceship_manager -> update($spaceship,$_POST['activity2'],'');	
+				$npc_manager = new game\NPC_manager($pdo);
+				$npc_manager -> update($spaceship->get_mechanic(),'activity_id',$_POST['activity2']);	
 			}
 	
 		}
 
 
 
-		$team_manager = new game\Team_manager($pdo);
-
-		$team = $team_manager->get_single($team_id);
-
-		$module_manager = new game\Module_manager($pdo);
-
-		$list_module = $module_manager -> get_all_by_team($team);
-
-		$pilot = $spaceship->get_pilot();
-
-		$mechanic = $spaceship->get_mechanic();
-
-		$equipment_manager = new game\Equipment_manager($pdo);
 
 		$list_equipment = $equipment_manager->get_team_id($team_id);
 
@@ -82,9 +84,9 @@
 
 		$list_activities = $prepare->fetchALL();
 
-		}
 		$nom_page = 'Qg';
+
 		include '../views/header_team.php';
 		include '../views/qg.php';
-}
+	}
 	
