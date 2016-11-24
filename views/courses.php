@@ -30,7 +30,7 @@
 					<?php endforeach ?>
 				</div>
 			</div>
-			 <div class="col s6 race_right">
+			<div class="col s6 race_right">
 			 	<h5>Courses Précédentes</h5>
 				<div class="content_card_race">
 					<?php foreach ($past_races as $race): ?>
